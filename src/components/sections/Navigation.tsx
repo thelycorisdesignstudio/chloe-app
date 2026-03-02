@@ -11,7 +11,17 @@ const Navigation = () => {
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    setVisible(latest > 300);
+    const prev = scrollY.getPrevious() ?? 0;
+    if (latest < 300) {
+      // Near top of page — hide nav
+      setVisible(false);
+    } else if (latest > prev) {
+      // Scrolling down — show nav
+      setVisible(true);
+    } else {
+      // Scrolling up — hide nav
+      setVisible(false);
+    }
   });
 
   useEffect(() => {
