@@ -20,10 +20,6 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
-  eslint: {
-    // TODO: Fix eslint-config-next FlatCompat circular reference, then set to false
-    ignoreDuringBuilds: true,
-  },
 };
 
 export default nextConfig;
