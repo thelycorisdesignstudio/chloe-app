@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800;900&family=Caveat:wght@400;700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-background: #82E9A6;
+  --color-foreground: #004D3F;
+
+  --color-card: #F7F5F2;
+  --color-card-foreground: #004D3F;
+
+  --color-popover: #F7F5F2;
+  --color-popover-foreground: #004D3F;
+
+  --color-primary: #004D3F;
+  --color-primary-foreground: #F7F5F2;
+
+  --color-secondary: #FFF98F;
+  --color-secondary-foreground: #004D3F;
+
+  --color-muted: #FDCFDF;
+  --color-muted-foreground: #004D3F;
+
+  --color-accent: #B3F5FF;
+  --color-accent-foreground: #004D3F;
+
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #fafafa;
+
+  --color-border: #004D3F;
+  --color-input: #004D3F;
+  --color-ring: #004D3F;
+
+  --color-mint: #82E9A6;
+  --color-lemon: #FFF98F;
+  --color-bubblegum: #FDCFDF;
+  --color-sky: #B3F5FF;
+  --color-teal: #004D3F;
+  --color-off-white: #F7F5F2;
+
+  --font-display: "Lexend", sans-serif;
+  --font-body: "Lexend", sans-serif;
+  --font-hand: "Caveat", cursive;
+
+  --radius-xl: 60px;
+  --radius-lg: 40px;
+  --radius-md: 20px;
+  --radius-sm: 12px;
+
+  --shadow-brutalist: 4px 4px 0px #004D3F;
+  --shadow-brutalist-lg: 8px 8px 0px #004D3F;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: #004D3F;
+  }
+
+  :root {
+    --background: #82E9A6;
+    --foreground: #004D3F;
+    --card: #F7F5F2;
+    --card-foreground: #004D3F;
+    --popover: #F7F5F2;
+    --popover-foreground: #004D3F;
+    --primary: #004D3F;
+    --primary-foreground: #F7F5F2;
+    --secondary: #FFF98F;
+    --secondary-foreground: #004D3F;
+    --muted: #FDCFDF;
+    --muted-foreground: #004D3F;
+    --accent: #B3F5FF;
+    --accent-foreground: #004D3F;
+    --destructive: #ef4444;
+    --destructive-foreground: #fafafa;
+    --border: #004D3F;
+    --input: #004D3F;
+    --ring: #004D3F;
+    --radius: 40px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-mint);
+    color: var(--color-teal);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, .h1 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+    font-size: clamp(3rem, 10vw, 8rem);
+  }
+
+  h2, .h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    line-height: 1;
+    text-transform: uppercase;
+    font-size: clamp(2rem, 5vw, 4rem);
+  }
+
+  .font-script {
+    font-family: var(--font-hand);
+    font-size: 1.5rem;
+    color: var(--color-teal);
+  }
+
+  .container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    max-width: 1440px;
+  }
+
+  .pill-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    border: 2px solid var(--color-teal);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: var(--shadow-brutalist);
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .pill-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--color-teal);
+  }
+
+  .pill-button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 0px var(--color-teal);
+  }
+
+  .card-brutalist {
+    border: 2px solid var(--color-teal);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-brutalist);
+    overflow: hidden;
+  }
+
+  .arch-mask {
+    border-top-left-radius: 50% 100%;
+    border-top-right-radius: 50% 100%;
+  }
+
+  .floating-nav {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* GPU-accelerated animation hints */
+.will-change-transform {
+  will-change: transform;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
