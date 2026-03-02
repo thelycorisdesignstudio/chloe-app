@@ -42,18 +42,18 @@ function LocationCard({ dest, idx }: { dest: typeof topDestinations[number]; idx
   const { ref, onMouseMove, onMouseLeave } = useTilt3D(8);
 
   return (
-    <motion.div variants={fadeUp}>
+    <motion.div variants={fadeUp} className="h-full">
       <Link
         href={`/explore?search=${encodeURIComponent(dest.searchParam)}`}
-        className="block"
+        className="block h-full"
       >
         <div
           ref={ref}
           onMouseMove={onMouseMove}
           onMouseLeave={onMouseLeave}
-          className="group bg-[#F7F5F2] rounded-[30px] border-2 border-[#004D3F] overflow-hidden shadow-[4px_4px_0px_#004D3F] hover:shadow-[6px_6px_0px_#004D3F] transition-shadow cursor-pointer will-change-transform"
+          className="group bg-[#F7F5F2] rounded-[30px] border-2 border-[#004D3F] overflow-hidden shadow-[4px_4px_0px_#004D3F] hover:shadow-[6px_6px_0px_#004D3F] transition-shadow cursor-pointer will-change-transform h-full flex flex-col"
         >
-          <div className="relative h-48 overflow-hidden">
+          <div className="relative h-48 overflow-hidden flex-shrink-0">
             <Image
               src={dest.image}
               alt={dest.name}
@@ -66,8 +66,8 @@ function LocationCard({ dest, idx }: { dest: typeof topDestinations[number]; idx
               <p className="text-[#82E9A6] font-bold text-sm">{dest.activities} activities</p>
             </div>
           </div>
-          <div className="p-5">
-            <div className="flex flex-wrap gap-2">
+          <div className="p-5 flex-1 flex items-start">
+            <div className="flex flex-wrap gap-2 content-start">
               {dest.highlights.map((highlight, hIdx) => (
                 <span
                   key={hIdx}
