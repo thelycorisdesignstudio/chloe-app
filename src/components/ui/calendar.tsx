@@ -156,16 +156,17 @@ function Calendar({
           )
         },
         DayButton: CalendarDayButton,
-        WeekNumber: ((props: React.ComponentProps<"th">) => {
+        // @ts-expect-error -- react-day-picker WeekNumber typing mismatch with td element
+        WeekNumber: (props: Record<string, unknown>) => {
           const { children, ...rest } = props;
           return (
-            <td {...(rest as React.ComponentProps<"td">)}>
+            <td {...(rest as React.TdHTMLAttributes<HTMLTableCellElement>)}>
               <div className="flex size-(--cell-size) items-center justify-center text-center">
-                {children}
+                {children as React.ReactNode}
               </div>
             </td>
           )
-        }) as unknown as React.ComponentType<any>,
+        },
         ...components,
       }}
       {...props}
