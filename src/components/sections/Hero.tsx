@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from 'react';
-import { MapPin, Filter, Star } from 'lucide-react';
+import { MapPin, Filter, Star, LogIn } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 const headingWords = "Your pocket guide to surviving parenthood, one activity at a time.".split(" ");
 
@@ -94,6 +94,17 @@ const Hero = () => {
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
             <span className="text-sm md:text-base font-black text-[#004D3F] uppercase tracking-wide">Explore Activities</span>
+          </motion.a>
+
+          <motion.a
+            href="/login"
+            className="group flex h-[44px] md:h-[52px] items-center justify-center gap-2 rounded-[999px] border-2 border-[#004D3F] bg-off-white px-4 md:px-6 shadow-[3px_3px_0px_#004D3F] focus:outline-none focus:ring-2 focus:ring-[#004D3F] focus:ring-offset-2"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <LogIn className="w-4 h-4 text-[#004D3F]" />
+            <span className="text-sm md:text-base font-black text-[#004D3F] uppercase tracking-wide">Login</span>
           </motion.a>
         </motion.div>
 

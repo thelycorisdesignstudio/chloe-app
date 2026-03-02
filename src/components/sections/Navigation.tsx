@@ -2,22 +2,11 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useMotionValueEvent, useSpring } from "framer-motion";
+import { motion, useSpring } from "framer-motion";
 
 const Navigation = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [hidden, setHidden] = useState(false);
   const eyeContainerRef = useRef<HTMLDivElement>(null);
-  const { scrollY } = useScroll();
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    const prev = scrollY.getPrevious() ?? 0;
-    if (latest > prev && latest > 150) {
-      setHidden(true);
-    } else {
-      setHidden(false);
-    }
-  });
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -60,8 +49,8 @@ const Navigation = () => {
       role="navigation"
       aria-label="Main navigation"
       initial={{ y: 100 }}
-      animate={{ y: hidden ? 100 : 0 }}
-      transition={{ type: "spring", stiffness: 260, damping: 20, delay: hidden ? 0 : 1 }}
+      animate={{ y: 0 }}
+      transition={{ type: "spring", stiffness: 260, damping: 20, delay: 1 }}
     >
       <motion.div
         className="flex items-center gap-1.5 md:gap-2 pointer-events-auto"
