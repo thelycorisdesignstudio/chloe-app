@@ -156,15 +156,16 @@ function Calendar({
           )
         },
         DayButton: CalendarDayButton,
-        WeekNumber: ({ children, ...props }: { children?: React.ReactNode; [key: string]: unknown }) => {
+        WeekNumber: ((props: React.ComponentProps<"th">) => {
+          const { children, ...rest } = props;
           return (
-            <td {...props}>
+            <td {...(rest as React.ComponentProps<"td">)}>
               <div className="flex size-(--cell-size) items-center justify-center text-center">
                 {children}
               </div>
             </td>
           )
-        },
+        }) as unknown as React.ComponentType<any>,
         ...components,
       }}
       {...props}
