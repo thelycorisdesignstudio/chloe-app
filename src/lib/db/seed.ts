@@ -65,7 +65,7 @@ async function seed() {
       .onConflictDoNothing();
   }
 
-  // 4. Seed activities from local data (132 curated + 400+ generated)
+  // 4. Seed activities from local data (132 curated venues)
   console.log('Seeding activities...');
   const { allActivities: activityData } = await import('../data/activities');
 
