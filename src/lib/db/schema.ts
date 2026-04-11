@@ -1,206 +1,310 @@
-import {
-  pgTable,
-  uuid,
-  text,
-  integer,
-  boolean,
-  real,
-  timestamp,
-  serial,
-  varchar,
-  jsonb,
-  index,
-} from 'drizzle-orm/pg-core';
+import mongoose, { Schema, type InferSchemaType, type Types } from 'mongoose';
 
 // ─── Countries ───────────────────────────────────────────────
 
-export const countries = pgTable('countries', {
-  id: serial('id').primaryKey(),
-  code: varchar('code', { length: 10 }).notNull().unique(),
-  name: varchar('name', { length: 100 }).notNull(),
-  currency: varchar('currency', { length: 10 }).notNull(),
-  isActive: boolean('is_active').notNull().default(true),
-});
+const countrySchema = new Schema(
+  {
+    code: { type: String, required: true, unique: true, maxlength: 10 },
+    name: { type: String, required: true, maxlength: 100 },
+    currency: { type: String, required: true, maxlength: 10 },
+    isActive: { type: Boolean, required: true, default: true },
+  },
+  { timestamps: true },
+);
 
 // ─── Regions ─────────────────────────────────────────────────
 
-export const regions = pgTable('regions', {
-  id: serial('id').primaryKey(),
-  countryCode: varchar('country_code', { length: 10 }).notNull(),
-  name: varchar('name', { length: 100 }).notNull(),
-  slug: varchar('slug', { length: 100 }).notNull(),
-  isActive: boolean('is_active').notNull().default(true),
-});
+const regionSchema = new Schema(
+  {
+    countryCode: { type: String, required: true, maxlength: 10, index: true },
+    name: { type: String, required: true, maxlength: 100 },
+    slug: { type: String, required: true, maxlength: 100 },
+    isActive: { type: Boolean, required: true, default: true },
+  },
+  { timestamps: true },
+);
+
+regionSchema.index({ countryCode: 1, slug: 1 }, { unique: true });
 
 // ─── Categories ──────────────────────────────────────────────
 
-export const categories = pgTable('categories', {
-  id: serial('id').primaryKey(),
-  name: varchar('name', { length: 100 }).notNull(),
-  slug: varchar('slug', { length: 100 }).notNull().unique(),
-  icon: text('icon'),
-  description: text('description'),
-  displayOrder: integer('display_order').notNull().default(0),
-  isActive: boolean('is_active').notNull().default(true),
-});
+const categorySchema = new Schema(
+  {
+    name: { type: String, required: true, maxlength: 100 },
+    slug: { type: String, required: true, unique: true, maxlength: 100 },
+    icon: { type: String, default: null },
+    description: { type: String, default: null },
+    displayOrder: { type: Number, required: true, default: 0 },
+    isActive: { type: Boolean, required: true, default: true },
+  },
+  { timestamps: true },
+);
 
 // ─── Activities ──────────────────────────────────────────────
 
-export const activities = pgTable('activities', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  name: varchar('name', { length: 255 }).notNull(),
-  slug: varchar('slug', { length: 255 }).notNull().unique(),
-  categoryId: integer('category_id').notNull(),
-  description: text('description').notNull(),
-  shortDescription: text('short_description').notNull(),
-  countryCode: varchar('country_code', { length: 10 }).notNull(),
-  region: varchar('region', { length: 100 }).notNull(),
-  area: varchar('area', { length: 100 }).notNull(),
-  address: text('address').notNull(),
-  latitude: real('latitude'),
-  longitude: real('longitude'),
-  ageMin: integer('age_min').notNull().default(0),
-  ageMax: integer('age_max').notNull().default(12),
-  pricingType: varchar('pricing_type', { length: 20 }).notNull().default('free'),
-  adultPrice: real('adult_price'),
-  childPrice: real('child_price'),
-  currency: varchar('currency', { length: 10 }).notNull().default('AED'),
-  pricingNotes: text('pricing_notes'),
-  openDays: jsonb('open_days').$type<string[]>().notNull().default([]),
-  openTime: varchar('open_time', { length: 10 }).notNull().default('09:00'),
-  closeTime: varchar('close_time', { length: 10 }).notNull().default('18:00'),
-  timingNotes: text('timing_notes'),
-  features: jsonb('features').$type<string[]>().notNull().default([]),
-  amenities: jsonb('amenities').$type<string[]>().notNull().default([]),
-  images: jsonb('images').$type<string[]>().notNull().default([]),
-  rating: real('rating').notNull().default(0),
-  reviewCount: integer('review_count').notNull().default(0),
-  isIndoor: boolean('is_indoor').notNull().default(false),
-  isFamilyFriendly: boolean('is_family_friendly').notNull().default(true),
-  hasParking: boolean('has_parking').notNull().default(false),
-  isWheelchairAccessible: boolean('is_wheelchair_accessible').notNull().default(false),
-  phone: varchar('phone', { length: 30 }),
-  website: text('website'),
-  instagram: varchar('instagram', { length: 100 }),
-  tags: jsonb('tags').$type<string[]>().notNull().default([]),
-  isVerified: boolean('is_verified').notNull().default(false),
-  isFeatured: boolean('is_featured').notNull().default(false),
-  isActive: boolean('is_active').notNull().default(true),
-  createdAt: timestamp('created_at').notNull().defaultNow(),
-  updatedAt: timestamp('updated_at').notNull().defaultNow(),
-});
+const activitySchema = new Schema(
+  {
+    name: { type: String, required: true, maxlength: 255 },
+    slug: { type: String, required: true, unique: true, maxlength: 255 },
+    categoryId: { type: Schema.Types.ObjectId, required: true, ref: 'Category', index: true },
+    description: { type: String, required: true },
+    shortDescription: { type: String, required: true },
+    countryCode: { type: String, required: true, maxlength: 10 },
+    region: { type: String, required: true, maxlength: 100 },
+    area: { type: String, required: true, maxlength: 100 },
+    address: { type: String, required: true },
+    latitude: { type: Number, default: null },
+    longitude: { type: Number, default: null },
+    ageMin: { type: Number, required: true, default: 0 },
+    ageMax: { type: Number, required: true, default: 12 },
+    pricingType: { type: String, required: true, default: 'free', maxlength: 20 },
+    adultPrice: { type: Number, default: null },
+    childPrice: { type: Number, default: null },
+    currency: { type: String, required: true, default: 'AED', maxlength: 10 },
+    pricingNotes: { type: String, default: null },
+    openDays: { type: [String], required: true, default: [] },
+    openTime: { type: String, required: true, default: '09:00', maxlength: 10 },
+    closeTime: { type: String, required: true, default: '18:00', maxlength: 10 },
+    timingNotes: { type: String, default: null },
+    features: { type: [String], required: true, default: [] },
+    amenities: { type: [String], required: true, default: [] },
+    images: { type: [String], required: true, default: [] },
+    rating: { type: Number, required: true, default: 0 },
+    reviewCount: { type: Number, required: true, default: 0 },
+    isIndoor: { type: Boolean, required: true, default: false },
+    isFamilyFriendly: { type: Boolean, required: true, default: true },
+    hasParking: { type: Boolean, required: true, default: false },
+    isWheelchairAccessible: { type: Boolean, required: true, default: false },
+    phone: { type: String, default: null, maxlength: 30 },
+    website: { type: String, default: null },
+    instagram: { type: String, default: null, maxlength: 100 },
+    tags: { type: [String], required: true, default: [] },
+    isVerified: { type: Boolean, required: true, default: false },
+    isFeatured: { type: Boolean, required: true, default: false },
+    isActive: { type: Boolean, required: true, default: true },
+  },
+  { timestamps: true },
+);
+
+activitySchema.index({ isActive: 1, isFeatured: -1, rating: -1 });
+activitySchema.index({ countryCode: 1, region: 1 });
+activitySchema.index({ isActive: 1, countryCode: 1, rating: -1 });
+activitySchema.index(
+  { name: 'text', shortDescription: 'text', region: 'text', area: 'text' },
+  { weights: { name: 10, shortDescription: 5, region: 3, area: 2 } },
+);
 
 // ─── Business Inquiries ──────────────────────────────────────
 
-export const businessInquiries = pgTable('business_inquiries', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  businessName: varchar('business_name', { length: 255 }).notNull(),
-  contactPerson: varchar('contact_person', { length: 255 }).notNull(),
-  email: varchar('email', { length: 255 }).notNull(),
-  phone: varchar('phone', { length: 30 }),
-  businessType: varchar('business_type', { length: 50 }).notNull(),
-  emirate: varchar('emirate', { length: 50 }).notNull(),
-  message: text('message'),
-  photos: jsonb('photos').$type<string[]>().notNull().default([]),
-  status: varchar('status', { length: 20 }).notNull().default('pending'),
-  createdAt: timestamp('created_at').notNull().defaultNow(),
-});
+const businessInquirySchema = new Schema(
+  {
+    businessName: { type: String, required: true, maxlength: 255 },
+    contactPerson: { type: String, required: true, maxlength: 255 },
+    email: { type: String, required: true, maxlength: 255 },
+    phone: { type: String, default: null, maxlength: 30 },
+    businessType: { type: String, required: true, maxlength: 50 },
+    emirate: { type: String, required: true, maxlength: 50 },
+    message: { type: String, default: null },
+    photos: { type: [String], required: true, default: [] },
+    status: { type: String, required: true, default: 'pending', maxlength: 20 },
+  },
+  { timestamps: true },
+);
 
 // ─── Favorites ───────────────────────────────────────────────
 
-export const favorites = pgTable('favorites', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  userId: text('user_id').notNull(),
-  activityId: uuid('activity_id').notNull(),
-  createdAt: timestamp('created_at').notNull().defaultNow(),
-});
+const favoriteSchema = new Schema(
+  {
+    userId: { type: String, required: true },
+    activityId: { type: Schema.Types.ObjectId, required: true, ref: 'Activity' },
+  },
+  { timestamps: true },
+);
+
+favoriteSchema.index({ userId: 1, activityId: 1 }, { unique: true });
+favoriteSchema.index({ userId: 1 });
 
 // ─── Analytics Events ───────────────────────────────────────
 
-export const analyticsEvents = pgTable('analytics_events', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  eventType: varchar('event_type', { length: 30 }).notNull(), // 'view', 'click', 'share', 'favorite', 'search'
-  activityId: uuid('activity_id'), // nullable - not all events have an activity
-  metadata: jsonb('metadata').$type<Record<string, unknown>>().default({}),
-  createdAt: timestamp('created_at').notNull().defaultNow(),
-});
-
-// ─── Auth Tables (better-auth) ──────────────────────────────
-
-export const user = pgTable('user', {
-  id: text('id').primaryKey(),
-  name: text('name').notNull(),
-  email: text('email').notNull().unique(),
-  emailVerified: boolean('email_verified').default(false).notNull(),
-  image: text('image'),
-  createdAt: timestamp('created_at').defaultNow().notNull(),
-  updatedAt: timestamp('updated_at').defaultNow().notNull(),
-});
-
-export const session = pgTable(
-  'session',
+const analyticsEventSchema = new Schema(
   {
-    id: text('id').primaryKey(),
-    expiresAt: timestamp('expires_at').notNull(),
-    token: text('token').notNull().unique(),
-    createdAt: timestamp('created_at').defaultNow().notNull(),
-    updatedAt: timestamp('updated_at').defaultNow().notNull(),
-    ipAddress: text('ip_address'),
-    userAgent: text('user_agent'),
-    userId: text('user_id')
-      .notNull()
-      .references(() => user.id, { onDelete: 'cascade' }),
+    eventType: { type: String, required: true, maxlength: 30 },
+    activityId: { type: Schema.Types.ObjectId, default: null, ref: 'Activity' },
+    metadata: { type: Schema.Types.Mixed, default: {} },
   },
-  (table) => [index('session_userId_idx').on(table.userId)],
+  { timestamps: true },
 );
 
-export const account = pgTable(
-  'account',
-  {
-    id: text('id').primaryKey(),
-    accountId: text('account_id').notNull(),
-    providerId: text('provider_id').notNull(),
-    userId: text('user_id')
-      .notNull()
-      .references(() => user.id, { onDelete: 'cascade' }),
-    accessToken: text('access_token'),
-    refreshToken: text('refresh_token'),
-    idToken: text('id_token'),
-    accessTokenExpiresAt: timestamp('access_token_expires_at'),
-    refreshTokenExpiresAt: timestamp('refresh_token_expires_at'),
-    scope: text('scope'),
-    password: text('password'),
-    createdAt: timestamp('created_at').defaultNow().notNull(),
-    updatedAt: timestamp('updated_at').defaultNow().notNull(),
-  },
-  (table) => [index('account_userId_idx').on(table.userId)],
-);
+analyticsEventSchema.index({ eventType: 1, activityId: 1 });
+analyticsEventSchema.index({ activityId: 1 });
+analyticsEventSchema.index({ createdAt: 1 });
 
-export const verification = pgTable(
-  'verification',
-  {
-    id: text('id').primaryKey(),
-    identifier: text('identifier').notNull(),
-    value: text('value').notNull(),
-    expiresAt: timestamp('expires_at').notNull(),
-    createdAt: timestamp('created_at').defaultNow().notNull(),
-    updatedAt: timestamp('updated_at').defaultNow().notNull(),
-  },
-  (table) => [index('verification_identifier_idx').on(table.identifier)],
-);
+// ─── Models ──────────────────────────────────────────────────
+// Use mongoose.models cache to prevent OverwriteModelError in Next.js hot reload
 
-// ─── Inferred Types ──────────────────────────────────────────
+export const Country =
+  (mongoose.models.Country as mongoose.Model<InferSchemaType<typeof countrySchema>>) ||
+  mongoose.model('Country', countrySchema);
 
-export type Country = typeof countries.$inferSelect;
-export type Region = typeof regions.$inferSelect;
-export type Category = typeof categories.$inferSelect;
-export type Activity = typeof activities.$inferSelect;
-export type BusinessInquiry = typeof businessInquiries.$inferSelect;
-export type Favorite = typeof favorites.$inferSelect;
-export type AnalyticsEvent = typeof analyticsEvents.$inferSelect;
+export const Region =
+  (mongoose.models.Region as mongoose.Model<InferSchemaType<typeof regionSchema>>) ||
+  mongoose.model('Region', regionSchema);
 
-export type NewCountry = typeof countries.$inferInsert;
-export type NewRegion = typeof regions.$inferInsert;
-export type NewCategory = typeof categories.$inferInsert;
-export type NewActivity = typeof activities.$inferInsert;
-export type NewBusinessInquiry = typeof businessInquiries.$inferInsert;
+export const Category =
+  (mongoose.models.Category as mongoose.Model<InferSchemaType<typeof categorySchema>>) ||
+  mongoose.model('Category', categorySchema);
+
+export const Activity =
+  (mongoose.models.Activity as mongoose.Model<InferSchemaType<typeof activitySchema>>) ||
+  mongoose.model('Activity', activitySchema);
+
+export const BusinessInquiry =
+  (mongoose.models.BusinessInquiry as mongoose.Model<InferSchemaType<typeof businessInquirySchema>>) ||
+  mongoose.model('BusinessInquiry', businessInquirySchema);
+
+export const Favorite =
+  (mongoose.models.Favorite as mongoose.Model<InferSchemaType<typeof favoriteSchema>>) ||
+  mongoose.model('Favorite', favoriteSchema);
+
+export const AnalyticsEvent =
+  (mongoose.models.AnalyticsEvent as mongoose.Model<InferSchemaType<typeof analyticsEventSchema>>) ||
+  mongoose.model('AnalyticsEvent', analyticsEventSchema);
+
+// ─── TypeScript Types ────────────────────────────────────────
+// Plain-object types matching the old Drizzle inferred types so that
+// every consumer (queries.ts, explore/page.tsx, API routes) keeps compiling
+// without changes.  `_id` is mapped to `id` via a type helper.
+
+type DocToPlain<S extends Schema> = InferSchemaType<S> & {
+  _id: Types.ObjectId;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export type CountryDoc = DocToPlain<typeof countrySchema>;
+export type RegionDoc = DocToPlain<typeof regionSchema>;
+export type CategoryDoc = DocToPlain<typeof categorySchema>;
+export type ActivityDoc = DocToPlain<typeof activitySchema>;
+export type BusinessInquiryDoc = DocToPlain<typeof businessInquirySchema>;
+export type FavoriteDoc = DocToPlain<typeof favoriteSchema>;
+export type AnalyticsEventDoc = DocToPlain<typeof analyticsEventSchema>;
+
+// ─── Lean types (POJO returned by .lean()) ───────────────────
+// These replace the old Drizzle inferred types.  The `id` field is a string
+// (from _id.toString()) so downstream code that references `activity.id`
+// keeps working after we map it in queries.ts.
+
+export type Country = {
+  id: string;
+  code: string;
+  name: string;
+  currency: string;
+  isActive: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export type Region = {
+  id: string;
+  countryCode: string;
+  name: string;
+  slug: string;
+  isActive: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export type Category = {
+  id: string;
+  name: string;
+  slug: string;
+  icon: string | null;
+  description: string | null;
+  displayOrder: number;
+  isActive: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export type Activity = {
+  id: string;
+  name: string;
+  slug: string;
+  categoryId: string;
+  description: string;
+  shortDescription: string;
+  countryCode: string;
+  region: string;
+  area: string;
+  address: string;
+  latitude: number | null;
+  longitude: number | null;
+  ageMin: number;
+  ageMax: number;
+  pricingType: string;
+  adultPrice: number | null;
+  childPrice: number | null;
+  currency: string;
+  pricingNotes: string | null;
+  openDays: string[];
+  openTime: string;
+  closeTime: string;
+  timingNotes: string | null;
+  features: string[];
+  amenities: string[];
+  images: string[];
+  rating: number;
+  reviewCount: number;
+  isIndoor: boolean;
+  isFamilyFriendly: boolean;
+  hasParking: boolean;
+  isWheelchairAccessible: boolean;
+  phone: string | null;
+  website: string | null;
+  instagram: string | null;
+  tags: string[];
+  isVerified: boolean;
+  isFeatured: boolean;
+  isActive: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export type BusinessInquiry = {
+  id: string;
+  businessName: string;
+  contactPerson: string;
+  email: string;
+  phone: string | null;
+  businessType: string;
+  emirate: string;
+  message: string | null;
+  photos: string[];
+  status: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export type Favorite = {
+  id: string;
+  userId: string;
+  activityId: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export type AnalyticsEvent = {
+  id: string;
+  eventType: string;
+  activityId: string | null;
+  metadata: Record<string, unknown>;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+// Insert types (for seed script compatibility)
+export type NewCountry = Omit<Country, 'id' | 'createdAt' | 'updatedAt'>;
+export type NewRegion = Omit<Region, 'id' | 'createdAt' | 'updatedAt'>;
+export type NewCategory = Omit<Category, 'id' | 'createdAt' | 'updatedAt'>;
+export type NewActivity = Omit<Activity, 'id' | 'createdAt' | 'updatedAt'>;
+export type NewBusinessInquiry = Omit<BusinessInquiry, 'id' | 'createdAt' | 'updatedAt'>;

@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
-import { db } from '@/lib/db';
-import { favorites } from '@/lib/db/schema';
-import { eq, and } from 'drizzle-orm';
+import { connectDB } from '@/lib/db';
+import { Favorite } from '@/lib/db/schema';
 import { headers } from 'next/headers';
+import mongoose from 'mongoose';
 
 export async function GET() {
   const session = await auth.api.getSession({ headers: await headers() });
@@ -11,12 +11,14 @@ export async function GET() {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const userFavorites = await db
-    .select()
-    .from(favorites)
-    .where(eq(favorites.userId, session.user.id));
+  await connectDB();
 
-  return NextResponse.json(userFavorites.map(f => f.activityId));
+  const userFavorites = await Favorite
+    .find({ userId: session.user.id })
+    .lean()
+    .exec();
+
+  return NextResponse.json(userFavorites.map((f) => f.activityId.toString()));
 }
 
 export async function POST(request: NextRequest) {
@@ -26,29 +28,37 @@ export async function POST(request: NextRequest) {
   }
 
   const { activityId } = await request.json();
-  if (!activityId) {
+  if (!activityId || !mongoose.isValidObjectId(activityId)) {
     return NextResponse.json({ error: 'activityId is required' }, { status: 400 });
   }
 
-  const existing = await db
-    .select()
-    .from(favorites)
-    .where(
-      and(eq(favorites.userId, session.user.id), eq(favorites.activityId, activityId))
-    );
+  await connectDB();
 
-  if (existing.length > 0) {
-    await db
-      .delete(favorites)
-      .where(
-        and(eq(favorites.userId, session.user.id), eq(favorites.activityId, activityId))
-      );
+  // Atomic toggle: attempt to delete first. If a document was deleted,
+  // the user unfavorited. If nothing was deleted, insert a new favorite.
+  // The unique index on { userId, activityId } prevents duplicates under
+  // concurrent requests.
+  const deleted = await Favorite.findOneAndDelete({
+    userId: session.user.id,
+    activityId,
+  }).exec();
+
+  if (deleted) {
     return NextResponse.json({ favorited: false });
-  } else {
-    await db.insert(favorites).values({
+  }
+
+  try {
+    await Favorite.create({
       userId: session.user.id,
       activityId,
     });
     return NextResponse.json({ favorited: true });
+  } catch (err: unknown) {
+    // If two concurrent requests both try to create, the unique index
+    // causes one to fail with duplicate key error — treat as already favorited.
+    if (err instanceof mongoose.mongo.MongoServerError && err.code === 11000) {
+      return NextResponse.json({ favorited: true });
+    }
+    throw err;
   }
 }

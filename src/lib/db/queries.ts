@@ -1,7 +1,43 @@
-import { db } from './index';
-import { activities, countries, regions, categories, analyticsEvents } from './schema';
-import { eq, and, or, ne, ilike, lte, gte, desc, asc, sql, count, avg } from 'drizzle-orm';
+import { connectDB } from './index';
+import {
+  Activity as ActivityModel,
+  Country as CountryModel,
+  Region as RegionModel,
+  Category as CategoryModel,
+  AnalyticsEvent as AnalyticsEventModel,
+} from './schema';
 import type { Activity, Country, Region, Category } from './schema';
+import mongoose from 'mongoose';
+
+// ─── Helpers ─────────────────────────────────────────────────
+
+/** Convert a Mongoose lean doc (with _id) to a plain object with string `id`.
+ *  Also stringifies any ObjectId fields (e.g. categoryId, activityId). */
+function toPlain<T extends Record<string, unknown>>(doc: T): Record<string, unknown> {
+  const { _id, __v, ...rest } = doc;
+  const result: Record<string, unknown> = { id: String(_id) };
+  for (const [key, value] of Object.entries(rest)) {
+    if (value instanceof mongoose.Types.ObjectId) {
+      result[key] = value.toString();
+    } else {
+      result[key] = value;
+    }
+  }
+  return result;
+}
+
+function toPlainList<T extends Record<string, unknown>>(docs: T[]): Record<string, unknown>[] {
+  return docs.map(toPlain);
+}
+
+/** Safely create an ObjectId from a hex string. Returns null if invalid. */
+function toObjectId(id: string): mongoose.Types.ObjectId | null {
+  if (!mongoose.isValidObjectId(id)) return null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return new (mongoose.Types.ObjectId as any)(id) as mongoose.Types.ObjectId;
+}
+
+// ─── Filters ─────────────────────────────────────────────────
 
 export type ActivityFilters = {
   country?: string;
@@ -17,209 +53,265 @@ export type ActivityFilters = {
   offset?: number;
 };
 
+// ─── Activity Queries ────────────────────────────────────────
+
 export async function getActivities(filters?: ActivityFilters): Promise<Activity[]> {
-  const conditions = [eq(activities.isActive, true)];
+  await connectDB();
+
+  const query: Record<string, unknown> = { isActive: true };
 
   if (filters?.country) {
-    conditions.push(eq(activities.countryCode, filters.country));
+    query.countryCode = filters.country;
   }
   if (filters?.region && !['All Emirates', 'All Regions', 'All Areas'].includes(filters.region)) {
-    conditions.push(eq(activities.region, filters.region));
+    query.region = filters.region;
   }
   if (filters?.category && filters.category !== 'All') {
-    const catId = parseInt(filters.category);
-    if (!isNaN(catId)) {
-      conditions.push(eq(activities.categoryId, catId));
-    }
+    const oid = toObjectId(filters.category);
+    if (oid) query.categoryId = oid;
   }
   if (filters?.ageMin !== undefined && filters?.ageMax !== undefined) {
-    conditions.push(lte(activities.ageMin, filters.ageMax));
-    conditions.push(gte(activities.ageMax, filters.ageMin));
+    query.ageMin = { $lte: filters.ageMax };
+    query.ageMax = { $gte: filters.ageMin };
   }
   if (filters?.isIndoor !== undefined) {
-    conditions.push(eq(activities.isIndoor, filters.isIndoor));
+    query.isIndoor = filters.isIndoor;
   }
   if (filters?.isFree) {
-    conditions.push(eq(activities.pricingType, 'free'));
+    query.pricingType = 'free';
   }
   if (filters?.search) {
-    const escaped = filters.search.replace(/[%_\\]/g, '\\$&');
-    conditions.push(
-      or(
-        ilike(activities.name, `%${escaped}%`),
-        ilike(activities.shortDescription, `%${escaped}%`),
-        ilike(activities.region, `%${escaped}%`),
-        ilike(activities.area, `%${escaped}%`)
-      )!
-    );
+    const escaped = filters.search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = { $regex: escaped, $options: 'i' };
+    query.$or = [
+      { name: regex },
+      { shortDescription: regex },
+      { region: regex },
+      { area: regex },
+    ];
   }
 
-  let orderByClause;
+  // Sort: featured first, then by user-selected sort
+  let sortObj: Record<string, 1 | -1> = { isFeatured: -1, rating: -1 };
   if (filters?.sortBy === 'reviews') {
-    orderByClause = desc(activities.reviewCount);
+    sortObj = { isFeatured: -1, reviewCount: -1 };
   } else if (filters?.sortBy === 'name') {
-    orderByClause = asc(activities.name);
-  } else {
-    orderByClause = desc(activities.rating);
+    sortObj = { isFeatured: -1, name: 1 };
   }
 
-  return db
-    .select()
-    .from(activities)
-    .where(and(...conditions))
-    .orderBy(desc(activities.isFeatured), orderByClause)
+  const docs = await ActivityModel
+    .find(query)
+    .sort(sortObj)
+    .skip(filters?.offset ?? 0)
     .limit(filters?.limit ?? 100)
-    .offset(filters?.offset ?? 0);
+    .lean()
+    .exec();
+
+  return toPlainList(docs) as unknown as Activity[];
 }
 
 export async function getActivityBySlug(slug: string): Promise<Activity | undefined> {
-  const result = await db
-    .select()
-    .from(activities)
-    .where(and(eq(activities.slug, slug), eq(activities.isActive, true)))
-    .limit(1);
-  return result[0];
+  await connectDB();
+
+  const doc = await ActivityModel
+    .findOne({ slug, isActive: true })
+    .lean()
+    .exec();
+
+  return doc ? (toPlain(doc) as unknown as Activity) : undefined;
 }
 
 export async function getFeaturedActivities(limit = 6): Promise<Activity[]> {
-  return db
-    .select()
-    .from(activities)
-    .where(and(eq(activities.isActive, true), eq(activities.isFeatured, true)))
-    .orderBy(desc(activities.rating))
-    .limit(limit);
+  await connectDB();
+
+  const docs = await ActivityModel
+    .find({ isActive: true, isFeatured: true })
+    .sort({ rating: -1 })
+    .limit(limit)
+    .lean()
+    .exec();
+
+  return toPlainList(docs) as unknown as Activity[];
 }
 
-export async function getActivityCount(filters?: Pick<ActivityFilters, 'country' | 'region' | 'category'>): Promise<number> {
-  const conditions = [eq(activities.isActive, true)];
+export async function getActivityCount(filters?: ActivityFilters): Promise<number> {
+  await connectDB();
 
-  if (filters?.country) conditions.push(eq(activities.countryCode, filters.country));
-  if (filters?.region && !['All Emirates', 'All Regions'].includes(filters.region)) {
-    conditions.push(eq(activities.region, filters.region));
+  const query: Record<string, unknown> = { isActive: true };
+
+  if (filters?.country) query.countryCode = filters.country;
+  if (filters?.region && !['All Emirates', 'All Regions', 'All Areas'].includes(filters.region)) {
+    query.region = filters.region;
   }
   if (filters?.category && filters.category !== 'All') {
-    const catId = parseInt(filters.category);
-    if (!isNaN(catId)) {
-      conditions.push(eq(activities.categoryId, catId));
-    }
+    const oid = toObjectId(filters.category);
+    if (oid) query.categoryId = oid;
+  }
+  if (filters?.ageMin !== undefined && filters?.ageMax !== undefined) {
+    query.ageMin = { $lte: filters.ageMax };
+    query.ageMax = { $gte: filters.ageMin };
+  }
+  if (filters?.isIndoor !== undefined) {
+    query.isIndoor = filters.isIndoor;
+  }
+  if (filters?.isFree) {
+    query.pricingType = 'free';
+  }
+  if (filters?.search) {
+    const escaped = filters.search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = { $regex: escaped, $options: 'i' };
+    query.$or = [
+      { name: regex },
+      { shortDescription: regex },
+      { region: regex },
+      { area: regex },
+    ];
   }
 
-  const result = await db
-    .select({ value: count() })
-    .from(activities)
-    .where(and(...conditions));
-  return result[0]?.value ?? 0;
+  return ActivityModel.countDocuments(query).exec();
 }
 
+// ─── Reference Data Queries ──────────────────────────────────
+
 export async function getCountries(): Promise<Country[]> {
-  return db
-    .select()
-    .from(countries)
-    .where(eq(countries.isActive, true))
-    .orderBy(asc(countries.name));
+  await connectDB();
+
+  const docs = await CountryModel
+    .find({ isActive: true })
+    .sort({ name: 1 })
+    .lean()
+    .exec();
+
+  return toPlainList(docs) as unknown as Country[];
 }
 
 export async function getRegions(countryCode?: string): Promise<Region[]> {
-  const conditions = [eq(regions.isActive, true)];
-  if (countryCode) conditions.push(eq(regions.countryCode, countryCode));
+  await connectDB();
 
-  return db
-    .select()
-    .from(regions)
-    .where(and(...conditions))
-    .orderBy(asc(regions.name));
+  const query: Record<string, unknown> = { isActive: true };
+  if (countryCode) query.countryCode = countryCode;
+
+  const docs = await RegionModel
+    .find(query)
+    .sort({ name: 1 })
+    .lean()
+    .exec();
+
+  return toPlainList(docs) as unknown as Region[];
 }
 
 export async function getCategories(): Promise<Category[]> {
-  return db
-    .select()
-    .from(categories)
-    .where(eq(categories.isActive, true))
-    .orderBy(asc(categories.displayOrder));
+  await connectDB();
+
+  const docs = await CategoryModel
+    .find({ isActive: true })
+    .sort({ displayOrder: 1 })
+    .lean()
+    .exec();
+
+  return toPlainList(docs) as unknown as Category[];
 }
 
+// ─── Stats ───────────────────────────────────────────────────
+
 export async function getStats() {
-  const [activityCount] = await db
-    .select({ value: count() })
-    .from(activities)
-    .where(eq(activities.isActive, true));
-  const [avgRating] = await db
-    .select({ value: avg(activities.rating) })
-    .from(activities)
-    .where(eq(activities.isActive, true));
+  await connectDB();
+
+  const [venueCount, avgResult] = await Promise.all([
+    ActivityModel.countDocuments({ isActive: true }).exec(),
+    ActivityModel.aggregate<{ avg: number | null }>([
+      { $match: { isActive: true } },
+      { $group: { _id: null, avg: { $avg: '$rating' } } },
+    ]).exec(),
+  ]);
 
   return {
-    venueCount: activityCount.value,
-    averageRating: Number(avgRating.value ?? 0).toFixed(1),
+    venueCount,
+    averageRating: Number(avgResult[0]?.avg ?? 0).toFixed(1),
   };
 }
 
-export async function getRecommendations(activityId: string, limit = 6): Promise<Activity[]> {
-  // 1. Fetch the source activity
-  const [source] = await db
-    .select()
-    .from(activities)
-    .where(eq(activities.id, activityId))
-    .limit(1);
+// ─── Recommendations ─────────────────────────────────────────
 
+export async function getRecommendations(activityId: string, limit = 6): Promise<Activity[]> {
+  await connectDB();
+
+  const objectId = toObjectId(activityId);
+  if (!objectId) return [];
+
+  // 1. Fetch the source activity
+  const source = await ActivityModel.findById(objectId).lean().exec();
   if (!source) return [];
 
-  // 2. Find similar activities based on multiple signals, scored by relevance.
-  //    Scoring:
-  //      - Same category:      +4
-  //      - Same region:         +2
-  //      - Overlapping age range: +1
-  //      - Same pricing type:   +1
-  //    We exclude the source activity and inactive activities.
-  const results = await db
-    .select({
-      activity: activities,
-      relevance: sql<number>`(
-        CASE WHEN ${activities.categoryId} = ${source.categoryId} THEN 4 ELSE 0 END
-        + CASE WHEN ${activities.region} = ${source.region} THEN 2 ELSE 0 END
-        + CASE WHEN ${activities.ageMin} <= ${source.ageMax} AND ${activities.ageMax} >= ${source.ageMin} THEN 1 ELSE 0 END
-        + CASE WHEN ${activities.pricingType} = ${source.pricingType} THEN 1 ELSE 0 END
-      )`.as('relevance'),
-    })
-    .from(activities)
-    .where(
-      and(
-        eq(activities.isActive, true),
-        ne(activities.id, activityId),
-        // At least one signal must match for the row to be relevant
-        or(
-          eq(activities.categoryId, source.categoryId),
-          eq(activities.region, source.region),
-          eq(activities.pricingType, source.pricingType),
-          and(
-            lte(activities.ageMin, source.ageMax),
-            gte(activities.ageMax, source.ageMin)
-          )
-        )
-      )
-    )
-    .orderBy(sql`relevance DESC`, desc(activities.rating))
-    .limit(limit);
+  // 2. Aggregation pipeline: score by relevance signals
+  //    Same category +4, same region +2, overlapping age +1, same pricing +1
+  const results = await ActivityModel.aggregate([
+    {
+      $match: {
+        isActive: true,
+        _id: { $ne: objectId },
+        $or: [
+          { categoryId: source.categoryId },
+          { region: source.region },
+          { pricingType: source.pricingType },
+          { ageMin: { $lte: source.ageMax }, ageMax: { $gte: source.ageMin } },
+        ],
+      },
+    },
+    {
+      $addFields: {
+        relevance: {
+          $add: [
+            { $cond: [{ $eq: ['$categoryId', source.categoryId] }, 4, 0] },
+            { $cond: [{ $eq: ['$region', source.region] }, 2, 0] },
+            {
+              $cond: [
+                {
+                  $and: [
+                    { $lte: ['$ageMin', source.ageMax] },
+                    { $gte: ['$ageMax', source.ageMin] },
+                  ],
+                },
+                1,
+                0,
+              ],
+            },
+            { $cond: [{ $eq: ['$pricingType', source.pricingType] }, 1, 0] },
+          ],
+        },
+      },
+    },
+    { $sort: { relevance: -1 as const, rating: -1 as const } },
+    { $limit: limit },
+    { $project: { relevance: 0 } },
+  ]).exec();
 
-  let recommendations = results.map(r => r.activity);
+  let recommendations = results.map((doc: Record<string, unknown>) =>
+    toPlain(doc) as unknown as Activity,
+  );
 
-  // 3. Fallback: if fewer than limit results, fill with top-rated from same country
+  // 3. Fallback: fill with top-rated from same country
   if (recommendations.length < limit) {
-    const existingIds = [activityId, ...recommendations.map(a => a.id)];
-    const fallback = await db
-      .select()
-      .from(activities)
-      .where(
-        and(
-          eq(activities.isActive, true),
-          eq(activities.countryCode, source.countryCode),
-          sql`${activities.id} NOT IN (${sql.join(existingIds.map(id => sql`${id}`), sql`, `)})`
-        )
-      )
-      .orderBy(desc(activities.rating))
-      .limit(limit - recommendations.length);
+    const existingIds = [
+      objectId,
+      ...recommendations.map((a) => new (mongoose.Types.ObjectId as any)(a.id) as mongoose.Types.ObjectId),
+    ];
 
-    recommendations = [...recommendations, ...fallback];
+    const fallbackDocs = await ActivityModel
+      .find({
+        isActive: true,
+        countryCode: source.countryCode,
+        _id: { $nin: existingIds },
+      })
+      .sort({ rating: -1 })
+      .limit(limit - recommendations.length)
+      .lean()
+      .exec();
+
+    recommendations = [
+      ...recommendations,
+      ...toPlainList(fallbackDocs) as unknown as Activity[],
+    ];
   }
 
   return recommendations;
@@ -227,52 +319,71 @@ export async function getRecommendations(activityId: string, limit = 6): Promise
 
 // ─── Analytics ──────────────────────────────────────────────
 
-export async function trackEvent(eventType: string, activityId?: string, metadata?: Record<string, unknown>): Promise<void> {
-  await db.insert(analyticsEvents).values({ eventType, activityId: activityId ?? null, metadata: metadata ?? {} });
+export async function trackEvent(
+  eventType: string,
+  activityId?: string,
+  metadata?: Record<string, unknown>,
+): Promise<void> {
+  await connectDB();
+
+  await AnalyticsEventModel.create({
+    eventType,
+    activityId: activityId ? toObjectId(activityId) : null,
+    metadata: metadata ?? {},
+  });
 }
 
-export async function getActivityStats(activityId: string): Promise<{ views: number; shares: number; favorites: number }> {
-  const results = await db
-    .select({
-      eventType: analyticsEvents.eventType,
-      eventCount: count(),
-    })
-    .from(analyticsEvents)
-    .where(eq(analyticsEvents.activityId, activityId))
-    .groupBy(analyticsEvents.eventType);
+export async function getActivityStats(
+  activityId: string,
+): Promise<{ views: number; shares: number; favorites: number }> {
+  await connectDB();
+
+  const objectId = toObjectId(activityId);
+  if (!objectId) return { views: 0, shares: 0, favorites: 0 };
+
+  const results = await AnalyticsEventModel.aggregate<{
+    _id: string;
+    count: number;
+  }>([
+    { $match: { activityId: objectId } },
+    { $group: { _id: '$eventType', count: { $sum: 1 } } },
+  ]).exec();
 
   const stats = { views: 0, shares: 0, favorites: 0 };
   for (const row of results) {
-    if (row.eventType === 'view') stats.views = row.eventCount;
-    else if (row.eventType === 'share') stats.shares = row.eventCount;
-    else if (row.eventType === 'favorite') stats.favorites = row.eventCount;
+    if (row._id === 'view') stats.views = row.count;
+    else if (row._id === 'share') stats.shares = row.count;
+    else if (row._id === 'favorite') stats.favorites = row.count;
   }
   return stats;
 }
 
-export async function getPopularActivities(limit = 10): Promise<Array<{ activityId: string; views: number }>> {
+export async function getPopularActivities(
+  limit = 10,
+): Promise<Array<{ activityId: string; views: number }>> {
+  await connectDB();
+
   const thirtyDaysAgo = new Date();
   thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
-  const results = await db
-    .select({
-      activityId: analyticsEvents.activityId,
-      views: count(),
-    })
-    .from(analyticsEvents)
-    .where(
-      and(
-        eq(analyticsEvents.eventType, 'view'),
-        gte(analyticsEvents.createdAt, thirtyDaysAgo),
-        sql`${analyticsEvents.activityId} IS NOT NULL`
-      )
-    )
-    .groupBy(analyticsEvents.activityId)
-    .orderBy(desc(count()))
-    .limit(limit);
+  const results = await AnalyticsEventModel.aggregate<{
+    _id: mongoose.Types.ObjectId;
+    views: number;
+  }>([
+    {
+      $match: {
+        eventType: 'view',
+        createdAt: { $gte: thirtyDaysAgo },
+        activityId: { $ne: null },
+      },
+    },
+    { $group: { _id: '$activityId', views: { $sum: 1 } } },
+    { $sort: { views: -1 } },
+    { $limit: limit },
+  ]).exec();
 
-  return results.map(r => ({
-    activityId: r.activityId as string,
+  return results.map((r) => ({
+    activityId: String(r._id),
     views: r.views,
   }));
 }

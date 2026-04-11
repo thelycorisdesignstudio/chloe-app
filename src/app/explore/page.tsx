@@ -384,7 +384,7 @@ function ExplorePageContent() {
             {activeFilterCount > 0 && (
               <p className="text-[#004D3F]/70 text-xs font-medium">
                 Filtered by: {[
-                  selectedCategory && categories.find(c => c.id === parseInt(selectedCategory))?.name,
+                  selectedCategory && categories.find(c => c.id === selectedCategory)?.name,
                   selectedRegion,
                   selectedAgeGroup.label !== 'All Ages' && selectedAgeGroup.label,
                   showIndoorOnly && 'Indoor',

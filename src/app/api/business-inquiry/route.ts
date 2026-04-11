@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/db';
-import { businessInquiries } from '@/lib/db/schema';
+import { connectDB } from '@/lib/db';
+import { BusinessInquiry } from '@/lib/db/schema';
 import { z } from 'zod';
 
 const inquirySchema = z.object({
@@ -19,15 +19,14 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const validated = inquirySchema.parse(body);
 
-    const result = await db
-      .insert(businessInquiries)
-      .values({
-        ...validated,
-        photos: validated.photos ?? [],
-      })
-      .returning();
+    await connectDB();
 
-    return NextResponse.json({ success: true, id: result[0].id });
+    const doc = await BusinessInquiry.create({
+      ...validated,
+      photos: validated.photos ?? [],
+    });
+
+    return NextResponse.json({ success: true, id: doc._id.toString() });
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(

@@ -23,7 +23,23 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'activityId must be a string' }, { status: 400 });
     }
 
-    await trackEvent(eventType, activityId, metadata);
+    // Validate metadata: must be a plain object, capped at 4KB, no $-prefixed keys
+    let safeMetadata: Record<string, unknown> | undefined;
+    if (metadata !== undefined) {
+      if (typeof metadata !== 'object' || metadata === null || Array.isArray(metadata)) {
+        return NextResponse.json({ error: 'metadata must be a plain object' }, { status: 400 });
+      }
+      const metaStr = JSON.stringify(metadata);
+      if (metaStr.length > 4096) {
+        return NextResponse.json({ error: 'metadata exceeds 4KB limit' }, { status: 400 });
+      }
+      if (Object.keys(metadata).some((k: string) => k.startsWith('$'))) {
+        return NextResponse.json({ error: 'metadata keys must not start with $' }, { status: 400 });
+      }
+      safeMetadata = metadata as Record<string, unknown>;
+    }
+
+    await trackEvent(eventType, activityId, safeMetadata);
 
     return NextResponse.json({ success: true });
   } catch (error) {

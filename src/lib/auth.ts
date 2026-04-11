@@ -1,9 +1,33 @@
 import { betterAuth } from 'better-auth';
-import { drizzleAdapter } from 'better-auth/adapters/drizzle';
-import { db } from './db';
+import { mongodbAdapter } from 'better-auth/adapters/mongodb';
+import { MongoClient } from 'mongodb';
+
+const MONGODB_URI = process.env.MONGODB_URI!;
+
+if (!MONGODB_URI) {
+  throw new Error(
+    'Please define the MONGODB_URI environment variable inside .env.local',
+  );
+}
+
+// Cache the MongoClient on globalThis to prevent connection leaks
+// during Next.js hot reloads in development.
+const globalWithMongo = globalThis as typeof globalThis & {
+  _mongoClientAuth?: MongoClient;
+};
+
+const client =
+  globalWithMongo._mongoClientAuth ?? new MongoClient(MONGODB_URI);
+
+if (!globalWithMongo._mongoClientAuth) {
+  globalWithMongo._mongoClientAuth = client;
+}
+
+const db = client.db();
 
 export const auth = betterAuth({
-  database: drizzleAdapter(db, { provider: 'pg' }),
+  secret: process.env.BETTER_AUTH_SECRET,
+  database: mongodbAdapter(db, { client }),
   emailAndPassword: {
     enabled: true,
   },
