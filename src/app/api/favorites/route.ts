@@ -1,12 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { auth } from '@/lib/auth';
+import { getAuth } from '@/lib/auth';
 import { connectDB } from '@/lib/db';
 import { Favorite } from '@/lib/db/schema';
 import { headers } from 'next/headers';
 import mongoose from 'mongoose';
 
 export async function GET() {
-  const session = await auth.api.getSession({ headers: await headers() });
+  if (!process.env.MONGODB_URI || !process.env.BETTER_AUTH_SECRET) {
+    return NextResponse.json(
+      { error: 'Authentication is not configured.' },
+      { status: 503 },
+    );
+  }
+
+  const session = await getAuth().api.getSession({ headers: await headers() });
   if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
@@ -22,7 +29,14 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-  const session = await auth.api.getSession({ headers: await headers() });
+  if (!process.env.MONGODB_URI || !process.env.BETTER_AUTH_SECRET) {
+    return NextResponse.json(
+      { error: 'Authentication is not configured.' },
+      { status: 503 },
+    );
+  }
+
+  const session = await getAuth().api.getSession({ headers: await headers() });
   if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }

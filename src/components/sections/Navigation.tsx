@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, useScroll, useMotionValueEvent, useSpring } from "framer-motion";
 
 const Navigation = () => {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [eyeTransform, setEyeTransform] = useState({ x: 0, y: 0 });
   const [visible, setVisible] = useState(false);
   const eyeContainerRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
@@ -26,24 +26,29 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
-      setMousePos({ x: event.clientX, y: event.clientY });
+      const eyeContainer = eyeContainerRef.current;
+      if (!eyeContainer) return;
+
+      const rect = eyeContainer.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const angle = Math.atan2(event.clientY - centerY, event.clientX - centerX);
+      const distance = Math.min(
+        Math.sqrt(
+          Math.pow(event.clientX - centerX, 2) +
+            Math.pow(event.clientY - centerY, 2),
+        ) / 15,
+        4,
+      );
+
+      setEyeTransform({
+        x: Math.cos(angle) * distance,
+        y: Math.sin(angle) * distance,
+      });
     };
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
-
-  const eyeTransform = (() => {
-    if (!eyeContainerRef.current) return { x: 0, y: 0 };
-    const rect = eyeContainerRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const angle = Math.atan2(mousePos.y - centerY, mousePos.x - centerX);
-    const distance = Math.min(
-      Math.sqrt(Math.pow(mousePos.x - centerX, 2) + Math.pow(mousePos.y - centerY, 2)) / 15,
-      4
-    );
-    return { x: Math.cos(angle) * distance, y: Math.sin(angle) * distance };
-  })();
 
   const eyeX = useSpring(eyeTransform.x, { stiffness: 150, damping: 15 });
   const eyeY = useSpring(eyeTransform.y, { stiffness: 150, damping: 15 });

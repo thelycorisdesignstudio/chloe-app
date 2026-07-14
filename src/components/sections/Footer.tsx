@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { Mail, Instagram, Facebook, Twitter } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { staggerContainer, fadeUp, popRotate } from '@/lib/animations/variants';
@@ -55,17 +56,17 @@ const Footer = () => {
           <motion.div variants={fadeUp}>
             <h4 className="text-[#004D3F] font-black text-lg uppercase mb-6">Explore</h4>
             <nav className="flex flex-col gap-3">
-              <a href="/explore" className="text-[#004D3F]/70 hover:text-[#004D3F] font-medium transition-colors">Browse Activities</a>
-              <a href="/#faqs" className="text-[#004D3F]/70 hover:text-[#004D3F] font-medium transition-colors">FAQs</a>
+              <Link href="/explore" className="text-[#004D3F]/70 hover:text-[#004D3F] font-medium transition-colors">Browse Activities</Link>
+              <Link href="/#faqs" className="text-[#004D3F]/70 hover:text-[#004D3F] font-medium transition-colors">FAQs</Link>
             </nav>
           </motion.div>
 
           <motion.div variants={fadeUp}>
             <h4 className="text-[#004D3F] font-black text-lg uppercase mb-6">For Business</h4>
             <nav className="flex flex-col gap-3">
-              <a href="/forbusiness" className="text-[#004D3F]/70 hover:text-[#004D3F] font-medium transition-colors">List Your Venue</a>
-              <a href="/forbusiness#pricing" className="text-[#004D3F]/70 hover:text-[#004D3F] font-medium transition-colors">Partnership Plans</a>
-              <a href="/forbusiness#contact" className="text-[#004D3F]/70 hover:text-[#004D3F] font-medium transition-colors">Contact Sales</a>
+              <Link href="/forbusiness" className="text-[#004D3F]/70 hover:text-[#004D3F] font-medium transition-colors">List Your Venue</Link>
+              <Link href="/forbusiness#pricing" className="text-[#004D3F]/70 hover:text-[#004D3F] font-medium transition-colors">Partnership Plans</Link>
+              <Link href="/forbusiness#contact" className="text-[#004D3F]/70 hover:text-[#004D3F] font-medium transition-colors">Contact Sales</Link>
             </nav>
           </motion.div>
         </motion.div>
@@ -85,18 +86,18 @@ const Footer = () => {
           </div>
 
           <nav className="flex items-center gap-8" aria-label="Footer navigation">
-            <a 
+            <Link
               href="/policies" 
               className="text-[#004D3F] font-black text-sm uppercase tracking-widest hover:opacity-70 transition-opacity focus:outline-none focus:ring-2 focus:ring-[#004D3F] focus:ring-offset-2 rounded"
             >
               POLICIES
-            </a>
-            <a 
+            </Link>
+            <Link
               href="/terms" 
               className="text-[#004D3F] font-black text-sm uppercase tracking-widest hover:opacity-70 transition-opacity focus:outline-none focus:ring-2 focus:ring-[#004D3F] focus:ring-offset-2 rounded"
             >
               TERMS
-            </a>
+            </Link>
           </nav>
         </div>
 

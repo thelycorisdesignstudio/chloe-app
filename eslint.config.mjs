@@ -1,25 +1,30 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import nextVitals from "eslint-config-next/core-web-vitals";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const eslintConfig = nextVitals.map((config) => {
+  if (config.name === "next") {
+    return {
+      ...config,
+      rules: {
+        ...config.rules,
+        "react/no-unescaped-entities": "warn",
+        "@next/next/no-img-element": "warn",
+        "react-hooks/exhaustive-deps": "warn",
+      },
+    };
+  }
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
+  if (config.name === "next/typescript") {
+    return {
+      ...config,
+      rules: {
+        ...config.rules,
+        "@typescript-eslint/no-unused-vars": "warn",
+        "@typescript-eslint/no-explicit-any": "warn",
+      },
+    };
+  }
+
+  return config;
 });
-
-const eslintConfig = [
-  ...compat.extends("next/core-web-vitals"),
-  {
-    rules: {
-      "react/no-unescaped-entities": "warn",
-      "@next/next/no-img-element": "warn",
-      "@typescript-eslint/no-unused-vars": "warn",
-      "@typescript-eslint/no-explicit-any": "warn",
-      "react-hooks/exhaustive-deps": "warn",
-    },
-  },
-];
 
 export default eslintConfig;
