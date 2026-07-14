@@ -171,9 +171,8 @@ export const AnalyticsEvent =
   mongoose.model('AnalyticsEvent', analyticsEventSchema);
 
 // ─── TypeScript Types ────────────────────────────────────────
-// Plain-object types matching the old Drizzle inferred types so that
-// every consumer (queries.ts, explore/page.tsx, API routes) keeps compiling
-// without changes.  `_id` is mapped to `id` via a type helper.
+// Plain-object document types shared by database queries and API consumers.
+// `_id` is mapped to `id` via a type helper.
 
 type DocToPlain<S extends Schema> = InferSchemaType<S> & {
   _id: Types.ObjectId;
@@ -190,9 +189,8 @@ export type FavoriteDoc = DocToPlain<typeof favoriteSchema>;
 export type AnalyticsEventDoc = DocToPlain<typeof analyticsEventSchema>;
 
 // ─── Lean types (POJO returned by .lean()) ───────────────────
-// These replace the old Drizzle inferred types.  The `id` field is a string
-// (from _id.toString()) so downstream code that references `activity.id`
-// keeps working after we map it in queries.ts.
+// Lean query types expose string ids so downstream consumers can use the
+// same serializable shape across server queries and API responses.
 
 export type Country = {
   id: string;

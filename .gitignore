@@ -45,9 +45,9 @@ yarn-error.log*
 # vercel
 .vercel
 
-# drizzle
-/drizzle
-
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local assistant settings
+.claude/settings.local.json

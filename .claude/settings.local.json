@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(bun add @neondatabase/serverless @vercel/blob)",
-      "Bash(bun remove @supabase/supabase-js @libsql/client)"
-    ]
-  }
-}

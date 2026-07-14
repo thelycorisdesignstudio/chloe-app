@@ -39,6 +39,17 @@ const ageGroups = [
   { label: "Pre-teen (8-12)", min: 8, max: 12 }
 ];
 
+async function fetchJsonArray<T>(url: string): Promise<T[]> {
+  const response = await fetch(url);
+  const data: unknown = await response.json();
+
+  if (!response.ok || !Array.isArray(data)) {
+    throw new Error(`Request failed for ${url}`);
+  }
+
+  return data as T[];
+}
+
 const getMotherFriendlyFeatures = (activity: Activity) => {
   const features = [];
   if (activity.amenities?.some(a => a.toLowerCase().includes('nursing') || a.toLowerCase().includes('feeding'))) {
@@ -102,13 +113,15 @@ function ExplorePageContent() {
   useEffect(() => {
     async function loadInitialData() {
       try {
-        const [countriesRes, categoriesRes] = await Promise.all([
-          fetch('/api/countries').then(r => r.json()),
-          fetch('/api/categories').then(r => r.json()),
+        const [countriesData, categoriesData] = await Promise.all([
+          fetchJsonArray<Country>('/api/countries'),
+          fetchJsonArray<Category>('/api/categories'),
         ]);
-        setCountries(countriesRes);
-        setCategories(categoriesRes);
-      } catch (error) {
+        setCountries(countriesData);
+        setCategories(categoriesData);
+      } catch {
+        setCountries([]);
+        setCategories([]);
         setError('Failed to load data. Please try again.');
       }
     }
@@ -119,10 +132,11 @@ function ExplorePageContent() {
     async function loadRegions() {
       if (!selectedCountry) return;
       try {
-        const data = await fetch(`/api/regions?countryCode=${selectedCountry}`).then(r => r.json());
+        const data = await fetchJsonArray<Region>(`/api/regions?countryCode=${selectedCountry}`);
         setRegions(data);
         setSelectedRegion('');
-      } catch (error) {
+      } catch {
+        setRegions([]);
         setError('Failed to load regions. Please try again.');
       }
     }
