@@ -4,6 +4,9 @@ import React from 'react';
 import Link from 'next/link';
 import { Trees, Waves, BookOpen, Palette, Music, Dumbbell, Dog, Utensils } from 'lucide-react';
 
+// `name` must exactly match a category name in src/lib/data/activities.ts's
+// `categories` list (and thus the seeded Category documents) — /explore
+// resolves this name to the category's real database _id client-side.
 const categories = [
   {
     icon: Trees,
@@ -11,7 +14,6 @@ const categories = [
     count: "25+",
     color: "#82E9A6",
     description: "Parks, nature reserves, and outdoor fun",
-    categoryId: 2
   },
   {
     icon: Waves,
@@ -19,7 +21,6 @@ const categories = [
     count: "15+",
     color: "#B3F5FF",
     description: "Pools, beaches, and splash parks",
-    categoryId: 15
   },
   {
     icon: BookOpen,
@@ -27,15 +28,13 @@ const categories = [
     count: "10+",
     color: "#FFF98F",
     description: "Story time, reading programs, and more",
-    categoryId: 13
   },
   {
     icon: Palette,
-    name: "Arts & Culture",
+    name: "Art & Culture",
     count: "15+",
     color: "#FDCFDF",
     description: "Creative workshops and art classes",
-    categoryId: 14
   },
   {
     icon: Music,
@@ -43,15 +42,13 @@ const categories = [
     count: "22+",
     color: "#FFB866",
     description: "Rides, shows, and family entertainment",
-    categoryId: 6
   },
   {
     icon: Dumbbell,
-    name: "Sports",
+    name: "Sports & Recreation",
     count: "22+",
     color: "#B3F5FF",
     description: "Soccer, gymnastics, martial arts, and more",
-    categoryId: 10
   },
   {
     icon: Dog,
@@ -59,15 +56,13 @@ const categories = [
     count: "24+",
     color: "#82E9A6",
     description: "Zoos, farms, and wildlife encounters",
-    categoryId: 8
   },
   {
     icon: Utensils,
-    name: "Kid-Friendly Cafes",
+    name: "Restaurants & Cafes",
     count: "10+",
     color: "#FFF98F",
     description: "Family restaurants and play cafes",
-    categoryId: 12
   }
 ];
 
@@ -93,7 +88,7 @@ export default function ActivityCategories() {
             {categories.map((category) => (
               <Link
                 key={category.name}
-                href={`/explore?category=${category.categoryId}`}
+                href={`/explore?category=${encodeURIComponent(category.name)}`}
                 role="listitem"
                 className="group relative p-6 md:p-8 rounded-[30px] md:rounded-[40px] border-2 border-[#004D3F] shadow-[4px_4px_0px_#004D3F] transition-all duration-300 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#004D3F] text-left cursor-pointer focus-within:ring-2 focus-within:ring-[#004D3F] focus-within:ring-offset-2"
                 style={{ backgroundColor: category.color }}

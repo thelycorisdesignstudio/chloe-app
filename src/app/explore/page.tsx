@@ -100,15 +100,29 @@ function ExplorePageContent() {
   const [activityCount, setActivityCount] = useState(0);
 
   useEffect(() => {
-    if (categoryFromUrl) {
-      setSelectedCategory(categoryFromUrl);
-      setShowFilters(true);
-    }
     if (searchFromUrl) {
       setSearchQuery(searchFromUrl);
       setShowFilters(true);
     }
-  }, [categoryFromUrl, searchFromUrl]);
+  }, [searchFromUrl]);
+
+  // Links into /explore?category=... may carry either a real category _id
+  // (e.g. from this page's own dropdown) or a human-readable category name
+  // (e.g. from a marketing entry point like homepage category tiles). Resolve
+  // a name to its real _id once categories have loaded; an ObjectId is used
+  // as-is.
+  useEffect(() => {
+    if (!categoryFromUrl) return;
+    setShowFilters(true);
+    if (/^[0-9a-f]{24}$/i.test(categoryFromUrl)) {
+      setSelectedCategory(categoryFromUrl);
+      return;
+    }
+    if (categories.length === 0) return;
+    const decoded = decodeURIComponent(categoryFromUrl).toLowerCase();
+    const match = categories.find((c) => c.name.toLowerCase() === decoded);
+    if (match) setSelectedCategory(match.id);
+  }, [categoryFromUrl, categories]);
 
   useEffect(() => {
     async function loadInitialData() {

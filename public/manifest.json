@@ -1,0 +1,23 @@
+{
+  "name": "Chloe | UAE Family Activity Platform",
+  "short_name": "Chloe",
+  "description": "Find kid-friendly activities across all 7 UAE Emirates, filtered by age, location and price.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1D6FEB",
+  "theme_color": "#1D6FEB",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
