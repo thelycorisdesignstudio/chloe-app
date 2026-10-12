@@ -18,7 +18,7 @@ const Footer = () => {
     >
       <div className="max-w-[1440px] mx-auto">
         <motion.div
-          className="grid md:grid-cols-4 gap-8 md:gap-12 mb-16"
+          className="grid md:grid-cols-6 gap-8 md:gap-12 mb-16"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -67,6 +67,17 @@ const Footer = () => {
               <Link href="/forbusiness" className="text-[#004D3F]/70 hover:text-[#004D3F] font-medium transition-colors">List Your Venue</Link>
               <Link href="/forbusiness#pricing" className="text-[#004D3F]/70 hover:text-[#004D3F] font-medium transition-colors">Partnership Plans</Link>
               <Link href="/forbusiness#contact" className="text-[#004D3F]/70 hover:text-[#004D3F] font-medium transition-colors">Contact Sales</Link>
+            </nav>
+          </motion.div>
+
+          <motion.div variants={fadeUp}>
+            <h4 className="text-[#004D3F] font-black text-lg uppercase mb-6">Legal</h4>
+            <nav className="flex flex-col gap-3" aria-label="Legal and policy links">
+              <Link href="/privacy-policy" className="text-[#004D3F]/70 hover:text-[#004D3F] font-medium transition-colors">Privacy Policy</Link>
+              <Link href="/terms-of-service" className="text-[#004D3F]/70 hover:text-[#004D3F] font-medium transition-colors">Terms of Service</Link>
+              <Link href="/cookie-policy" className="text-[#004D3F]/70 hover:text-[#004D3F] font-medium transition-colors">Cookie Policy</Link>
+              <Link href="/data-collection-policy" className="text-[#004D3F]/70 hover:text-[#004D3F] font-medium transition-colors">Data Collection Policy</Link>
+              <Link href="/data-residency-policy" className="text-[#004D3F]/70 hover:text-[#004D3F] font-medium transition-colors">Data Residency Policy</Link>
             </nav>
           </motion.div>
         </motion.div>
@@ -128,6 +139,15 @@ const Footer = () => {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className="overflow-hidden w-full mt-16 -mb-4" aria-hidden="true">
+            <p
+              className="font-display font-black uppercase tracking-tighter text-center text-[#004D3F]/10 leading-none select-none"
+              style={{ fontSize: "clamp(4rem, 15vw, 12rem)" }}
+            >
+              Chloe
+            </p>
           </div>
       </div>
     </footer>
