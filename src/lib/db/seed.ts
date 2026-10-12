@@ -78,7 +78,7 @@ async function seed() {
     );
   }
 
-  // 4. Seed activities from local data (132 curated venues)
+  // 4. Seed activities from local data (200 curated venues)
   console.log('Seeding activities...');
   const { allActivities: activityData } = await import('../data/activities');
 

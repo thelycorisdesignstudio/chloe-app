@@ -5,7 +5,12 @@ import { MapPin, Filter, Star, LogIn } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 const headingWords = "Your pocket guide to surviving parenthood, one activity at a time.".split(" ");
 
-const Hero = () => {
+interface HeroProps {
+  /** Live average rating from `getStats()`, e.g. "4.6". Omit to hide the rating chip. */
+  averageRating?: string;
+}
+
+const Hero = ({ averageRating }: HeroProps) => {
   const sectionRef = useRef<HTMLElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -117,7 +122,9 @@ const Hero = () => {
           {[
             { icon: MapPin, text: "All 7 Emirates", fill: false },
             { icon: Filter, text: "Age 0-12 Years", fill: false },
-            { icon: Star, text: "4.9 Rating", fill: true },
+            ...(averageRating && Number(averageRating) > 0
+              ? [{ icon: Star, text: `${averageRating} Rating`, fill: true }]
+              : []),
           ].map((item, i) => (
             <motion.div
               key={i}

@@ -34,6 +34,9 @@ export async function connectDB(): Promise<typeof mongoose> {
   if (!cached.promise) {
     cached.promise = mongoose.connect(mongoUri, {
       bufferCommands: false,
+      // Fail fast instead of hanging (e.g. during a build with no DB access)
+      // so callers' try/catch fallbacks kick in promptly.
+      serverSelectionTimeoutMS: 5000,
     });
   }
 

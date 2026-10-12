@@ -217,18 +217,39 @@ export async function getCategories(): Promise<Category[]> {
 export async function getStats() {
   await connectDB();
 
-  const [venueCount, avgResult] = await Promise.all([
+  const [venueCount, avgResult, reviewResult] = await Promise.all([
     ActivityModel.countDocuments({ isActive: true }).exec(),
     ActivityModel.aggregate<{ avg: number | null }>([
       { $match: { isActive: true } },
       { $group: { _id: null, avg: { $avg: '$rating' } } },
+    ]).exec(),
+    ActivityModel.aggregate<{ total: number | null }>([
+      { $match: { isActive: true } },
+      { $group: { _id: null, total: { $sum: '$reviewCount' } } },
     ]).exec(),
   ]);
 
   return {
     venueCount,
     averageRating: Number(avgResult[0]?.avg ?? 0).toFixed(1),
+    totalReviewCount: reviewResult[0]?.total ?? 0,
   };
+}
+
+/** Live per-region (per-emirate) activity counts for a given country. */
+export async function getRegionStats(
+  countryCode: string,
+): Promise<{ region: string; count: number }[]> {
+  await connectDB();
+
+  const results = await ActivityModel.aggregate<{ _id: string; count: number }>([
+    { $match: { isActive: true, countryCode } },
+    { $group: { _id: '$region', count: { $sum: 1 } } },
+  ]).exec();
+
+  return results
+    .map((r) => ({ region: r._id, count: r.count }))
+    .sort((a, b) => b.count - a.count);
 }
 
 // ─── Recommendations ─────────────────────────────────────────

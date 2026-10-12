@@ -44,7 +44,12 @@ const testimonials = [
   }
 ];
 
-export default function Testimonials() {
+interface TestimonialsProps {
+  /** Live average rating from `getStats()`, e.g. "4.6". Omit to hide the rating badge. */
+  averageRating?: string;
+}
+
+export default function Testimonials({ averageRating }: TestimonialsProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextTestimonial = () => {
@@ -178,7 +183,9 @@ export default function Testimonials() {
         <div className="mt-16 flex flex-wrap justify-center gap-6">
           {[
             { icon: Users, text: "Trusted by UAE families" },
-            { icon: Star, text: "4.9 Average Rating", fill: true },
+            ...(averageRating && Number(averageRating) > 0
+              ? [{ icon: Star, text: `${averageRating} Average Rating`, fill: true }]
+              : []),
             { icon: MapPin, text: "All 7 Emirates" },
           ].map((badge, i) => (
             <motion.div

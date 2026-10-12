@@ -6,39 +6,11 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { staggerContainer, fadeUp } from '@/lib/animations/variants';
 import { useTilt3D } from '@/lib/animations/use-tilt';
+import { uaeDestinations, withLiveCounts } from '@/lib/data/destinations';
 
-const topDestinations = [
-  {
-    name: "Dubai",
-    activities: "2,500+",
-    highlights: ["Dubai Mall KidZania", "Kite Beach", "Dubai Frame", "IMG Worlds", "Legoland"],
-    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800",
-    searchParam: "Dubai"
-  },
-  {
-    name: "Abu Dhabi",
-    activities: "1,200+",
-    highlights: ["Louvre Abu Dhabi", "Yas Waterworld", "Ferrari World", "Corniche Beach", "Emirates Park Zoo"],
-    image: "https://images.unsplash.com/photo-1542708993627-b6e5bbae43c4?w=800",
-    searchParam: "Abu Dhabi"
-  },
-  {
-    name: "Sharjah",
-    activities: "600+",
-    highlights: ["Sharjah Aquarium", "Al Noor Island", "Discovery Centre", "Al Majaz Waterfront", "Rain Room"],
-    image: "https://images.unsplash.com/photo-1558369981-f9ca78462e61?w=800",
-    searchParam: "Sharjah"
-  },
-  {
-    name: "Northern Emirates",
-    activities: "400+",
-    highlights: ["Jebel Jais (RAK)", "Wadi Adventure (Fujairah)", "Dreamland Aqua Park", "Al Zorah Beach"],
-    image: "https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=800",
-    searchParam: "RAK"
-  }
-];
+type LiveDestination = ReturnType<typeof withLiveCounts>[number];
 
-function LocationCard({ dest, idx }: { dest: typeof topDestinations[number]; idx: number }) {
+function LocationCard({ dest, idx }: { dest: LiveDestination; idx: number }) {
   const { ref, onMouseMove, onMouseLeave } = useTilt3D(8);
 
   return (
@@ -84,7 +56,16 @@ function LocationCard({ dest, idx }: { dest: typeof topDestinations[number]; idx
   );
 }
 
-export default function LocationGrid() {
+export default function LocationGrid({
+  regionStats = [],
+}: {
+  /** Live per-emirate counts from `getRegionStats('UAE')`. Defaults to an
+   *  empty list (renders "0" counts) if the caller can't provide live data. */
+  regionStats?: { region: string; count: number }[];
+}) {
+  const destinations = withLiveCounts(uaeDestinations, regionStats);
+  const totalCount = regionStats.reduce((sum, r) => sum + r.count, 0);
+
   return (
     <section id="locations" className="w-full py-12 md:py-20 bg-white">
       <div className="container max-w-[1440px] mx-auto px-6">
@@ -99,7 +80,9 @@ export default function LocationGrid() {
             Explore by Emirate
           </h2>
           <p className="text-[#004D3F]/70 text-lg max-w-2xl mx-auto">
-            Discover unique family experiences across the United Arab Emirates
+            {totalCount > 0
+              ? `${totalCount} verified kid-friendly activities across all 7 UAE Emirates`
+              : 'Discover unique family experiences across the United Arab Emirates'}
           </p>
         </motion.div>
 
@@ -110,7 +93,7 @@ export default function LocationGrid() {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
-          {topDestinations.map((dest, idx) => (
+          {destinations.map((dest, idx) => (
             <LocationCard key={idx} dest={dest} idx={idx} />
           ))}
         </motion.div>

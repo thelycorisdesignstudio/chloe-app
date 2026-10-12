@@ -1,9 +1,10 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { MapPin, Users, Star, Clock, Building2, TreePalm, Waves, Palette, BookOpen, Dumbbell } from 'lucide-react';
+import { uaeDestinations, withLiveCounts, formatActivityCount } from '@/lib/data/destinations';
 
 const activityCategories = [
   {
@@ -62,38 +63,36 @@ const activityCategories = [
   }
 ];
 
-const topDestinations = [
-{
-name: "Dubai",
-activities: "2,500+",
-highlights: ["Dubai Mall KidZania", "Kite Beach", "Dubai Frame", "IMG Worlds", "Legoland"],
-image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800",
-searchParam: "Dubai"
-},
-{
-name: "Abu Dhabi",
-activities: "1,200+",
-highlights: ["Louvre Abu Dhabi", "Yas Waterworld", "Ferrari World", "Corniche Beach", "Emirates Park Zoo"],
-image: "https://images.unsplash.com/photo-1542708993627-b6e5bbae43c4?w=800",
-searchParam: "Abu Dhabi"
-},
-{
-name: "Sharjah",
-activities: "600+",
-highlights: ["Sharjah Aquarium", "Al Noor Island", "Discovery Centre", "Al Majaz Waterfront", "Rain Room"],
-image: "https://images.unsplash.com/photo-1558369981-f9ca78462e61?w=800",
-searchParam: "Sharjah"
-},
-{
-name: "Northern Emirates",
-activities: "400+",
-highlights: ["Jebel Jais (RAK)", "Wadi Adventure (Fujairah)", "Dreamland Aqua Park", "Al Zorah Beach"],
-image: "https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=800",
-searchParam: "RAK"
-}
-];
-
 export default function ActivityExplorer() {
+  const [regionStats, setRegionStats] = useState<{ region: string; count: number }[]>([]);
+  const [venueCount, setVenueCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadLiveCounts() {
+      try {
+        const [regionsRes, statsRes] = await Promise.all([
+          fetch('/api/stats/regions?countryCode=UAE'),
+          fetch('/api/stats'),
+        ]);
+        const [regionsData, statsData] = await Promise.all([regionsRes.json(), statsRes.json()]);
+        if (cancelled) return;
+        if (Array.isArray(regionsData)) setRegionStats(regionsData);
+        if (typeof statsData?.venueCount === 'number') setVenueCount(statsData.venueCount);
+      } catch {
+        // Keep showing zero/placeholder counts rather than fabricated numbers.
+      }
+    }
+
+    loadLiveCounts();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const topDestinations = withLiveCounts(uaeDestinations, regionStats);
+
   return (
     <section className="relative w-full py-24 md:py-32 bg-[#FFF98F] overflow-hidden">
       <div className="container max-w-[1440px] mx-auto px-6">
@@ -237,7 +236,9 @@ export default function ActivityExplorer() {
             <div className="shrink-0">
               <div className="w-40 h-40 rounded-full bg-[#82E9A6] border-2 border-[#004D3F] flex items-center justify-center shadow-[4px_4px_0px_#004D3F]">
                 <div className="text-center">
-                  <p className="text-4xl font-black text-[#004D3F]">5K+</p>
+                  <p className="text-4xl font-black text-[#004D3F]">
+                    {venueCount !== null ? formatActivityCount(venueCount) : '—'}
+                  </p>
                   <p className="text-sm font-medium text-[#004D3F]">Activities</p>
                   <p className="text-xs text-[#004D3F]/70">across UAE</p>
                 </div>

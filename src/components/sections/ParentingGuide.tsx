@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Sun, Thermometer, MapPin, Clock, Heart, Shield, Lightbulb, Baby, Users, Sparkles } from 'lucide-react';
+import { formatActivityCount } from '@/lib/data/destinations';
 
 const tips = [
   {
@@ -117,6 +118,22 @@ const seasonalGuide = [
 
 export default function ParentingGuide() {
   const [activeTip, setActiveTip] = useState(0);
+  const [venueCount, setVenueCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch('/api/stats')
+      .then((res) => res.json())
+      .then((data) => {
+        if (!cancelled && typeof data?.venueCount === 'number') setVenueCount(data.venueCount);
+      })
+      .catch(() => {
+        // Keep the placeholder rather than showing a fabricated number.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return (
     <section className="relative w-full py-24 md:py-32 bg-[#B3F5FF] overflow-hidden">
@@ -230,12 +247,14 @@ export default function ParentingGuide() {
           <div className="bg-[#FDCFDF] rounded-[20px] border-2 border-[#004D3F] shadow-[4px_4px_0px_#004D3F] p-6 text-center">
             <Users className="w-10 h-10 text-[#004D3F] mx-auto mb-3" />
             <h4 className="font-black text-[#004D3F] text-xl mb-2">Join Our Community</h4>
-            <p className="text-[#004D3F]/70 text-sm">Connect with 10,000+ UAE parents sharing tips and recommendations</p>
+            <p className="text-[#004D3F]/70 text-sm">Connect with UAE parents sharing tips and recommendations</p>
           </div>
-          
+
           <div className="bg-[#82E9A6] rounded-[20px] border-2 border-[#004D3F] shadow-[4px_4px_0px_#004D3F] p-6 text-center">
             <MapPin className="w-10 h-10 text-[#004D3F] mx-auto mb-3" />
-            <h4 className="font-black text-[#004D3F] text-xl mb-2">5,000+ Venues</h4>
+            <h4 className="font-black text-[#004D3F] text-xl mb-2">
+              {venueCount !== null ? `${formatActivityCount(venueCount)} Venues` : 'Venues'}
+            </h4>
             <p className="text-[#004D3F]/70 text-sm">Verified activities across all seven Emirates of the UAE</p>
           </div>
           
