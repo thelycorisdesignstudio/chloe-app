@@ -10,12 +10,12 @@ export default function CallToAction() {
   return (
     <section id="contact" className="flex flex-col w-full overflow-hidden">
       <div
-        className="bg-[#82E9A6] py-16 md:py-24 lg:py-32 px-6 relative"
+        className="bg-[#1D6FEB] py-16 md:py-24 lg:py-32 px-6 relative"
         aria-labelledby="cta-heading"
       >
         <div className="max-w-[1440px] mx-auto flex flex-col items-center justify-center text-center">
           <motion.span
-            className="font-hand text-[#004D3F] text-3xl md:text-4xl mb-6 block"
+            className="font-hand text-[#F5F9FF] text-3xl md:text-4xl mb-6 block"
             initial={{ y: 20 }}
             whileInView={{ y: 0 }}
             viewport={{ once: true }}
@@ -26,7 +26,7 @@ export default function CallToAction() {
 
           <h2
             id="cta-heading"
-            className="text-[#004D3F] font-black text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight max-w-4xl mb-8 flex flex-wrap justify-center gap-x-[0.25em]"
+            className="text-[#F5F9FF] font-black text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight max-w-4xl mb-8 flex flex-wrap justify-center gap-x-[0.25em]"
           >
             {ctaWords.map((word, i) => (
               <motion.span
@@ -47,7 +47,7 @@ export default function CallToAction() {
           </h2>
 
           <motion.p
-            className="text-[#004D3F]/80 text-xl max-w-2xl mb-12"
+            className="text-[#F5F9FF]/80 text-xl max-w-2xl mb-12"
             initial={{ y: 20 }}
             whileInView={{ y: 0 }}
             viewport={{ once: true }}

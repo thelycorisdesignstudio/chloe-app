@@ -57,10 +57,10 @@ export default function FeatureSlider() {
   const currentFeature = features[currentIndex];
 
   return (
-    <section className="relative w-full py-10 md:py-20 px-4 md:px-10 overflow-hidden bg-[#82E9A6]">
+    <section className="relative w-full py-10 md:py-20 px-4 md:px-10 overflow-hidden bg-[#1D6FEB]">
       <div className="container max-w-[1440px] mx-auto mb-12 text-center">
-        <h2 className="font-hand text-3xl md:text-4xl text-[#004D3F] mb-4">with Chloe you can</h2>
-        <h3 className="text-[#004D3F] font-black text-4xl md:text-6xl uppercase tracking-tight">Explore & Discover</h3>
+        <h2 className="font-hand text-3xl md:text-4xl text-[#F5F9FF] mb-4">with Chloe you can</h2>
+        <h3 className="text-[#F5F9FF] font-black text-4xl md:text-6xl uppercase tracking-tight">Explore & Discover</h3>
       </div>
       
       <div className="container max-w-[1440px] mx-auto relative flex items-center justify-center">

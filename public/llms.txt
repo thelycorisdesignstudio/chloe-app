@@ -7,11 +7,13 @@
 
 ## Key facts
 
-- As of this writing, Chloe lists approximately 162 verified, active
-  activities/venues, concentrated in Dubai and Abu Dhabi with growing
-  coverage in Sharjah, Ajman, Ras Al Khaimah, Fujairah, and Umm Al Quwain.
-  This count changes as venues are added — see "Live data" below for the
-  current number rather than relying on this static figure.
+- As of this writing, Chloe lists approximately 200 verified, active
+  activities/venues (158 of them in the UAE, the rest in nearby GCC
+  markets), with UAE coverage spanning all 7 Emirates: Dubai (56), Abu
+  Dhabi (36), Sharjah (18), Ras Al Khaimah (14), Fujairah (13), Ajman (12),
+  and Umm Al Quwain (9). This count changes as venues are added — see
+  "Live data" below for the current number rather than relying on this
+  static figure.
 - Coverage: all 7 UAE Emirates — Dubai, Abu Dhabi, Sharjah, Ajman,
   Ras Al Khaimah, Fujairah, Umm Al Quwain.
 - Chloe is free for parents to use; venues can optionally partner for

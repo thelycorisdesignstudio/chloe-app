@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-background: #82E9A6;
-  --color-foreground: #004D3F;
+  --color-background: #1D6FEB;
+  --color-foreground: #F5F9FF;
 
   --color-card: #F7F5F2;
   --color-card-foreground: #004D3F;
@@ -37,6 +37,7 @@
   --color-lemon: #FFF98F;
   --color-bubblegum: #FDCFDF;
   --color-sky: #B3F5FF;
+  --color-sky-blue: #1D6FEB;
   --color-teal: #004D3F;
   --color-off-white: #F7F5F2;
 
@@ -83,8 +84,8 @@
   }
 
   :root {
-    --background: #82E9A6;
-    --foreground: #004D3F;
+    --background: #1D6FEB;
+    --foreground: #F5F9FF;
     --card: #F7F5F2;
     --card-foreground: #004D3F;
     --popover: #F7F5F2;
@@ -111,8 +112,8 @@
 
   body {
     font-family: var(--font-body);
-    background-color: var(--color-mint);
-    color: var(--color-teal);
+    background-color: var(--color-background);
+    color: var(--foreground);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }

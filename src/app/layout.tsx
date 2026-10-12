@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import ErrorReporter from "@/components/ErrorReporter";
+import ConsentBanner from "@/components/ConsentBanner";
 import GlobalAnimations from "@/components/animations/GlobalAnimations";
 import { getStats } from "@/lib/db/queries";
 import { UAE_EMIRATES } from "@/lib/data/destinations";
@@ -157,7 +158,7 @@ export default async function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#82E9A6" />
+        <meta name="theme-color" content="#1D6FEB" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(webApplicationJsonLd) }}
@@ -170,6 +171,7 @@ export default async function RootLayout({
       <body className="antialiased">
         <GlobalAnimations />
         <ErrorReporter />
+        <ConsentBanner />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[200] focus:bg-[#004D3F] focus:text-white focus:px-4 focus:py-2 focus:rounded-full"

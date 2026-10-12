@@ -27,7 +27,7 @@ const Hero = ({ averageRating }: HeroProps) => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden bg-[#82E9A6] pt-4 md:pt-6"
+      className="relative w-full overflow-hidden bg-[#1D6FEB] pt-4 md:pt-6"
       aria-labelledby="hero-heading"
     >
       <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
@@ -37,7 +37,7 @@ const Hero = ({ averageRating }: HeroProps) => {
           animate={{ y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <span className="font-hand text-[28px] md:text-[36px] text-[#004D3F] lowercase">
+          <span className="font-hand text-[28px] md:text-[36px] text-[#F5F9FF] lowercase">
             meet chloe
           </span>
         </motion.p>
@@ -45,7 +45,7 @@ const Hero = ({ averageRating }: HeroProps) => {
         <div className="mx-auto max-w-[1200px] mb-3 md:mb-4">
           <h1
             id="hero-heading"
-            className="font-display font-black text-[#004D3F] uppercase leading-[0.85] tracking-[-0.05em] text-[clamp(2rem,8vw,6rem)] flex flex-wrap justify-center gap-x-[0.3em]"
+            className="font-display font-black text-[#F5F9FF] uppercase leading-[0.85] tracking-[-0.05em] text-[clamp(2rem,8vw,6rem)] flex flex-wrap justify-center gap-x-[0.3em]"
           >
             {headingWords.map((word, i) => (
               <motion.span
@@ -66,7 +66,7 @@ const Hero = ({ averageRating }: HeroProps) => {
         </div>
 
         <motion.p
-          className="text-[#004D3F]/80 text-base md:text-lg max-w-2xl mx-auto mb-4 md:mb-5"
+          className="text-[#F5F9FF]/80 text-base md:text-lg max-w-2xl mx-auto mb-4 md:mb-5"
           initial={{ y: 30 }}
           animate={{ y: 0 }}
           transition={{ duration: 0.7, delay: 1 }}
@@ -128,7 +128,7 @@ const Hero = ({ averageRating }: HeroProps) => {
           ].map((item, i) => (
             <motion.div
               key={i}
-              className="flex items-center gap-1.5 text-[#004D3F] text-sm md:text-base"
+              className="flex items-center gap-1.5 text-[#F5F9FF] text-sm md:text-base"
               initial={{ y: 10 }}
               animate={{ y: 0 }}
               transition={{ delay: 1.5 + i * 0.1 }}

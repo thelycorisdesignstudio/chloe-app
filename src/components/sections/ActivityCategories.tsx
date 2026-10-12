@@ -75,16 +75,16 @@ export default function ActivityCategories() {
   return (
     <section 
       id="activities"
-      className="relative w-full py-24 md:py-32 bg-[#82E9A6] overflow-hidden"
+      className="relative w-full py-24 md:py-32 bg-[#1D6FEB] overflow-hidden"
       aria-labelledby="categories-heading"
     >
       <div className="container max-w-[1440px] mx-auto px-6">
         <div className="text-center mb-16">
-          <span className="font-hand text-2xl md:text-3xl text-[#004D3F] mb-4 block">something for everyone</span>
-          <h2 id="categories-heading" className="text-[#004D3F] font-black text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight mb-4">
+          <span className="font-hand text-2xl md:text-3xl text-[#F5F9FF] mb-4 block">something for everyone</span>
+          <h2 id="categories-heading" className="text-[#F5F9FF] font-black text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight mb-4">
             Activity Categories
           </h2>
-          <p className="text-[#004D3F] font-medium text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-[#F5F9FF] font-medium text-lg md:text-xl max-w-2xl mx-auto">
             From outdoor adventures to creative workshops, find the perfect activity for your little ones
           </p>
         </div>

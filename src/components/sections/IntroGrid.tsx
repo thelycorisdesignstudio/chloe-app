@@ -69,7 +69,7 @@ const IntroGrid: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden bg-[#82E9A6] py-12 md:py-16 lg:py-20"
+      className="relative w-full overflow-hidden bg-[#1D6FEB] py-12 md:py-16 lg:py-20"
       id="intro-block"
       aria-labelledby="intro-heading"
     >
@@ -77,7 +77,7 @@ const IntroGrid: React.FC = () => {
       <div ref={containerRef} className="container relative z-10 flex flex-col gap-1 md:gap-2 px-4 md:px-6 max-w-[1400px] mx-auto">
 
         <div ref={(el) => setTextRow(el, 0)} className="flex w-full items-center justify-center gap-2 md:gap-6">
-          <p className="text-[#004D3F] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(2rem,9vw,9rem)]" aria-hidden="true">
+          <p className="text-[#F5F9FF] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(2rem,9vw,9rem)]" aria-hidden="true">
             FIND
           </p>
           <motion.div
@@ -94,24 +94,24 @@ const IntroGrid: React.FC = () => {
               loading="lazy"
             />
           </motion.div>
-          <p className="text-[#004D3F] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(2rem,9vw,9rem)]" aria-hidden="true">
+          <p className="text-[#F5F9FF] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(2rem,9vw,9rem)]" aria-hidden="true">
             FREE
           </p>
         </div>
 
         <div ref={(el) => setTextRow(el, 1)} className="w-full flex justify-center -mt-1 md:-mt-2">
-          <p className="text-[#004D3F] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(1.6rem,7vw,7rem)] text-center" aria-hidden="true">
+          <p className="text-[#F5F9FF] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(1.6rem,7vw,7rem)] text-center" aria-hidden="true">
             SANITY—
           </p>
         </div>
         <div ref={(el) => setTextRow(el, 2)} className="w-full flex justify-center -mt-2 md:-mt-4">
-          <p className="text-[#004D3F] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(2rem,9vw,9rem)] text-center" aria-hidden="true">
+          <p className="text-[#F5F9FF] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(2rem,9vw,9rem)] text-center" aria-hidden="true">
             SAVING
           </p>
         </div>
 
         <div ref={(el) => setTextRow(el, 3)} className="flex w-full items-center justify-center gap-1.5 md:gap-4 -mt-1">
-          <p className="text-[#004D3F] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(1.8rem,8vw,8rem)]" aria-hidden="true">
+          <p className="text-[#F5F9FF] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(1.8rem,8vw,8rem)]" aria-hidden="true">
             ACTIVITIES
           </p>
           <motion.div
@@ -131,7 +131,7 @@ const IntroGrid: React.FC = () => {
         </div>
 
         <div ref={(el) => setTextRow(el, 4)} className="flex w-full items-center justify-center gap-2 md:gap-6 -mt-1">
-          <p className="text-[#004D3F] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(2rem,9vw,9rem)]" aria-hidden="true">
+          <p className="text-[#F5F9FF] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(2rem,9vw,9rem)]" aria-hidden="true">
             FASTER
           </p>
           <motion.div
@@ -148,13 +148,13 @@ const IntroGrid: React.FC = () => {
               loading="lazy"
             />
           </motion.div>
-          <p className="text-[#004D3F] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(2rem,9vw,9rem)]" aria-hidden="true">
+          <p className="text-[#F5F9FF] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(2rem,9vw,9rem)]" aria-hidden="true">
             THAN
           </p>
         </div>
 
         <div ref={(el) => setTextRow(el, 5)} className="flex w-full items-center justify-center gap-2 md:gap-5 -mt-1">
-          <p className="text-[#004D3F] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(2rem,9vw,9rem)]" aria-hidden="true">
+          <p className="text-[#F5F9FF] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(2rem,9vw,9rem)]" aria-hidden="true">
             YOUR
           </p>
           <motion.div
@@ -171,30 +171,30 @@ const IntroGrid: React.FC = () => {
               loading="lazy"
             />
           </motion.div>
-          <p className="text-[#004D3F] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(2rem,9vw,9rem)]" aria-hidden="true">
+          <p className="text-[#F5F9FF] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(2rem,9vw,9rem)]" aria-hidden="true">
             TODDLER
           </p>
         </div>
 
         <div ref={(el) => setTextRow(el, 6)} className="w-full flex flex-col items-center -mt-1">
-          <p className="text-[#004D3F] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(1.8rem,8vw,8rem)]" aria-hidden="true">
+          <p className="text-[#F5F9FF] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(1.8rem,8vw,8rem)]" aria-hidden="true">
             CAN <span className="italic font-display">EMPTY</span>
           </p>
         </div>
         <div ref={(el) => setTextRow(el, 7)} className="w-full flex justify-center items-center -mt-2 md:-mt-4">
-          <p className="text-[#004D3F] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(2rem,9vw,9rem)]" aria-hidden="true">
+          <p className="text-[#F5F9FF] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(2rem,9vw,9rem)]" aria-hidden="true">
             THE
           </p>
         </div>
 
         <div ref={(el) => setTextRow(el, 8)} className="w-full flex justify-center -mt-2 md:-mt-4">
-          <p className="text-[#004D3F] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(1.5rem,6vw,6rem)] text-center" aria-hidden="true">
+          <p className="text-[#F5F9FF] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(1.5rem,6vw,6rem)] text-center" aria-hidden="true">
             TUPPERWARE
           </p>
         </div>
 
         <div ref={(el) => setTextRow(el, 9)} className="flex w-full items-center justify-center gap-2 md:gap-8 -mt-1">
-          <p className="text-[#004D3F] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(2rem,9vw,9rem)]" aria-hidden="true">
+          <p className="text-[#F5F9FF] font-display font-black uppercase leading-[0.85] tracking-[-0.03em] text-[clamp(2rem,9vw,9rem)]" aria-hidden="true">
             DRAWER
           </p>
           <motion.div

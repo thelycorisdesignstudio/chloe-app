@@ -115,7 +115,7 @@ export default function TermsPage() {
           <div className="text-center mt-16">
             <p className="text-[#004D3F]/70 text-lg mb-6">Questions about our terms?</p>
             <a 
-              href="mailto:legal@chloe-app.com"
+              href="mailto:legal@chloe.com"
               className="inline-flex items-center gap-3 bg-[#004D3F] text-white font-black text-lg uppercase px-10 py-5 rounded-full shadow-[4px_4px_0px_#82E9A6] hover:translate-y-[-2px] transition-all"
             >
               <Mail className="w-5 h-5" />
