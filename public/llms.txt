@@ -1,0 +1,45 @@
+# Chloe
+
+> Chloe is a free directory of kid-friendly activities and family-friendly
+> venues across the United Arab Emirates (playgrounds, beaches, museums,
+> indoor play areas, and more), filterable by child age, emirate, category,
+> indoor/outdoor, and price.
+
+## Key facts
+
+- As of this writing, Chloe lists approximately 162 verified, active
+  activities/venues, concentrated in Dubai and Abu Dhabi with growing
+  coverage in Sharjah, Ajman, Ras Al Khaimah, Fujairah, and Umm Al Quwain.
+  This count changes as venues are added — see "Live data" below for the
+  current number rather than relying on this static figure.
+- Coverage: all 7 UAE Emirates — Dubai, Abu Dhabi, Sharjah, Ajman,
+  Ras Al Khaimah, Fujairah, Umm Al Quwain.
+- Chloe is free for parents to use; venues can optionally partner for
+  enhanced listings.
+- Filters available: child age (0–12, with named sub-ranges from "Baby" to
+  "Pre-teen"), emirate/region, activity category, indoor-only, free-entry
+  only, and sort by rating / review count / name.
+- Each listing includes: age range, indoor/outdoor flag, pricing, opening
+  hours and days, address, amenities (e.g. parking, wheelchair access,
+  nursing/changing facilities), and a star rating with review count.
+
+## Live data
+
+For the current, exact figures (not a stale snapshot), fetch:
+- `https://chloe-app.com/api/stats` — total active venue count and average
+  rating, computed live from the database.
+- `https://chloe-app.com/api/stats/regions?countryCode=UAE` — live
+  per-emirate activity counts.
+
+## Key pages
+
+- Home: https://chloe-app.com/
+- Explore / search all activities: https://chloe-app.com/explore
+- List your venue (for businesses): https://chloe-app.com/forbusiness
+
+<!--
+Maintenance note: the "Key facts" section above is a manually-updated
+snapshot, not a live query. Regenerate/update it whenever the seeded venue
+data changes materially (e.g. after a re-seed that adds a meaningful number
+of new venues), rather than letting it drift from what /api/stats reports.
+-->
