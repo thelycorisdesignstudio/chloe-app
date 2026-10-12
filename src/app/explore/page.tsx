@@ -233,12 +233,12 @@ function ExplorePageContent() {
 
   return (
     <main className="min-h-screen bg-[#F7F5F2]">
-      <header className="sticky top-0 z-50 bg-[#82E9A6] border-b-2 border-[#004D3F]">
+      <header className="sticky top-0 z-50 bg-[#1D6FEB] border-b-2 border-[#004D3F]">
         <div className="max-w-[1440px] mx-auto px-3 md:px-4 py-2 md:py-3">
           <div className="flex items-center gap-2 md:gap-3">
-            <Link 
+            <Link
               href="/"
-              className="flex items-center gap-1.5 text-[#004D3F] hover:opacity-70 transition-opacity"
+              className="flex items-center gap-1.5 text-[#F5F9FF] hover:opacity-70 transition-opacity"
             >
               <ArrowLeft className="w-4 h-4 md:w-5 md:h-5" />
               <span className="font-black text-base md:text-lg uppercase hidden sm:inline">Chloe</span>
