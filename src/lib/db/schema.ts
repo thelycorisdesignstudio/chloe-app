@@ -107,6 +107,9 @@ const businessInquirySchema = new Schema(
     message: { type: String, default: null },
     photos: { type: [String], required: true, default: [] },
     status: { type: String, required: true, default: 'pending', maxlength: 20 },
+    plan: { type: String, default: null, maxlength: 30 },
+    stripeCustomerId: { type: String, default: null },
+    stripeSubscriptionId: { type: String, default: null, index: true },
   },
   { timestamps: true },
 );
@@ -279,6 +282,9 @@ export type BusinessInquiry = {
   message: string | null;
   photos: string[];
   status: string;
+  plan: string | null;
+  stripeCustomerId: string | null;
+  stripeSubscriptionId: string | null;
   createdAt: Date;
   updatedAt: Date;
 };

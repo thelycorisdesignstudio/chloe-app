@@ -3,7 +3,7 @@ import { getStripe, PLANS } from '@/lib/stripe';
 
 export async function POST(request: NextRequest) {
   try {
-    const { plan } = await request.json();
+    const { plan, inquiryId } = await request.json();
 
     if (!plan || !(plan in PLANS)) {
       return NextResponse.json({ error: 'Invalid plan' }, { status: 400 });
@@ -31,6 +31,13 @@ export async function POST(request: NextRequest) {
         },
       ],
       mode: 'subscription',
+      ...(typeof inquiryId === 'string' && inquiryId
+        ? {
+            client_reference_id: inquiryId,
+            metadata: { inquiryId, plan },
+            subscription_data: { metadata: { inquiryId, plan } },
+          }
+        : {}),
       success_url: `${appUrl}/forbusiness?status=success`,
       cancel_url: `${appUrl}/forbusiness?status=cancelled`,
     });
