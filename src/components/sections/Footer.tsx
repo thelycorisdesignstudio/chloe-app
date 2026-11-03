@@ -121,23 +121,7 @@ const Footer = () => {
               <p className="text-[#004D3F]/50 text-sm font-medium">
                 A product by
               </p>
-              <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8">
-                <div className="flex flex-col items-center">
-                  <span className="text-[#004D3F] font-black text-xs md:text-sm uppercase tracking-wider">Schroeder Technologies</span>
-                </div>
-                <span className="text-[#004D3F]/30 hidden md:inline">×</span>
-                <div className="flex flex-col items-center">
-                  <span className="text-[#004D3F] font-black text-xs md:text-sm uppercase tracking-wider">Gregorious Creative Studios</span>
-                </div>
-                <span className="text-[#004D3F]/30 hidden md:inline">×</span>
-                <div className="flex flex-col items-center">
-                  <span className="text-[#004D3F] font-black text-xs md:text-sm uppercase tracking-wider">Lycoris Design Studios</span>
-                </div>
-                <span className="text-[#004D3F]/30 hidden md:inline">×</span>
-                <div className="flex flex-col items-center">
-                  <span className="text-[#004D3F] font-black text-xs md:text-sm uppercase tracking-wider">Dubai Design Studios</span>
-                </div>
-              </div>
+              <p className="text-[#004D3F] font-black text-sm md:text-base uppercase tracking-wider">The Lycoris Labs Inc</p>
             </div>
           </div>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import Image from 'next/image';
+import SafeImage from '@/components/SafeImage';
 import { Star, ChevronLeft, ChevronRight, Quote, Users, MapPin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -108,7 +108,7 @@ export default function Testimonials({ averageRating }: TestimonialsProps) {
                   transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
                 >
                   <div className="w-full h-full rounded-full border-4 border-[#004D3F] overflow-hidden shadow-[4px_4px_0px_#004D3F]">
-                    <Image
+                    <SafeImage
                       src={currentTestimonial.avatar}
                       alt={currentTestimonial.name}
                       fill

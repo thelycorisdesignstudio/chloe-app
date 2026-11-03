@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback, Suspense } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import SafeImage from '@/components/SafeImage';
 import { useSearchParams } from 'next/navigation';
 import { 
   Search, MapPin, X, Star, Clock, Users,
@@ -554,7 +554,7 @@ function ActivityCard({
       whileHover={{ scale: 1.02 }}
     >
       <div className="relative h-40 overflow-hidden">
-        <Image
+        <SafeImage
           src={activity.images?.[0] || 'https://images.unsplash.com/photo-1566140967404-b8b3932483f5?w=800'}
           alt={activity.name}
           fill
@@ -747,7 +747,7 @@ function ActivityDetail({
       </header>
 
       <div className="relative h-[250px] md:h-[350px]">
-        <Image
+        <SafeImage
           src={activity.images?.[0] || 'https://images.unsplash.com/photo-1566140967404-b8b3932483f5?w=800'}
           alt={activity.name}
           fill
@@ -1006,7 +1006,7 @@ function ActivityDetail({
                     className="flex-shrink-0 w-[200px] bg-white rounded-[16px] border-2 border-[#004D3F] overflow-hidden shadow-[2px_2px_0px_#004D3F] hover:shadow-[4px_4px_0px_#004D3F] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all text-left group"
                   >
                     <div className="relative h-28 overflow-hidden">
-                      <Image
+                      <SafeImage
                         src={rec.images?.[0] || 'https://images.unsplash.com/photo-1566140967404-b8b3932483f5?w=400'}
                         alt={rec.name}
                         fill

@@ -36,12 +36,8 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Chloe | UAE's Platform for Family Activities & Kid-Friendly Venues",
     description: `Discover ${countLabel} verified kid-friendly activities across all 7 UAE Emirates. Playgrounds, beaches, museums, indoor play areas - all reviewed by local parents. Filter by age (0-12), location, and activity type. Free to use!`,
     keywords: ["UAE kids activities", "Dubai family activities", "Abu Dhabi things to do with kids", "UAE playgrounds", "kid-friendly UAE", "family activities Dubai", "children activities UAE", "indoor play Dubai", "UAE beaches for kids", "family day out UAE"],
-    authors: [
-      { name: "Schroeder Technologies" },
-      { name: "Gregorious Creative Studios" },
-      { name: "Lycoris Design Studios" }
-    ],
-    creator: "Schroeder Technologies",
+    authors: [{ name: "The Lycoris Labs Inc" }],
+    creator: "The Lycoris Labs Inc",
     publisher: "Chloe",
     metadataBase: new URL("https://chloe-app.com"),
     openGraph: {
@@ -111,23 +107,13 @@ export default async function RootLayout({
       : {}),
     "author": {
       "@type": "Organization",
-      "name": "Schroeder Technologies",
+      "name": "The Lycoris Labs Inc",
       "url": "https://chloe-app.com"
     },
-    "creator": [
-      {
-        "@type": "Organization",
-        "name": "Schroeder Technologies"
-      },
-      {
-        "@type": "Organization",
-        "name": "Gregorious Creative Studios"
-      },
-      {
-        "@type": "Organization",
-        "name": "Lycoris Design Studios"
-      }
-    ],
+    "creator": {
+      "@type": "Organization",
+      "name": "The Lycoris Labs Inc"
+    },
     "areaServed": {
       "@type": "Country",
       "name": "United Arab Emirates"

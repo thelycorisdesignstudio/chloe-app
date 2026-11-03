@@ -151,6 +151,7 @@ const Hero = ({ averageRating }: HeroProps) => {
                   style={{ y: leftY, rotate: leftRotate }}
                 >
                   <img
+                    onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/placeholder.svg'; }}
                     src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=400&h=700&fit=crop"
                     alt="Chloe home screen showing activity categories"
                     className="w-full h-auto rounded-[24px] md:rounded-[40px] border-3 md:border-4 border-[#004D3F] shadow-brutalist-lg"
@@ -166,6 +167,7 @@ const Hero = ({ averageRating }: HeroProps) => {
                   style={{ y: centerY }}
                 >
                   <img
+                    onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/placeholder.svg'; }}
                     src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=400&h=700&fit=crop"
                     alt="Chloe map screen showing nearby activities"
                     className="w-full h-auto rounded-[24px] md:rounded-[40px] border-3 md:border-4 border-[#004D3F] shadow-brutalist-lg"
@@ -181,6 +183,7 @@ const Hero = ({ averageRating }: HeroProps) => {
                   style={{ y: rightY, rotate: rightRotate }}
                 >
                   <img
+                    onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/placeholder.svg'; }}
                     src="https://images.unsplash.com/photo-1472162072942-cd5147eb3902?w=400&h=700&fit=crop"
                     alt="Chloe activity details screen"
                     className="w-full h-auto rounded-[24px] md:rounded-[40px] border-3 md:border-4 border-[#004D3F] shadow-brutalist-lg"
