@@ -22,7 +22,7 @@ const Hero = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden bg-[#C8B9E6] pt-4 md:pt-6"
+      className="relative w-full overflow-hidden bg-[#C8B9E6] pt-24 md:pt-28"
       aria-labelledby="hero-heading"
     >
       <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
