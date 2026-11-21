@@ -3,6 +3,10 @@ import "./globals.css";
 import ErrorReporter from "@/components/ErrorReporter";
 import GlobalAnimations from "@/components/animations/GlobalAnimations";
 import CookieBanner from "@/components/CookieBanner";
+import { Lexend, Caveat } from "next/font/google";
+
+const lexend = Lexend({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"], variable: "--font-lexend", display: "swap" });
+const caveat = Caveat({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-caveat", display: "swap" });
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -26,7 +30,7 @@ export const metadata: Metadata = {
       description: "The UAE's most trusted platform for discovering family activities. Playgrounds, beaches, museums, indoor play - all verified by local parents. Filter by your child's age and location.",
       images: [
         {
-          url: "/og-image.png",
+          url: "/brand/og.png",
           width: 1200,
           height: 630,
           alt: "Chloe - Family Activity Guide for the UAE",
@@ -37,7 +41,7 @@ export const metadata: Metadata = {
       card: "summary_large_image",
       title: "Chloe | Kid-Friendly Activities & Family Venues in the UAE",
       description: "Discover 160+ kid-friendly venues across the UAE.",
-      images: ["/og-image.png"],
+      images: ["/brand/og.png"],
     },
   robots: {
     index: true,
@@ -91,7 +95,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${lexend.variable} ${caveat.variable}`}>
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#C8B9E6" />

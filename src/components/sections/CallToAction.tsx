@@ -1,6 +1,8 @@
 "use client";
 
 import React from 'react';
+import Floating from '@/components/illustrations/Floating';
+import { Playground, Balloons } from '@/components/illustrations';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -13,6 +15,12 @@ export default function CallToAction() {
         className="bg-[#C8B9E6] py-16 md:py-24 lg:py-32 px-6 relative"
         aria-labelledby="cta-heading"
       >
+        <Floating className="pointer-events-none absolute left-[3%] bottom-[8%] hidden md:block w-28 lg:w-40" delay={0.1}>
+          <Playground className="w-full h-auto" />
+        </Floating>
+        <Floating className="pointer-events-none absolute right-[3%] top-[8%] hidden md:block w-24 lg:w-36" delay={0.4} duration={7}>
+          <Balloons className="w-full h-auto" />
+        </Floating>
         <div className="max-w-[1440px] mx-auto flex flex-col items-center justify-center text-center">
           <motion.span
             className="font-hand text-[#3C2364] text-3xl md:text-4xl mb-6 block"

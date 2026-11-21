@@ -220,7 +220,8 @@ export async function getStats() {
   const [venueCount, avgResult] = await Promise.all([
     ActivityModel.countDocuments({ isActive: true }).exec(),
     ActivityModel.aggregate<{ avg: number | null }>([
-      { $match: { isActive: true } },
+      // Unrated venues (rating 0) are excluded so they don't drag the average down.
+      { $match: { isActive: true, rating: { $gt: 0 } } },
       { $group: { _id: null, avg: { $avg: '$rating' } } },
     ]).exec(),
   ]);

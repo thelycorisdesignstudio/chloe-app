@@ -9,7 +9,12 @@ import {
   countries as countryData,
   regionsByCountry,
   categories as categoryNames,
+  allActivities,
 } from '../data/activities';
+
+// Only offer regions / categories that actually contain venues, so filters never lead to empty pages.
+const usedRegions = new Set(allActivities.map((a) => `${a.location.country}|${a.location.region}`));
+const usedCategories = new Set(allActivities.map((a) => a.category));
 
 async function seed() {
   const mongoUri = process.env.MONGODB_URI;
@@ -43,6 +48,7 @@ async function seed() {
   for (const [countryCode, regionList] of Object.entries(regionsByCountry)) {
     for (const regionName of regionList) {
       if (regionName === 'All Regions') continue;
+      if (!usedRegions.has(`${countryCode}|${regionName}`)) continue;
       const slug = regionName.toLowerCase().replace(/\s+/g, '-');
       await Region.updateOne(
         { countryCode, slug },
@@ -63,6 +69,7 @@ async function seed() {
   console.log('Seeding categories...');
   for (let i = 0; i < categoryNames.length; i++) {
     if (categoryNames[i] === 'All') continue;
+    if (!usedCategories.has(categoryNames[i])) continue;
     const slug = categoryNames[i].toLowerCase().replace(/[&\s]+/g, '-');
     await Category.updateOne(
       { slug },
@@ -102,7 +109,7 @@ async function seed() {
     await Activity.updateOne(
       { slug: activity.id },
       {
-        $setOnInsert: {
+        $set: {
           name: activity.name,
           slug: activity.id,
           categoryId,
@@ -136,7 +143,7 @@ async function seed() {
           website: activity.contact?.website ?? null,
           instagram: activity.contact?.instagram ?? null,
           tags: activity.tags,
-          isVerified: true,
+          isVerified: activity.rating > 0,
           isFeatured: activity.rating >= 4.7,
           isActive: true,
         },

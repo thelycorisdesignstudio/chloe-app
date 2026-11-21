@@ -1,0 +1,10 @@
+{
+  "name": "Chloe",
+  "short_name": "Chloe",
+  "description": "Kid-friendly activities and family venues across the UAE and the Gulf.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F4F1F8",
+  "theme_color": "#C8B9E6",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

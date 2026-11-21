@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useRef } from 'react';
+import Floating from "@/components/illustrations/Floating";
+import { Sun, Balloons, Kite } from "@/components/illustrations";
 import { MapPin, Filter, Star, LogIn } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 const headingWords = "Your pocket guide to surviving parenthood, one activity at a time.".split(" ");
@@ -25,6 +27,15 @@ const Hero = () => {
       className="relative w-full overflow-hidden bg-[#C8B9E6] pt-24 md:pt-28"
       aria-labelledby="hero-heading"
     >
+      <Floating className="pointer-events-none absolute left-[1.5%] top-[22%] hidden 2xl:block w-32 z-0" delay={0.2}>
+        <Sun className="w-full h-auto" />
+      </Floating>
+      <Floating className="pointer-events-none absolute right-[1.5%] top-[18%] hidden 2xl:block w-32 z-0" delay={0.5} duration={7}>
+        <Balloons className="w-full h-auto" />
+      </Floating>
+      <Floating className="pointer-events-none absolute right-[3%] top-[44%] hidden 2xl:block w-24 z-0" delay={0.8}>
+        <Kite className="w-full h-auto" />
+      </Floating>
       <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
         <motion.p
           className="mb-2 md:mb-3 flex justify-center"

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useRef, Suspense } from 'react';
 import Link from 'next/link';
+import { SearchSmile } from '@/components/illustrations';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { 
@@ -473,9 +474,7 @@ function ExplorePageContent() {
           </div>
         ) : activities.length === 0 ? (
           <div className="text-center py-16">
-            <div className="w-20 h-20 bg-[#F5F096] rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-[#3C2364]">
-              <Search className="w-8 h-8 text-[#3C2364]" />
-            </div>
+            <SearchSmile className="w-40 h-40 mx-auto mb-2" />
             <h2 className="text-xl font-black text-[#3C2364] mb-3">No Activities Found</h2>
             <p className="text-[#3C2364]/70 mb-4 text-sm max-w-md mx-auto">
               Try adjusting your filters or search terms, or explore another country.

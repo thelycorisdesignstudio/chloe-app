@@ -1,5 +1,6 @@
 import React from "react";
 import { LogoMark } from "@/components/Logo";
+import { Scene, categoryScene, Sparkle, Cloud } from "@/components/illustrations";
 
 const palettes = [
   { bg: "#C8B9E6", fg: "#3C2364", a: "#F5F096", b: "#AAE6FA" },
@@ -40,30 +41,13 @@ export default function BlogBanner({ slug, title, category, size = "card" }: Pro
       role="img"
       aria-label={`${title} — ${category}`}
     >
-      {/* decorative shapes */}
-      <svg className="absolute inset-0 h-full w-full" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        {layout === 0 && (
-          <>
-            <circle cx="345" cy="62" r="58" fill={p.a} stroke="#3C2364" strokeWidth="2" />
-            <path d="M285 250V178a48 48 0 0 1 96 0v72Z" fill={p.b} stroke="#3C2364" strokeWidth="2" />
-            <circle cx="262" cy="222" r="26" fill={p.a} stroke="#3C2364" strokeWidth="2" />
-          </>
-        )}
-        {layout === 1 && (
-          <>
-            <path d="M255 250V165a68 68 0 0 1 136 0v85Z" fill={p.a} stroke="#3C2364" strokeWidth="2" />
-            <circle cx="325" cy="52" r="36" fill={p.b} stroke="#3C2364" strokeWidth="2" />
-            <circle cx="268" cy="96" r="14" fill={p.a} stroke="#3C2364" strokeWidth="2" />
-          </>
-        )}
-        {layout === 2 && (
-          <>
-            <circle cx="352" cy="56" r="44" fill={p.b} stroke="#3C2364" strokeWidth="2" />
-            <path d="M262 250l56-100 56 100Z" fill={p.a} stroke="#3C2364" strokeWidth="2" strokeLinejoin="round" />
-            <circle cx="276" cy="120" r="16" fill={p.b} stroke="#3C2364" strokeWidth="2" />
-          </>
-        )}
-      </svg>
+      {/* category illustration, kept to the right so the title stays on a clean background */}
+      <Scene
+        name={categoryScene(category)}
+        className={`absolute bottom-0 right-[2%] w-auto ${hero ? "h-[86%]" : "h-[74%]"}`}
+      />
+      {layout !== 1 && <Sparkle className={`absolute w-6 h-6 md:w-8 md:h-8 ${layout === 0 ? "right-[36%] top-[16%]" : "right-[40%] bottom-[18%]"}`} />}
+      {layout === 1 && <Cloud className="absolute right-[34%] top-[12%] w-14 md:w-20 h-auto opacity-90" />}
 
       <div className="relative z-10 flex h-full flex-col justify-between p-4 md:p-6">
         <div className="flex items-center justify-between">
@@ -75,8 +59,8 @@ export default function BlogBanner({ slug, title, category, size = "card" }: Pro
           <LogoMark className={hero ? "h-10 w-auto" : "h-8 w-auto"} />
         </div>
         <p
-          className={`font-display font-extrabold uppercase leading-[0.95] max-w-[58%] ${
-            hero ? "text-2xl md:text-5xl" : "text-lg md:text-xl line-clamp-3"
+          className={`font-display font-extrabold uppercase leading-[0.95] max-w-[50%] ${
+            hero ? "text-xl md:text-4xl" : "text-base md:text-lg line-clamp-3"
           }`}
         >
           {title}

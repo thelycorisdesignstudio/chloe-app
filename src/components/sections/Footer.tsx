@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { Mail, Instagram, Facebook, Twitter } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { staggerContainer, fadeUp, popRotate } from '@/lib/animations/variants';
-import Logo, { LogoMark } from '@/components/Logo';
+import Logo from '@/components/Logo';
+import ChloeWordmark from '@/components/ChloeWordmark';
 
 const Footer = () => {
   return (
@@ -113,31 +114,9 @@ const Footer = () => {
             <p className="mt-2 text-[#3C2364] font-black text-sm md:text-base uppercase tracking-widest">Lycoris Labs Inc.</p>
           </div>
 
-        {/* Giant wordmark */}
-        <div className="mt-14 md:mt-20 overflow-hidden select-none" aria-hidden="true">
-          <motion.div
-            className="flex items-end justify-center gap-[2vw]"
-            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-40px" }}
-          >
-            {"chloe".split("").map((ch, i) => (
-              <motion.span
-                key={i}
-                className="font-display font-extrabold text-[26vw] md:text-[21vw] leading-[0.82] tracking-tight text-[#3C2364]"
-                variants={{ hidden: { y: "105%", opacity: 0 }, visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 90, damping: 16 } } }}
-              >
-                {ch}
-              </motion.span>
-            ))}
-            <motion.span
-              className="mb-[2vw] ml-[1vw]"
-              variants={{ hidden: { scale: 0, rotate: -30 }, visible: { scale: 1, rotate: 0, transition: { type: "spring", stiffness: 160, damping: 11, delay: 0.5 } } }}
-            >
-              <LogoMark className="h-[11vw] md:h-[9vw] w-auto" />
-            </motion.span>
-          </motion.div>
+        {/* Giant hand-lettered wordmark */}
+        <div className="grain-gradient mt-14 md:mt-20 rounded-[32px] md:rounded-[56px] border-2 border-[#3C2364] px-6 py-12 md:py-20 flex justify-center select-none">
+          <ChloeWordmark animate ink="#FFFFFF" className="w-full max-w-[1000px] h-auto" />
         </div>
       </div>
     </footer>

@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800;900&family=Caveat:wght@400;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -40,9 +39,9 @@
   --color-teal: #3C2364;
   --color-off-white: #F4F1F8;
 
-  --font-display: "Lexend", sans-serif;
-  --font-body: "Lexend", sans-serif;
-  --font-hand: "Caveat", cursive;
+  --font-display: var(--font-lexend), "Lexend", system-ui, sans-serif;
+  --font-body: var(--font-lexend), "Lexend", system-ui, sans-serif;
+  --font-hand: var(--font-caveat), "Caveat", cursive;
 
   --radius-xl: 60px;
   --radius-lg: 40px;
@@ -223,4 +222,9 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+/* ── Grainy mesh gradient (brand surface) ─────────────────────────────── */
+/* A real blended mesh: large blurred colour fields + grain, baked in the SVG. */
+.grain-gradient {
+  background: #5B3DB0 url("/brand/mesh-gradient.svg") center / cover no-repeat;
 }

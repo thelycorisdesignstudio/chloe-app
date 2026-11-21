@@ -4,6 +4,8 @@ import Navigation from "@/components/sections/Navigation";
 import Footer from "@/components/sections/Footer";
 import BlogBanner from "@/components/blog/BlogBanner";
 import Reveal from "@/components/animations/Reveal";
+import Floating from "@/components/illustrations/Floating";
+import { Kite, Balloons } from "@/components/illustrations";
 import { posts, formatDate } from "@/lib/data/blog";
 
 export const metadata: Metadata = {
@@ -33,7 +35,9 @@ export default async function BlogIndex({
     <main className="relative min-h-screen bg-[#F4F1F8] overflow-x-hidden">
       <Navigation />
       <section className="pt-32 md:pt-40 pb-8 px-4 md:px-6">
-        <div className="max-w-[1200px] mx-auto text-center">
+        <div className="max-w-[1200px] mx-auto text-center relative">
+          <Floating className="pointer-events-none absolute -left-40 top-0 hidden 2xl:block w-28" delay={0.2}><Kite className="w-full h-auto" /></Floating>
+          <Floating className="pointer-events-none absolute -right-40 top-0 hidden 2xl:block w-28" delay={0.5} duration={7}><Balloons className="w-full h-auto" /></Floating>
           <Reveal>
             <p className="font-hand text-2xl text-[#3C2364]/80">the chloe blog</p>
             <h1 className="font-display font-extrabold uppercase text-4xl md:text-7xl leading-[0.95] text-[#3C2364] mt-2">
