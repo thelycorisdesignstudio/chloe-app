@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, Suspense } from 'react';
+import React, { useState, useEffect, useCallback, useRef, Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
@@ -98,6 +98,14 @@ function ExplorePageContent() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
   const [activityCount, setActivityCount] = useState(0);
+  const latestRequest = useRef(0);
+
+  // Switching country must also clear the region, otherwise the old region
+  // (e.g. 'Dubai') is applied to the new country and returns nothing.
+  const selectCountry = (code: string) => {
+    setSelectedCountry(code);
+    setSelectedRegion('');
+  };
 
   useEffect(() => {
     if (categoryFromUrl) {
@@ -130,11 +138,13 @@ function ExplorePageContent() {
 
   useEffect(() => {
     async function loadRegions() {
-      if (!selectedCountry) return;
+      if (!selectedCountry) {
+        setRegions([]);
+        return;
+      }
       try {
         const data = await fetchJsonArray<Region>(`/api/regions?countryCode=${selectedCountry}`);
         setRegions(data);
-        setSelectedRegion('');
       } catch {
         setRegions([]);
         setError('Failed to load regions. Please try again.');
@@ -144,11 +154,13 @@ function ExplorePageContent() {
   }, [selectedCountry]);
 
   const loadActivities = useCallback(async () => {
+    const requestId = ++latestRequest.current;
     setLoading(true);
     setError(null);
     try {
       const params = new URLSearchParams();
-      params.set('country', selectedCountry);
+      if (selectedCountry) params.set('country', selectedCountry);
+      params.set('limit', '1000');
       if (selectedRegion) params.set('region', selectedRegion);
       if (selectedCategory) params.set('category', selectedCategory);
       if (showIndoorOnly) params.set('isIndoor', 'true');
@@ -164,12 +176,15 @@ function ExplorePageContent() {
       if (!res.ok) throw new Error('Failed to fetch');
       const data = await res.json();
       if (data.error) throw new Error(data.error);
+      // Ignore responses that were superseded by a newer filter change.
+      if (requestId !== latestRequest.current) return;
       setActivities(data);
       setActivityCount(data.length);
     } catch {
+      if (requestId !== latestRequest.current) return;
       setError('Failed to load activities. Please try again.');
     } finally {
-      setLoading(false);
+      if (requestId === latestRequest.current) setLoading(false);
     }
   }, [selectedCountry, selectedRegion, selectedCategory, showIndoorOnly, showFreeOnly, searchQuery, selectedAgeGroup, sortBy]);
 
@@ -282,10 +297,20 @@ function ExplorePageContent() {
           </div>
 
           <div className="flex gap-1.5 mt-2 overflow-x-auto pb-1 scrollbar-hide">
+            <button
+              onClick={() => selectCountry('')}
+              className={`flex items-center gap-1 px-3 py-1.5 rounded-full border-2 font-bold text-xs whitespace-nowrap transition-all ${
+                selectedCountry === ''
+                  ? 'bg-[#3C2364] text-white border-[#3C2364]'
+                  : 'bg-white text-[#3C2364] border-[#3C2364]/30 hover:border-[#3C2364]'
+              }`}
+            >
+              <span>All Countries</span>
+            </button>
             {countries.map(country => (
               <button
                 key={country.code}
-                onClick={() => setSelectedCountry(country.code)}
+                onClick={() => selectCountry(country.code)}
                 className={`flex items-center gap-1 px-3 py-1.5 rounded-full border-2 font-bold text-xs whitespace-nowrap transition-all ${
                   selectedCountry === country.code
                     ? 'bg-[#3C2364] text-white border-[#3C2364]'
@@ -319,9 +344,10 @@ function ExplorePageContent() {
                   <select
                     value={selectedRegion}
                     onChange={(e) => setSelectedRegion(e.target.value)}
-                    className="w-full bg-[#F4F1F8] border-2 border-[#3C2364] rounded-full px-3 py-1.5 text-xs font-medium focus:outline-none"
+                    disabled={!selectedCountry}
+                    className="w-full bg-[#F4F1F8] border-2 border-[#3C2364] rounded-full px-3 py-1.5 text-xs font-medium focus:outline-none disabled:opacity-50"
                   >
-                    <option value="">All Regions</option>
+                    <option value="">{selectedCountry ? 'All Regions' : 'Pick a country first'}</option>
                     {regions.map(region => (
                       <option key={region.id} value={region.name}>{region.name}</option>
                     ))}
@@ -393,7 +419,7 @@ function ExplorePageContent() {
         <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
           <div>
             <h1 className="text-lg md:text-xl font-black text-[#3C2364] uppercase">
-              {activityCount} Activities in {currentCountry?.name || 'UAE'}
+              {activityCount} {activityCount === 1 ? 'Activity' : 'Activities'} in {selectedCountry ? (currentCountry?.name || selectedCountry) : 'All Countries'}
             </h1>
             {activeFilterCount > 0 && (
               <p className="text-[#3C2364]/70 text-xs font-medium">
@@ -485,7 +511,7 @@ function ExplorePageContent() {
             {countries.map(country => (
                 <button
                   key={country.code}
-                  onClick={() => setSelectedCountry(country.code)}
+                  onClick={() => selectCountry(country.code)}
                   className={`p-2 rounded-xl text-center transition-all ${
                     selectedCountry === country.code
                       ? 'bg-[#C8B9E6] text-[#3C2364]'

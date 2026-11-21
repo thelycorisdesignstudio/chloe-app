@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
     isFree: searchParams.get('isFree') === 'true' ? true : undefined,
     search: searchParams.get('search') ?? undefined,
     sortBy: (searchParams.get('sortBy') as 'rating' | 'reviews' | 'name') ?? undefined,
-    limit: searchParams.get('limit') ? parseInt(searchParams.get('limit')!) : undefined,
+    limit: searchParams.get('limit') ? Math.min(Math.max(parseInt(searchParams.get('limit')!) || 0, 1), 1000) : undefined,
     offset: searchParams.get('offset') ? parseInt(searchParams.get('offset')!) : undefined,
   };
 

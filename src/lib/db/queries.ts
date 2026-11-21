@@ -103,7 +103,7 @@ export async function getActivities(filters?: ActivityFilters): Promise<Activity
     .find(query)
     .sort(sortObj)
     .skip(filters?.offset ?? 0)
-    .limit(filters?.limit ?? 100)
+    .limit(filters?.limit ?? 1000)
     .lean()
     .exec();
 
