@@ -35,20 +35,20 @@ const policies = [
 
 export default function PoliciesPage() {
   return (
-    <main className="relative min-h-screen bg-[#F7F5F2] overflow-x-hidden">
+    <main className="relative min-h-screen bg-[#F4F1F8] overflow-x-hidden">
       <Navigation />
       
       <div className="pt-32 pb-20 px-6">
         <div className="container max-w-[1440px] mx-auto">
           <div className="text-center mb-16">
-            <span className="font-hand text-3xl text-[#004D3F] mb-4 block">transparency first</span>
-            <h1 className="text-[#004D3F] font-black text-5xl md:text-8xl uppercase tracking-tighter mb-8">
+            <span className="font-hand text-3xl text-[#3C2364] mb-4 block">transparency first</span>
+            <h1 className="text-[#3C2364] font-black text-5xl md:text-8xl uppercase tracking-tighter mb-8">
               PRIVACY POLICY
             </h1>
-            <p className="max-w-3xl mx-auto text-[#004D3F]/80 text-xl md:text-2xl leading-relaxed">
+            <p className="max-w-3xl mx-auto text-[#3C2364]/80 text-xl md:text-2xl leading-relaxed">
               Your privacy matters to us. Here&apos;s how we protect your family&apos;s data.
             </p>
-            <p className="text-[#004D3F]/60 mt-4">Last updated: January 2026</p>
+            <p className="text-[#3C2364]/60 mt-4">Last updated: January 2026</p>
           </div>
 
           <div className="max-w-4xl mx-auto space-y-8 mb-16">
@@ -57,15 +57,15 @@ export default function PoliciesPage() {
               return (
                 <div 
                   key={idx}
-                  className="bg-white rounded-[30px] border-2 border-[#004D3F] p-8 shadow-[6px_6px_0px_#004D3F]"
+                  className="bg-white rounded-[30px] border-2 border-[#3C2364] p-8 shadow-[6px_6px_0px_#3C2364]"
                 >
                   <div className="flex items-start gap-6">
-                    <div className="w-14 h-14 rounded-2xl bg-[#82E9A6] border-2 border-[#004D3F] flex items-center justify-center shrink-0">
-                      <Icon className="w-7 h-7 text-[#004D3F]" />
+                    <div className="w-14 h-14 rounded-2xl bg-[#C8B9E6] border-2 border-[#3C2364] flex items-center justify-center shrink-0">
+                      <Icon className="w-7 h-7 text-[#3C2364]" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-black text-[#004D3F] uppercase mb-3">{policy.title}</h3>
-                      <p className="text-[#004D3F]/80 text-lg leading-relaxed">{policy.content}</p>
+                      <h3 className="text-2xl font-black text-[#3C2364] uppercase mb-3">{policy.title}</h3>
+                      <p className="text-[#3C2364]/80 text-lg leading-relaxed">{policy.content}</p>
                     </div>
                   </div>
                 </div>
@@ -73,33 +73,33 @@ export default function PoliciesPage() {
             })}
           </div>
 
-          <div className="max-w-4xl mx-auto bg-[#FFF98F] rounded-[40px] border-2 border-[#004D3F] p-10 shadow-[8px_8px_0px_#004D3F]">
-            <h2 className="text-2xl font-black text-[#004D3F] uppercase mb-6">Your Rights</h2>
-            <ul className="space-y-4 text-[#004D3F]/80 text-lg">
+          <div className="max-w-4xl mx-auto bg-[#F5F096] rounded-[40px] border-2 border-[#3C2364] p-10 shadow-[8px_8px_0px_#3C2364]">
+            <h2 className="text-2xl font-black text-[#3C2364] uppercase mb-6">Your Rights</h2>
+            <ul className="space-y-4 text-[#3C2364]/80 text-lg">
               <li className="flex items-start gap-3">
-                <span className="w-2 h-2 rounded-full bg-[#004D3F] mt-3 shrink-0" />
+                <span className="w-2 h-2 rounded-full bg-[#3C2364] mt-3 shrink-0" />
                 <span><strong>Access:</strong> You can request a copy of all data we hold about you.</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="w-2 h-2 rounded-full bg-[#004D3F] mt-3 shrink-0" />
+                <span className="w-2 h-2 rounded-full bg-[#3C2364] mt-3 shrink-0" />
                 <span><strong>Correction:</strong> You can update or correct your personal information at any time.</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="w-2 h-2 rounded-full bg-[#004D3F] mt-3 shrink-0" />
+                <span className="w-2 h-2 rounded-full bg-[#3C2364] mt-3 shrink-0" />
                 <span><strong>Deletion:</strong> You can request deletion of your account and all associated data.</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="w-2 h-2 rounded-full bg-[#004D3F] mt-3 shrink-0" />
+                <span className="w-2 h-2 rounded-full bg-[#3C2364] mt-3 shrink-0" />
                 <span><strong>Portability:</strong> You can export your data in a standard format.</span>
               </li>
             </ul>
           </div>
 
           <div className="text-center mt-16">
-            <p className="text-[#004D3F]/70 text-lg mb-6">Have questions about our privacy practices?</p>
+            <p className="text-[#3C2364]/70 text-lg mb-6">Have questions about our privacy practices?</p>
             <a 
               href="mailto:privacy@chloe-app.com"
-              className="inline-flex items-center gap-3 bg-[#004D3F] text-white font-black text-lg uppercase px-10 py-5 rounded-full shadow-[4px_4px_0px_#82E9A6] hover:translate-y-[-2px] transition-all"
+              className="inline-flex items-center gap-3 bg-[#3C2364] text-white font-black text-lg uppercase px-10 py-5 rounded-full shadow-[4px_4px_0px_#C8B9E6] hover:translate-y-[-2px] transition-all"
             >
               <Mail className="w-5 h-5" />
               Contact Privacy Team

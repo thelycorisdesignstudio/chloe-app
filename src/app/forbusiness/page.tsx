@@ -18,25 +18,25 @@ const benefits = [
     title: "Reach UAE Families",
     description: "Get your venue in front of thousands of active parents searching for their next family outing across all 7 Emirates.",
     icon: Users,
-    color: "#B3F5FF"
+    color: "#AAE6FA"
   },
   {
     title: "Boost Visibility",
     description: "Our smart recommendation engine highlights the best kid-friendly spots to relevant users based on age, location, and preferences.",
     icon: Zap,
-    color: "#FFF98F"
+    color: "#F5F096"
   },
   {
     title: "Direct Engagement",
     description: "Communicate directly with parents through our platform, respond to reviews, and manage your community presence.",
     icon: MessageSquare,
-    color: "#82E9A6"
+    color: "#C8B9E6"
   },
   {
     title: "Real-Time Analytics",
     description: "Track views, clicks, saves, and conversion metrics to understand how families interact with your listing.",
     icon: BarChart3,
-    color: "#FDCFDF"
+    color: "#F5C8BE"
   }
 ];
 
@@ -251,7 +251,7 @@ export default function ForBusinessPage() {
   };
 
   return (
-    <main className="relative min-h-screen bg-[#F7F5F2] overflow-x-hidden">
+    <main className="relative min-h-screen bg-[#F4F1F8] overflow-x-hidden">
       <Navigation />
       
       <div className="pt-20 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
@@ -263,38 +263,38 @@ export default function ForBusinessPage() {
               animate={{ x: 0 }}
               transition={{ type: "spring", stiffness: 100, damping: 20 }}
             >
-              <span className="font-hand text-3xl text-[#004D3F] mb-4 block">partner with chloe</span>
-              <h1 className="text-[#004D3F] font-black text-5xl md:text-7xl uppercase tracking-tighter mb-8">
+              <span className="font-hand text-3xl text-[#3C2364] mb-4 block">partner with chloe</span>
+              <h1 className="text-[#3C2364] font-black text-5xl md:text-7xl uppercase tracking-tighter mb-8">
                 GROW YOUR<br />FAMILY BUSINESS
               </h1>
-              <p className="text-[#004D3F]/80 text-xl md:text-2xl leading-relaxed mb-6">
+              <p className="text-[#3C2364]/80 text-xl md:text-2xl leading-relaxed mb-6">
                 Join the UAE&apos;s fastest-growing platform for family-friendly venues. 
                 List your business, reach more parents, and become a community favorite.
               </p>
               <ul className="space-y-3 mb-10">
-                <li className="flex items-center gap-3 text-[#004D3F]">
-                  <CheckCircle2 className="w-6 h-6 text-[#82E9A6]" />
+                <li className="flex items-center gap-3 text-[#3C2364]">
+                  <CheckCircle2 className="w-6 h-6 text-[#C8B9E6]" />
                   <span className="font-medium">Growing community of active families</span>
                 </li>
-                <li className="flex items-center gap-3 text-[#004D3F]">
-                  <CheckCircle2 className="w-6 h-6 text-[#82E9A6]" />
+                <li className="flex items-center gap-3 text-[#3C2364]">
+                  <CheckCircle2 className="w-6 h-6 text-[#C8B9E6]" />
                   <span className="font-medium">Coverage across all 7 Emirates</span>
                 </li>
-                <li className="flex items-center gap-3 text-[#004D3F]">
-                  <CheckCircle2 className="w-6 h-6 text-[#82E9A6]" />
+                <li className="flex items-center gap-3 text-[#3C2364]">
+                  <CheckCircle2 className="w-6 h-6 text-[#C8B9E6]" />
                   <span className="font-medium">Free basic listing available</span>
                 </li>
               </ul>
               <div className="flex flex-wrap gap-4">
                 <a 
                   href="#contact"
-                  className="bg-[#004D3F] text-white px-10 py-5 rounded-full font-black text-lg uppercase shadow-[4px_4px_0px_#82E9A6] hover:translate-y-[-2px] transition-all"
+                  className="bg-[#3C2364] text-white px-10 py-5 rounded-full font-black text-lg uppercase shadow-[4px_4px_0px_#C8B9E6] hover:translate-y-[-2px] transition-all"
                 >
                   GET LISTED NOW
                 </a>
                 <a 
                   href="#pricing"
-                  className="bg-white border-2 border-[#004D3F] text-[#004D3F] px-10 py-5 rounded-full font-black text-lg uppercase shadow-[4px_4px_0px_#004D3F] hover:translate-y-[-2px] transition-all"
+                  className="bg-white border-2 border-[#3C2364] text-[#3C2364] px-10 py-5 rounded-full font-black text-lg uppercase shadow-[4px_4px_0px_#3C2364] hover:translate-y-[-2px] transition-all"
                 >
                   VIEW PRICING
                 </a>
@@ -306,23 +306,23 @@ export default function ForBusinessPage() {
               animate={{ x: 0 }}
               transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.2 }}
             >
-              <div className="bg-[#FFF98F] rounded-[30px] md:rounded-[50px] p-6 md:p-12 border-2 border-[#004D3F] shadow-[12px_12px_0px_#004D3F] relative overflow-hidden">
+              <div className="bg-[#F5F096] rounded-[30px] md:rounded-[50px] p-6 md:p-12 border-2 border-[#3C2364] shadow-[12px_12px_0px_#3C2364] relative overflow-hidden">
                 <div className="relative z-10">
-                  <h3 className="text-3xl font-black text-[#004D3F] uppercase mb-6">Why List on Chloe?</h3>
+                  <h3 className="text-3xl font-black text-[#3C2364] uppercase mb-6">Why List on Chloe?</h3>
                   <div className="space-y-6">
                     {benefits.map((benefit, idx) => {
                       const Icon = benefit.icon;
                       return (
                         <div key={idx} className="flex gap-4">
                           <div 
-                            className="w-12 h-12 rounded-xl border-2 border-[#004D3F] flex items-center justify-center shrink-0"
+                            className="w-12 h-12 rounded-xl border-2 border-[#3C2364] flex items-center justify-center shrink-0"
                             style={{ backgroundColor: benefit.color }}
                           >
-                            <Icon className="w-6 h-6 text-[#004D3F]" />
+                            <Icon className="w-6 h-6 text-[#3C2364]" />
                           </div>
                           <div>
-                            <p className="font-black text-[#004D3F] uppercase">{benefit.title}</p>
-                            <p className="text-[#004D3F]/70 text-sm">{benefit.description}</p>
+                            <p className="font-black text-[#3C2364] uppercase">{benefit.title}</p>
+                            <p className="text-[#3C2364]/70 text-sm">{benefit.description}</p>
                           </div>
                         </div>
                       );
@@ -330,7 +330,7 @@ export default function ForBusinessPage() {
                   </div>
                 </div>
                 <div className="absolute -bottom-10 -right-10 opacity-10">
-                  <Building2 className="w-64 h-64 text-[#004D3F]" />
+                  <Building2 className="w-64 h-64 text-[#3C2364]" />
                 </div>
               </div>
             </motion.div>
@@ -346,10 +346,10 @@ export default function ForBusinessPage() {
             {stats.map((stat, idx) => {
               const Icon = stat.icon;
               return (
-                <motion.div key={idx} variants={fadeUp} className="bg-white rounded-[30px] border-2 border-[#004D3F] p-8 text-center shadow-[6px_6px_0px_#004D3F]">
-                  <Icon className="w-8 h-8 text-[#004D3F] mx-auto mb-4" />
-                  <p className="text-4xl md:text-5xl font-black text-[#004D3F] mb-2">{stat.value}</p>
-                  <p className="text-[#004D3F]/60 font-bold uppercase tracking-widest text-sm">{stat.label}</p>
+                <motion.div key={idx} variants={fadeUp} className="bg-white rounded-[30px] border-2 border-[#3C2364] p-8 text-center shadow-[6px_6px_0px_#3C2364]">
+                  <Icon className="w-8 h-8 text-[#3C2364] mx-auto mb-4" />
+                  <p className="text-4xl md:text-5xl font-black text-[#3C2364] mb-2">{stat.value}</p>
+                  <p className="text-[#3C2364]/60 font-bold uppercase tracking-widest text-sm">{stat.label}</p>
                 </motion.div>
               );
             })}
@@ -357,14 +357,14 @@ export default function ForBusinessPage() {
 
           <div className="mb-24">
             <div className="text-center mb-12">
-              <span className="font-hand text-2xl text-[#004D3F] mb-4 block">venue types we support</span>
-              <h2 className="text-3xl md:text-5xl font-black text-[#004D3F] uppercase">Perfect For All Family Venues</h2>
+              <span className="font-hand text-2xl text-[#3C2364] mb-4 block">venue types we support</span>
+              <h2 className="text-3xl md:text-5xl font-black text-[#3C2364] uppercase">Perfect For All Family Venues</h2>
             </div>
             <div className="flex flex-wrap justify-center gap-3">
               {venueTypes.map((type, idx) => (
                 <span 
                   key={idx}
-                  className="bg-white border-2 border-[#004D3F] rounded-full px-6 py-3 font-bold text-[#004D3F] shadow-[3px_3px_0px_#004D3F]"
+                  className="bg-white border-2 border-[#3C2364] rounded-full px-6 py-3 font-bold text-[#3C2364] shadow-[3px_3px_0px_#3C2364]"
                 >
                   {type}
                 </span>
@@ -372,7 +372,7 @@ export default function ForBusinessPage() {
             </div>
           </div>
 
-          <div className="bg-[#004D3F] rounded-[30px] md:rounded-[50px] p-6 md:p-10 lg:p-20 text-white mb-24">
+          <div className="bg-[#3C2364] rounded-[30px] md:rounded-[50px] p-6 md:p-10 lg:p-20 text-white mb-24">
             <h2 className="text-4xl md:text-6xl font-black uppercase text-center mb-16">Features for Partners</h2>
             <div className="grid md:grid-cols-3 gap-12">
               {[
@@ -385,7 +385,7 @@ export default function ForBusinessPage() {
               ].map((feature, idx) => (
                 <div key={idx} className="flex flex-col items-center text-center">
                   <div className="w-20 h-20 rounded-3xl bg-white/10 border border-white/20 flex items-center justify-center mb-6">
-                    <feature.icon className="w-10 h-10 text-[#82E9A6]" />
+                    <feature.icon className="w-10 h-10 text-[#C8B9E6]" />
                   </div>
                   <h4 className="text-2xl font-bold mb-4 uppercase tracking-tight">{feature.title}</h4>
                   <p className="text-white/70 leading-relaxed">{feature.text}</p>
@@ -396,9 +396,9 @@ export default function ForBusinessPage() {
 
           <div id="pricing" className="mb-24">
             <div className="text-center mb-12">
-              <span className="font-hand text-2xl text-[#004D3F] mb-4 block">simple pricing</span>
-              <h2 className="text-3xl md:text-5xl font-black text-[#004D3F] uppercase mb-4">Choose Your Plan</h2>
-              <p className="text-[#004D3F]/70 text-lg max-w-2xl mx-auto">
+              <span className="font-hand text-2xl text-[#3C2364] mb-4 block">simple pricing</span>
+              <h2 className="text-3xl md:text-5xl font-black text-[#3C2364] uppercase mb-4">Choose Your Plan</h2>
+              <p className="text-[#3C2364]/70 text-lg max-w-2xl mx-auto">
                 Start free and upgrade as you grow. No hidden fees, cancel anytime.
               </p>
             </div>
@@ -413,32 +413,32 @@ export default function ForBusinessPage() {
                 <motion.div
                   key={idx}
                   variants={plan.popular ? scaleBounce : fadeUp}
-                  className={`relative bg-white rounded-[30px] border-2 border-[#004D3F] p-8 ${
+                  className={`relative bg-white rounded-[30px] border-2 border-[#3C2364] p-8 ${
                     plan.popular
-                      ? 'shadow-[8px_8px_0px_#82E9A6] md:scale-105'
-                      : 'shadow-[6px_6px_0px_#004D3F]'
+                      ? 'shadow-[8px_8px_0px_#C8B9E6] md:scale-105'
+                      : 'shadow-[6px_6px_0px_#3C2364]'
                   }`}
                 >
                   {plan.popular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#82E9A6] border-2 border-[#004D3F] px-4 py-1 rounded-full">
-                      <span className="text-[#004D3F] font-black text-sm uppercase">Most Popular</span>
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#C8B9E6] border-2 border-[#3C2364] px-4 py-1 rounded-full">
+                      <span className="text-[#3C2364] font-black text-sm uppercase">Most Popular</span>
                     </div>
                   )}
-                  <h3 className="text-2xl font-black text-[#004D3F] uppercase mb-2">{plan.name}</h3>
+                  <h3 className="text-2xl font-black text-[#3C2364] uppercase mb-2">{plan.name}</h3>
                   <div className="mb-4">
-                    <span className="text-4xl font-black text-[#004D3F]">{plan.price}</span>
-                    {plan.period && <span className="text-[#004D3F]/60 font-medium">{plan.period}</span>}
+                    <span className="text-4xl font-black text-[#3C2364]">{plan.price}</span>
+                    {plan.period && <span className="text-[#3C2364]/60 font-medium">{plan.period}</span>}
                   </div>
-                  <p className="text-[#004D3F]/70 mb-6">{plan.description}</p>
+                  <p className="text-[#3C2364]/70 mb-6">{plan.description}</p>
                   <ul className="space-y-3 mb-8">
                     {plan.features.map((feature, fIdx) => (
-                      <li key={fIdx} className="flex items-start gap-2 text-[#004D3F]">
-                        <Check className="w-5 h-5 text-[#82E9A6] shrink-0 mt-0.5" />
+                      <li key={fIdx} className="flex items-start gap-2 text-[#3C2364]">
+                        <Check className="w-5 h-5 text-[#C8B9E6] shrink-0 mt-0.5" />
                         <span className="text-sm">{feature}</span>
                       </li>
                     ))}
                     {plan.notIncluded.map((feature, fIdx) => (
-                      <li key={fIdx} className="flex items-start gap-2 text-[#004D3F]/40">
+                      <li key={fIdx} className="flex items-start gap-2 text-[#3C2364]/40">
                         <X className="w-5 h-5 shrink-0 mt-0.5" />
                         <span className="text-sm">{feature}</span>
                       </li>
@@ -448,8 +448,8 @@ export default function ForBusinessPage() {
                     href="#contact"
                     className={`block w-full text-center py-4 rounded-full font-black uppercase transition-all ${
                       plan.popular
-                        ? 'bg-[#004D3F] text-white hover:bg-[#004D3F]/90'
-                        : 'bg-[#F7F5F2] text-[#004D3F] border-2 border-[#004D3F] hover:bg-[#004D3F] hover:text-white'
+                        ? 'bg-[#3C2364] text-white hover:bg-[#3C2364]/90'
+                        : 'bg-[#F4F1F8] text-[#3C2364] border-2 border-[#3C2364] hover:bg-[#3C2364] hover:text-white'
                     }`}
                   >
                     {plan.cta}
@@ -461,35 +461,35 @@ export default function ForBusinessPage() {
 
           <div className="mb-24">
             <div className="text-center mb-12">
-              <span className="font-hand text-2xl text-[#004D3F] mb-4 block">success stories</span>
-              <h2 className="text-3xl md:text-5xl font-black text-[#004D3F] uppercase">What Partners Say</h2>
+              <span className="font-hand text-2xl text-[#3C2364] mb-4 block">success stories</span>
+              <h2 className="text-3xl md:text-5xl font-black text-[#3C2364] uppercase">What Partners Say</h2>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
               {testimonials.map((testimonial, idx) => (
-                <div key={idx} className="bg-[#FDCFDF] rounded-[30px] p-8 border-2 border-[#004D3F] shadow-[6px_6px_0px_#004D3F]">
+                <div key={idx} className="bg-[#F5C8BE] rounded-[30px] p-8 border-2 border-[#3C2364] shadow-[6px_6px_0px_#3C2364]">
                   <div className="flex gap-1 mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-[#FFF98F] text-[#004D3F]" />
+                      <Star key={i} className="w-5 h-5 fill-[#F5F096] text-[#3C2364]" />
                     ))}
                   </div>
-                  <p className="text-[#004D3F] font-medium text-lg mb-6 italic">
+                  <p className="text-[#3C2364] font-medium text-lg mb-6 italic">
                     &quot;{testimonial.text}&quot;
                   </p>
                   <div>
-                    <p className="text-[#004D3F] font-black">{testimonial.name}</p>
-                    <p className="text-[#004D3F]/70 text-sm">{testimonial.role}</p>
+                    <p className="text-[#3C2364] font-black">{testimonial.name}</p>
+                    <p className="text-[#3C2364]/70 text-sm">{testimonial.role}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div id="contact" className="bg-white rounded-[30px] md:rounded-[50px] border-2 border-[#004D3F] p-5 md:p-8 lg:p-16 shadow-[10px_10px_0px_#004D3F]">
+          <div id="contact" className="bg-white rounded-[30px] md:rounded-[50px] border-2 border-[#3C2364] p-5 md:p-8 lg:p-16 shadow-[10px_10px_0px_#3C2364]">
             <div className="max-w-3xl mx-auto">
               <div className="text-center mb-12">
-                <span className="font-hand text-2xl text-[#004D3F] mb-4 block">get started</span>
-                <h2 className="text-3xl md:text-5xl font-black text-[#004D3F] uppercase mb-4">Contact Partnership Team</h2>
-                <p className="text-[#004D3F]/70">
+                <span className="font-hand text-2xl text-[#3C2364] mb-4 block">get started</span>
+                <h2 className="text-3xl md:text-5xl font-black text-[#3C2364] uppercase mb-4">Contact Partnership Team</h2>
+                <p className="text-[#3C2364]/70">
                   Fill out the form below and we&apos;ll get back to you within 24 hours.
                 </p>
               </div>
@@ -504,17 +504,17 @@ export default function ForBusinessPage() {
               )}
 
               {submitStatus === 'success' ? (
-                <div className="bg-[#82E9A6] rounded-[30px] p-12 text-center border-2 border-[#004D3F]">
-                  <CheckCircle2 className="w-16 h-16 text-[#004D3F] mx-auto mb-6" />
-                  <h3 className="text-2xl font-black text-[#004D3F] uppercase mb-4">Request Sent!</h3>
-                  <p className="text-[#004D3F]/80">
+                <div className="bg-[#C8B9E6] rounded-[30px] p-12 text-center border-2 border-[#3C2364]">
+                  <CheckCircle2 className="w-16 h-16 text-[#3C2364] mx-auto mb-6" />
+                  <h3 className="text-2xl font-black text-[#3C2364] uppercase mb-4">Request Sent!</h3>
+                  <p className="text-[#3C2364]/80">
                     Thank you for your interest! Our partnership team will contact you within 24 hours.
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label htmlFor="businessName" className="text-sm font-black text-[#004D3F] uppercase ml-4">
+                    <label htmlFor="businessName" className="text-sm font-black text-[#3C2364] uppercase ml-4">
                       Business Name <span className="text-red-500">*</span>
                     </label>
                     <input 
@@ -524,12 +524,12 @@ export default function ForBusinessPage() {
                       value={formState.businessName}
                       onChange={handleInputChange}
                       required
-                      className="w-full bg-[#F7F5F2] border-2 border-[#004D3F] rounded-full px-6 py-4 focus:outline-none focus:ring-2 focus:ring-[#82E9A6] transition-all" 
+                      className="w-full bg-[#F4F1F8] border-2 border-[#3C2364] rounded-full px-6 py-4 focus:outline-none focus:ring-2 focus:ring-[#C8B9E6] transition-all" 
                       placeholder="e.g. Sunny Day Play Center" 
                     />
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="contactPerson" className="text-sm font-black text-[#004D3F] uppercase ml-4">
+                    <label htmlFor="contactPerson" className="text-sm font-black text-[#3C2364] uppercase ml-4">
                       Contact Person <span className="text-red-500">*</span>
                     </label>
                     <input 
@@ -539,12 +539,12 @@ export default function ForBusinessPage() {
                       value={formState.contactPerson}
                       onChange={handleInputChange}
                       required
-                      className="w-full bg-[#F7F5F2] border-2 border-[#004D3F] rounded-full px-6 py-4 focus:outline-none focus:ring-2 focus:ring-[#82E9A6] transition-all" 
+                      className="w-full bg-[#F4F1F8] border-2 border-[#3C2364] rounded-full px-6 py-4 focus:outline-none focus:ring-2 focus:ring-[#C8B9E6] transition-all" 
                       placeholder="e.g. John Smith" 
                     />
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-black text-[#004D3F] uppercase ml-4">
+                    <label htmlFor="email" className="text-sm font-black text-[#3C2364] uppercase ml-4">
                       Email Address <span className="text-red-500">*</span>
                     </label>
                     <input 
@@ -554,12 +554,12 @@ export default function ForBusinessPage() {
                       value={formState.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full bg-[#F7F5F2] border-2 border-[#004D3F] rounded-full px-6 py-4 focus:outline-none focus:ring-2 focus:ring-[#82E9A6] transition-all" 
+                      className="w-full bg-[#F4F1F8] border-2 border-[#3C2364] rounded-full px-6 py-4 focus:outline-none focus:ring-2 focus:ring-[#C8B9E6] transition-all" 
                       placeholder="e.g. contact@business.com" 
                     />
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="phone" className="text-sm font-black text-[#004D3F] uppercase ml-4">
+                    <label htmlFor="phone" className="text-sm font-black text-[#3C2364] uppercase ml-4">
                       Phone Number
                     </label>
                     <input 
@@ -568,12 +568,12 @@ export default function ForBusinessPage() {
                       name="phone"
                       value={formState.phone}
                       onChange={handleInputChange}
-                      className="w-full bg-[#F7F5F2] border-2 border-[#004D3F] rounded-full px-6 py-4 focus:outline-none focus:ring-2 focus:ring-[#82E9A6] transition-all" 
+                      className="w-full bg-[#F4F1F8] border-2 border-[#3C2364] rounded-full px-6 py-4 focus:outline-none focus:ring-2 focus:ring-[#C8B9E6] transition-all" 
                       placeholder="e.g. +971 50 123 4567" 
                     />
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="businessType" className="text-sm font-black text-[#004D3F] uppercase ml-4">
+                    <label htmlFor="businessType" className="text-sm font-black text-[#3C2364] uppercase ml-4">
                       Business Type <span className="text-red-500">*</span>
                     </label>
                     <select 
@@ -582,7 +582,7 @@ export default function ForBusinessPage() {
                       value={formState.businessType}
                       onChange={handleInputChange}
                       required
-                      className="w-full bg-[#F7F5F2] border-2 border-[#004D3F] rounded-full px-6 py-4 focus:outline-none focus:ring-2 focus:ring-[#82E9A6] appearance-none transition-all"
+                      className="w-full bg-[#F4F1F8] border-2 border-[#3C2364] rounded-full px-6 py-4 focus:outline-none focus:ring-2 focus:ring-[#C8B9E6] appearance-none transition-all"
                     >
                       <option value="">Select Type</option>
                       <option value="play-center">Indoor Play Center</option>
@@ -596,7 +596,7 @@ export default function ForBusinessPage() {
                     </select>
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="emirate" className="text-sm font-black text-[#004D3F] uppercase ml-4">
+                    <label htmlFor="emirate" className="text-sm font-black text-[#3C2364] uppercase ml-4">
                       Emirate <span className="text-red-500">*</span>
                     </label>
                     <select 
@@ -605,7 +605,7 @@ export default function ForBusinessPage() {
                       value={formState.emirate}
                       onChange={handleInputChange}
                       required
-                      className="w-full bg-[#F7F5F2] border-2 border-[#004D3F] rounded-full px-6 py-4 focus:outline-none focus:ring-2 focus:ring-[#82E9A6] appearance-none transition-all"
+                      className="w-full bg-[#F4F1F8] border-2 border-[#3C2364] rounded-full px-6 py-4 focus:outline-none focus:ring-2 focus:ring-[#C8B9E6] appearance-none transition-all"
                     >
                       <option value="">Select Emirate</option>
                       <option value="dubai">Dubai</option>
@@ -618,7 +618,7 @@ export default function ForBusinessPage() {
                     </select>
                   </div>
 <div className="space-y-2 md:col-span-2">
-                      <label htmlFor="message" className="text-sm font-black text-[#004D3F] uppercase ml-4">
+                      <label htmlFor="message" className="text-sm font-black text-[#3C2364] uppercase ml-4">
                         Tell Us About Your Business
                       </label>
                       <textarea 
@@ -626,18 +626,18 @@ export default function ForBusinessPage() {
                         name="message"
                         value={formState.message}
                         onChange={handleInputChange}
-                        className="w-full bg-[#F7F5F2] border-2 border-[#004D3F] rounded-[30px] px-6 py-4 focus:outline-none focus:ring-2 focus:ring-[#82E9A6] min-h-[150px] transition-all" 
+                        className="w-full bg-[#F4F1F8] border-2 border-[#3C2364] rounded-[30px] px-6 py-4 focus:outline-none focus:ring-2 focus:ring-[#C8B9E6] min-h-[150px] transition-all" 
                         placeholder="Share details about your venue, target age groups, special features, etc..."
                       />
                     </div>
                     
                     <div className="space-y-4 md:col-span-2">
-                      <label className="text-sm font-black text-[#004D3F] uppercase ml-4">
+                      <label className="text-sm font-black text-[#3C2364] uppercase ml-4">
                         Upload Venue Photos (Up to 10)
                       </label>
                       <div 
                         onClick={() => fileInputRef.current?.click()}
-                        className="border-2 border-dashed border-[#004D3F] rounded-[30px] p-8 text-center cursor-pointer hover:bg-[#F7F5F2] transition-colors"
+                        className="border-2 border-dashed border-[#3C2364] rounded-[30px] p-8 text-center cursor-pointer hover:bg-[#F4F1F8] transition-colors"
                       >
                         <input
                           type="file"
@@ -649,14 +649,14 @@ export default function ForBusinessPage() {
                         />
                         {isUploading ? (
                           <div className="flex flex-col items-center gap-3">
-                            <Loader2 className="w-10 h-10 text-[#004D3F] animate-spin" />
-                            <p className="text-[#004D3F] font-medium">Uploading photos...</p>
+                            <Loader2 className="w-10 h-10 text-[#3C2364] animate-spin" />
+                            <p className="text-[#3C2364] font-medium">Uploading photos...</p>
                           </div>
                         ) : (
                           <div className="flex flex-col items-center gap-3">
-                            <Upload className="w-10 h-10 text-[#004D3F]/60" />
-                            <p className="text-[#004D3F] font-medium">Click or drag photos here</p>
-                            <p className="text-[#004D3F]/60 text-sm">JPG, PNG, WEBP up to 10MB each</p>
+                            <Upload className="w-10 h-10 text-[#3C2364]/60" />
+                            <p className="text-[#3C2364] font-medium">Click or drag photos here</p>
+                            <p className="text-[#3C2364]/60 text-sm">JPG, PNG, WEBP up to 10MB each</p>
                           </div>
                         )}
                       </div>
@@ -665,7 +665,7 @@ export default function ForBusinessPage() {
                         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4">
                           {uploadedPhotos.map((photo, idx) => (
                             <div key={idx} className="relative group">
-                              <div className="aspect-square rounded-2xl overflow-hidden border-2 border-[#004D3F]">
+                              <div className="aspect-square rounded-2xl overflow-hidden border-2 border-[#3C2364]">
                                 <img 
                                   src={photo.url} 
                                   alt={photo.name}
@@ -687,7 +687,7 @@ export default function ForBusinessPage() {
                   <button 
                     type="submit"
                     disabled={isSubmitting}
-                    className="md:col-span-2 bg-[#82E9A6] text-[#004D3F] font-black text-xl uppercase py-5 rounded-full border-2 border-[#004D3F] shadow-[4px_4px_0px_#004D3F] hover:translate-y-[-2px] transition-all mt-4 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                    className="md:col-span-2 bg-[#C8B9E6] text-[#3C2364] font-black text-xl uppercase py-5 rounded-full border-2 border-[#3C2364] shadow-[4px_4px_0px_#3C2364] hover:translate-y-[-2px] transition-all mt-4 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3"
                   >
                     {isSubmitting ? (
                       <>

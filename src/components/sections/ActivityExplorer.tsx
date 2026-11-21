@@ -95,14 +95,14 @@ searchParam: "RAK"
 
 export default function ActivityExplorer() {
   return (
-    <section className="relative w-full py-24 md:py-32 bg-[#FFF98F] overflow-hidden">
+    <section className="relative w-full py-24 md:py-32 bg-[#F5F096] overflow-hidden">
       <div className="container max-w-[1440px] mx-auto px-6">
         <div className="text-center mb-16">
-          <span className="font-hand text-2xl md:text-3xl text-[#004D3F] mb-4 block">discover what&apos;s out there</span>
-          <h2 className="text-[#004D3F] font-black text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight mb-6">
+          <span className="font-hand text-2xl md:text-3xl text-[#3C2364] mb-4 block">discover what&apos;s out there</span>
+          <h2 className="text-[#3C2364] font-black text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight mb-6">
             Activity Explorer
           </h2>
-          <p className="max-w-2xl mx-auto text-[#004D3F]/80 text-lg md:text-xl">
+          <p className="max-w-2xl mx-auto text-[#3C2364]/80 text-lg md:text-xl">
             The UAE is a paradise for families with kids. Here&apos;s your comprehensive guide to every type of activity you can find - from free beaches to world-class theme parks.
           </p>
         </div>
@@ -113,49 +113,49 @@ export default function ActivityExplorer() {
             return (
               <div 
                 key={idx}
-                className="bg-white rounded-[30px] border-2 border-[#004D3F] shadow-[6px_6px_0px_#004D3F] p-6 md:p-8 hover:shadow-[8px_8px_0px_#004D3F] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+                className="bg-white rounded-[30px] border-2 border-[#3C2364] shadow-[6px_6px_0px_#3C2364] p-6 md:p-8 hover:shadow-[8px_8px_0px_#3C2364] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
               >
                 <div className="flex flex-col lg:flex-row gap-6">
                   <div className="lg:w-16 shrink-0">
-                    <div className="w-14 h-14 rounded-full bg-[#82E9A6] border-2 border-[#004D3F] flex items-center justify-center shadow-[3px_3px_0px_#004D3F]">
-                      <Icon className="w-7 h-7 text-[#004D3F]" />
+                    <div className="w-14 h-14 rounded-full bg-[#C8B9E6] border-2 border-[#3C2364] flex items-center justify-center shadow-[3px_3px_0px_#3C2364]">
+                      <Icon className="w-7 h-7 text-[#3C2364]" />
                     </div>
                   </div>
                   
                   <div className="flex-1">
-                    <h3 className="text-xl md:text-2xl font-black text-[#004D3F] uppercase mb-3">
+                    <h3 className="text-xl md:text-2xl font-black text-[#3C2364] uppercase mb-3">
                       {category.title}
                     </h3>
-                    <p className="text-[#004D3F]/80 leading-relaxed mb-6">
+                    <p className="text-[#3C2364]/80 leading-relaxed mb-6">
                       {category.description}
                     </p>
                     
                     <div className="grid md:grid-cols-2 gap-4 mb-4">
-                      <div className="bg-[#B3F5FF]/50 rounded-[16px] p-4 border border-[#004D3F]/20">
+                      <div className="bg-[#AAE6FA]/50 rounded-[16px] p-4 border border-[#3C2364]/20">
                         <div className="flex items-center gap-2 mb-2">
-                          <MapPin className="w-4 h-4 text-[#004D3F]" />
-                          <span className="text-sm font-bold text-[#004D3F] uppercase">Popular Locations</span>
+                          <MapPin className="w-4 h-4 text-[#3C2364]" />
+                          <span className="text-sm font-bold text-[#3C2364] uppercase">Popular Locations</span>
                         </div>
-                        <p className="text-sm text-[#004D3F]/70">{category.locations.join(" • ")}</p>
+                        <p className="text-sm text-[#3C2364]/70">{category.locations.join(" • ")}</p>
                       </div>
                       
-                      <div className="bg-[#FDCFDF]/50 rounded-[16px] p-4 border border-[#004D3F]/20">
+                      <div className="bg-[#F5C8BE]/50 rounded-[16px] p-4 border border-[#3C2364]/20">
                         <div className="flex items-center gap-2 mb-2">
-                          <Star className="w-4 h-4 text-[#004D3F]" />
-                          <span className="text-sm font-bold text-[#004D3F] uppercase">Pro Tip</span>
+                          <Star className="w-4 h-4 text-[#3C2364]" />
+                          <span className="text-sm font-bold text-[#3C2364] uppercase">Pro Tip</span>
                         </div>
-                        <p className="text-sm text-[#004D3F]/70">{category.tips}</p>
+                        <p className="text-sm text-[#3C2364]/70">{category.tips}</p>
                       </div>
                     </div>
 
                     <div className="flex flex-wrap gap-3">
-                      <div className="flex items-center gap-2 bg-[#FFF98F] rounded-full px-4 py-2 border border-[#004D3F]/30">
-                        <Users className="w-4 h-4 text-[#004D3F]" />
-                        <span className="text-sm font-medium text-[#004D3F]">{category.ageRange}</span>
+                      <div className="flex items-center gap-2 bg-[#F5F096] rounded-full px-4 py-2 border border-[#3C2364]/30">
+                        <Users className="w-4 h-4 text-[#3C2364]" />
+                        <span className="text-sm font-medium text-[#3C2364]">{category.ageRange}</span>
                       </div>
-                      <div className="flex items-center gap-2 bg-[#82E9A6] rounded-full px-4 py-2 border border-[#004D3F]/30">
-                        <Clock className="w-4 h-4 text-[#004D3F]" />
-                        <span className="text-sm font-medium text-[#004D3F]">{category.bestTime}</span>
+                      <div className="flex items-center gap-2 bg-[#C8B9E6] rounded-full px-4 py-2 border border-[#3C2364]/30">
+                        <Clock className="w-4 h-4 text-[#3C2364]" />
+                        <span className="text-sm font-medium text-[#3C2364]">{category.bestTime}</span>
                       </div>
                     </div>
                   </div>
@@ -165,7 +165,7 @@ export default function ActivityExplorer() {
           })}
         </div>
 
-        <div className="bg-[#004D3F] rounded-[40px] border-2 border-[#004D3F] p-8 md:p-12">
+        <div className="bg-[#3C2364] rounded-[40px] border-2 border-[#3C2364] p-8 md:p-12">
           <div className="text-center mb-10">
             <h3 className="text-2xl md:text-3xl font-black text-white uppercase mb-2">
               Explore by Emirate
@@ -187,7 +187,7 @@ export default function ActivityExplorer() {
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#004D3F]/80 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#3C2364]/80 to-transparent" />
                     <div className="absolute bottom-3 left-4">
                       <h4 className="font-black text-white text-xl">{dest.name}</h4>
                       <p className="text-white/80 text-sm">{dest.activities} activities</p>
@@ -198,7 +198,7 @@ export default function ActivityExplorer() {
                       {dest.highlights.map((highlight, hIdx) => (
                         <span 
                           key={hIdx}
-                          className="text-xs bg-[#FFF98F] text-[#004D3F] px-2 py-1 rounded-full border border-[#004D3F]/20 font-medium"
+                          className="text-xs bg-[#F5F096] text-[#3C2364] px-2 py-1 rounded-full border border-[#3C2364]/20 font-medium"
                         >
                           {highlight}
                         </span>
@@ -210,13 +210,13 @@ export default function ActivityExplorer() {
             </div>
         </div>
 
-        <div className="mt-16 bg-white rounded-[30px] border-2 border-[#004D3F] shadow-[6px_6px_0px_#004D3F] p-8 md:p-10">
+        <div className="mt-16 bg-white rounded-[30px] border-2 border-[#3C2364] shadow-[6px_6px_0px_#3C2364] p-8 md:p-10">
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="flex-1">
-              <h3 className="text-2xl md:text-3xl font-black text-[#004D3F] uppercase mb-4">
+              <h3 className="text-2xl md:text-3xl font-black text-[#3C2364] uppercase mb-4">
                 Essential UAE Parenting Resources
               </h3>
-              <p className="text-[#004D3F]/70 mb-6">
+              <p className="text-[#3C2364]/70 mb-6">
                 Beyond activities, here are resources every UAE parent should know about:
               </p>
               <ul className="space-y-3">
@@ -227,19 +227,19 @@ export default function ActivityExplorer() {
                   "Health insurance coverage for children is mandatory",
                   "Public transport is free for children under 5"
                 ].map((resource, idx) => (
-                  <li key={idx} className="flex items-start gap-3 text-[#004D3F]/80">
-                    <div className="w-2 h-2 rounded-full bg-[#82E9A6] border border-[#004D3F] mt-2 shrink-0" />
+                  <li key={idx} className="flex items-start gap-3 text-[#3C2364]/80">
+                    <div className="w-2 h-2 rounded-full bg-[#C8B9E6] border border-[#3C2364] mt-2 shrink-0" />
                     <span>{resource}</span>
                   </li>
                 ))}
               </ul>
             </div>
             <div className="shrink-0">
-              <div className="w-40 h-40 rounded-full bg-[#82E9A6] border-2 border-[#004D3F] flex items-center justify-center shadow-[4px_4px_0px_#004D3F]">
+              <div className="w-40 h-40 rounded-full bg-[#C8B9E6] border-2 border-[#3C2364] flex items-center justify-center shadow-[4px_4px_0px_#3C2364]">
                 <div className="text-center">
-                  <p className="text-4xl font-black text-[#004D3F]">5K+</p>
-                  <p className="text-sm font-medium text-[#004D3F]">Activities</p>
-                  <p className="text-xs text-[#004D3F]/70">across UAE</p>
+                  <p className="text-4xl font-black text-[#3C2364]">5K+</p>
+                  <p className="text-sm font-medium text-[#3C2364]">Activities</p>
+                  <p className="text-xs text-[#3C2364]/70">across UAE</p>
                 </div>
               </div>
             </div>

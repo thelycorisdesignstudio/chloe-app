@@ -38,7 +38,7 @@ export default function CursorFollower() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-[#004D3F] pointer-events-none z-[9998] mix-blend-difference"
+      className="fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-[#3C2364] pointer-events-none z-[9998] mix-blend-difference"
       style={{
         x: cursorX,
         y: cursorY,

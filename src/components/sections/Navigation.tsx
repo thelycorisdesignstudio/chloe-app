@@ -81,28 +81,28 @@ const Navigation = () => {
       >
         
         <div className="hidden lg:flex items-center gap-2">
-          <motion.a href="/explore" className="bg-[#FFF98F] border-2 border-teal rounded-full px-4 py-2 shadow-[3px_3px_0px_#004D3F] focus:outline-none focus:ring-2 focus:ring-[#004D3F] focus:ring-offset-2" {...btnSpring}>
+          <motion.a href="/explore" className="bg-[#F5F096] border-2 border-teal rounded-full px-4 py-2 shadow-[3px_3px_0px_#3C2364] focus:outline-none focus:ring-2 focus:ring-[#3C2364] focus:ring-offset-2" {...btnSpring}>
             <span className="text-teal font-display font-extrabold text-[12px] tracking-widest leading-none">EXPLORE</span>
           </motion.a>
-          <motion.a href="/forbusiness" className="bg-bubblegum border-2 border-teal rounded-full px-4 py-2 shadow-[3px_3px_0px_#004D3F] focus:outline-none focus:ring-2 focus:ring-[#004D3F] focus:ring-offset-2" {...btnSpring}>
+          <motion.a href="/forbusiness" className="bg-bubblegum border-2 border-teal rounded-full px-4 py-2 shadow-[3px_3px_0px_#3C2364] focus:outline-none focus:ring-2 focus:ring-[#3C2364] focus:ring-offset-2" {...btnSpring}>
             <span className="text-teal font-display font-extrabold text-[12px] tracking-widest leading-none">ADD VENUE</span>
           </motion.a>
         </div>
 
         <div className="hidden md:flex lg:hidden items-center gap-1.5">
-          <motion.a href="/explore" className="bg-[#FFF98F] border-2 border-teal rounded-full px-3 py-1.5 shadow-[2px_2px_0px_#004D3F] focus:outline-none focus:ring-2 focus:ring-[#004D3F] focus:ring-offset-2" {...btnSpring}>
+          <motion.a href="/explore" className="bg-[#F5F096] border-2 border-teal rounded-full px-3 py-1.5 shadow-[2px_2px_0px_#3C2364] focus:outline-none focus:ring-2 focus:ring-[#3C2364] focus:ring-offset-2" {...btnSpring}>
             <span className="text-teal font-display font-extrabold text-[10px] tracking-wider leading-none">EXPLORE</span>
           </motion.a>
-          <motion.a href="/forbusiness" className="bg-bubblegum border-2 border-teal rounded-full px-3 py-1.5 shadow-[2px_2px_0px_#004D3F] focus:outline-none focus:ring-2 focus:ring-[#004D3F] focus:ring-offset-2" {...btnSpring}>
+          <motion.a href="/forbusiness" className="bg-bubblegum border-2 border-teal rounded-full px-3 py-1.5 shadow-[2px_2px_0px_#3C2364] focus:outline-none focus:ring-2 focus:ring-[#3C2364] focus:ring-offset-2" {...btnSpring}>
             <span className="text-teal font-display font-extrabold text-[10px] tracking-wider leading-none">ADD VENUE</span>
           </motion.a>
         </div>
 
         <div className="flex md:hidden items-center gap-1.5">
-          <motion.a href="/explore" className="bg-[#FFF98F] border-2 border-teal rounded-full px-3 py-2 shadow-[2px_2px_0px_#004D3F] focus:outline-none focus:ring-2 focus:ring-[#004D3F] focus:ring-offset-2" {...btnSpring}>
+          <motion.a href="/explore" className="bg-[#F5F096] border-2 border-teal rounded-full px-3 py-2 shadow-[2px_2px_0px_#3C2364] focus:outline-none focus:ring-2 focus:ring-[#3C2364] focus:ring-offset-2" {...btnSpring}>
             <span className="text-teal font-display font-extrabold text-[11px] tracking-wider leading-none">EXPLORE</span>
           </motion.a>
-          <motion.a href="/forbusiness" className="bg-bubblegum border-2 border-teal rounded-full px-3 py-2 shadow-[2px_2px_0px_#004D3F] focus:outline-none focus:ring-2 focus:ring-[#004D3F] focus:ring-offset-2" {...btnSpring}>
+          <motion.a href="/forbusiness" className="bg-bubblegum border-2 border-teal rounded-full px-3 py-2 shadow-[2px_2px_0px_#3C2364] focus:outline-none focus:ring-2 focus:ring-[#3C2364] focus:ring-offset-2" {...btnSpring}>
             <span className="text-teal font-display font-extrabold text-[11px] tracking-wider leading-none">VENUES</span>
           </motion.a>
         </div>
@@ -111,7 +111,7 @@ const Navigation = () => {
           <motion.a
             href="/"
             aria-label="Chloe - Home"
-            className="bg-off-white border-2 border-teal rounded-full w-[56px] h-[56px] md:w-[80px] md:h-[80px] shadow-[2px_2px_0px_#004D3F] md:shadow-[3px_3px_0px_#004D3F] flex items-center justify-center overflow-hidden focus:outline-none focus:ring-2 focus:ring-[#004D3F] focus:ring-offset-2"
+            className="bg-off-white border-2 border-teal rounded-full w-[56px] h-[56px] md:w-[80px] md:h-[80px] shadow-[2px_2px_0px_#3C2364] md:shadow-[3px_3px_0px_#3C2364] flex items-center justify-center overflow-hidden focus:outline-none focus:ring-2 focus:ring-[#3C2364] focus:ring-offset-2"
             whileHover={{ scale: 1.1, y: -3 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 15 }}
@@ -139,28 +139,28 @@ const Navigation = () => {
         </div>
 
         <div className="hidden lg:flex items-center gap-2">
-          <motion.a href="/#locations" className="bg-sky border-2 border-teal rounded-full px-4 py-2 shadow-[3px_3px_0px_#004D3F] focus:outline-none focus:ring-2 focus:ring-[#004D3F] focus:ring-offset-2" {...btnSpring}>
+          <motion.a href="/#locations" className="bg-sky border-2 border-teal rounded-full px-4 py-2 shadow-[3px_3px_0px_#3C2364] focus:outline-none focus:ring-2 focus:ring-[#3C2364] focus:ring-offset-2" {...btnSpring}>
             <span className="text-teal font-display font-extrabold text-[12px] tracking-widest leading-none">LOCATIONS</span>
           </motion.a>
-          <motion.a href="/login" className="bg-off-white border-2 border-teal rounded-full px-4 py-2 shadow-[3px_3px_0px_#004D3F] focus:outline-none focus:ring-2 focus:ring-[#004D3F] focus:ring-offset-2" {...btnSpring}>
+          <motion.a href="/login" className="bg-off-white border-2 border-teal rounded-full px-4 py-2 shadow-[3px_3px_0px_#3C2364] focus:outline-none focus:ring-2 focus:ring-[#3C2364] focus:ring-offset-2" {...btnSpring}>
             <span className="text-teal font-display font-extrabold text-[12px] tracking-widest leading-none">LOGIN</span>
           </motion.a>
         </div>
 
         <div className="hidden md:flex lg:hidden items-center gap-1.5">
-          <motion.a href="/#locations" className="bg-sky border-2 border-teal rounded-full px-3 py-1.5 shadow-[2px_2px_0px_#004D3F] focus:outline-none focus:ring-2 focus:ring-[#004D3F] focus:ring-offset-2" {...btnSpring}>
+          <motion.a href="/#locations" className="bg-sky border-2 border-teal rounded-full px-3 py-1.5 shadow-[2px_2px_0px_#3C2364] focus:outline-none focus:ring-2 focus:ring-[#3C2364] focus:ring-offset-2" {...btnSpring}>
             <span className="text-teal font-display font-extrabold text-[10px] tracking-wider leading-none">LOCATIONS</span>
           </motion.a>
-          <motion.a href="/login" className="bg-off-white border-2 border-teal rounded-full px-3 py-1.5 shadow-[2px_2px_0px_#004D3F] focus:outline-none focus:ring-2 focus:ring-[#004D3F] focus:ring-offset-2" {...btnSpring}>
+          <motion.a href="/login" className="bg-off-white border-2 border-teal rounded-full px-3 py-1.5 shadow-[2px_2px_0px_#3C2364] focus:outline-none focus:ring-2 focus:ring-[#3C2364] focus:ring-offset-2" {...btnSpring}>
             <span className="text-teal font-display font-extrabold text-[10px] tracking-wider leading-none">LOGIN</span>
           </motion.a>
         </div>
 
         <div className="flex md:hidden items-center gap-1.5">
-          <motion.a href="/#locations" className="bg-sky border-2 border-teal rounded-full px-3 py-2 shadow-[2px_2px_0px_#004D3F] focus:outline-none focus:ring-2 focus:ring-[#004D3F] focus:ring-offset-2" {...btnSpring}>
+          <motion.a href="/#locations" className="bg-sky border-2 border-teal rounded-full px-3 py-2 shadow-[2px_2px_0px_#3C2364] focus:outline-none focus:ring-2 focus:ring-[#3C2364] focus:ring-offset-2" {...btnSpring}>
             <span className="text-teal font-display font-extrabold text-[11px] tracking-wider leading-none">LOCATIONS</span>
           </motion.a>
-          <motion.a href="/login" className="bg-off-white border-2 border-teal rounded-full px-3 py-2 shadow-[2px_2px_0px_#004D3F] focus:outline-none focus:ring-2 focus:ring-[#004D3F] focus:ring-offset-2" {...btnSpring}>
+          <motion.a href="/login" className="bg-off-white border-2 border-teal rounded-full px-3 py-2 shadow-[2px_2px_0px_#3C2364] focus:outline-none focus:ring-2 focus:ring-[#3C2364] focus:ring-offset-2" {...btnSpring}>
             <span className="text-teal font-display font-extrabold text-[11px] tracking-wider leading-none">LOGIN</span>
           </motion.a>
         </div>

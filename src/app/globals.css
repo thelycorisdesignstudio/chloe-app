@@ -5,40 +5,40 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-background: #82E9A6;
-  --color-foreground: #004D3F;
+  --color-background: #C8B9E6;
+  --color-foreground: #3C2364;
 
-  --color-card: #F7F5F2;
-  --color-card-foreground: #004D3F;
+  --color-card: #F4F1F8;
+  --color-card-foreground: #3C2364;
 
-  --color-popover: #F7F5F2;
-  --color-popover-foreground: #004D3F;
+  --color-popover: #F4F1F8;
+  --color-popover-foreground: #3C2364;
 
-  --color-primary: #004D3F;
-  --color-primary-foreground: #F7F5F2;
+  --color-primary: #3C2364;
+  --color-primary-foreground: #F4F1F8;
 
-  --color-secondary: #FFF98F;
-  --color-secondary-foreground: #004D3F;
+  --color-secondary: #F5F096;
+  --color-secondary-foreground: #3C2364;
 
-  --color-muted: #FDCFDF;
-  --color-muted-foreground: #004D3F;
+  --color-muted: #F5C8BE;
+  --color-muted-foreground: #3C2364;
 
-  --color-accent: #B3F5FF;
-  --color-accent-foreground: #004D3F;
+  --color-accent: #AAE6FA;
+  --color-accent-foreground: #3C2364;
 
   --color-destructive: #ef4444;
   --color-destructive-foreground: #fafafa;
 
-  --color-border: #004D3F;
-  --color-input: #004D3F;
-  --color-ring: #004D3F;
+  --color-border: #3C2364;
+  --color-input: #3C2364;
+  --color-ring: #3C73C8;
 
-  --color-mint: #82E9A6;
-  --color-lemon: #FFF98F;
-  --color-bubblegum: #FDCFDF;
-  --color-sky: #B3F5FF;
-  --color-teal: #004D3F;
-  --color-off-white: #F7F5F2;
+  --color-mint: #C8B9E6;
+  --color-lemon: #F5F096;
+  --color-bubblegum: #F5C8BE;
+  --color-sky: #AAE6FA;
+  --color-teal: #3C2364;
+  --color-off-white: #F4F1F8;
 
   --font-display: "Lexend", sans-serif;
   --font-body: "Lexend", sans-serif;
@@ -49,8 +49,8 @@
   --radius-md: 20px;
   --radius-sm: 12px;
 
-  --shadow-brutalist: 4px 4px 0px #004D3F;
-  --shadow-brutalist-lg: 8px 8px 0px #004D3F;
+  --shadow-brutalist: 4px 4px 0px #3C2364;
+  --shadow-brutalist-lg: 8px 8px 0px #3C2364;
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
@@ -79,29 +79,29 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: #004D3F;
+    border-color: #3C2364;
   }
 
   :root {
-    --background: #82E9A6;
-    --foreground: #004D3F;
-    --card: #F7F5F2;
-    --card-foreground: #004D3F;
-    --popover: #F7F5F2;
-    --popover-foreground: #004D3F;
-    --primary: #004D3F;
-    --primary-foreground: #F7F5F2;
-    --secondary: #FFF98F;
-    --secondary-foreground: #004D3F;
-    --muted: #FDCFDF;
-    --muted-foreground: #004D3F;
-    --accent: #B3F5FF;
-    --accent-foreground: #004D3F;
+    --background: #C8B9E6;
+    --foreground: #3C2364;
+    --card: #F4F1F8;
+    --card-foreground: #3C2364;
+    --popover: #F4F1F8;
+    --popover-foreground: #3C2364;
+    --primary: #3C2364;
+    --primary-foreground: #F4F1F8;
+    --secondary: #F5F096;
+    --secondary-foreground: #3C2364;
+    --muted: #F5C8BE;
+    --muted-foreground: #3C2364;
+    --accent: #AAE6FA;
+    --accent-foreground: #3C2364;
     --destructive: #ef4444;
     --destructive-foreground: #fafafa;
-    --border: #004D3F;
-    --input: #004D3F;
-    --ring: #004D3F;
+    --border: #3C2364;
+    --input: #3C2364;
+    --ring: #3C73C8;
     --radius: 40px;
   }
 

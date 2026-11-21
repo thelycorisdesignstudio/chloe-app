@@ -47,7 +47,7 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <section id="faqs" className="relative w-full py-16 md:py-24 lg:py-32 bg-[#FFF98F] overflow-hidden">
+    <section id="faqs" className="relative w-full py-16 md:py-24 lg:py-32 bg-[#F5F096] overflow-hidden">
       <div className="container max-w-[1440px] mx-auto px-6">
         <motion.div
           className="text-center mb-16"
@@ -56,8 +56,8 @@ export default function FAQ() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="font-hand text-2xl md:text-3xl text-[#004D3F] mb-4 block">got questions?</span>
-          <h2 className="text-[#004D3F] font-black text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight">
+          <span className="font-hand text-2xl md:text-3xl text-[#3C2364] mb-4 block">got questions?</span>
+          <h2 className="text-[#3C2364] font-black text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight">
             FAQ
           </h2>
         </motion.div>
@@ -74,15 +74,15 @@ export default function FAQ() {
               <motion.div key={index} variants={fadeUp}>
                 <AccordionItem
                   value={`item-${index}`}
-                  className="bg-white rounded-[20px] border-2 border-[#004D3F] shadow-[4px_4px_0px_#004D3F] overflow-hidden data-[state=open]:shadow-[6px_6px_0px_#004D3F] transition-all"
+                  className="bg-white rounded-[20px] border-2 border-[#3C2364] shadow-[4px_4px_0px_#3C2364] overflow-hidden data-[state=open]:shadow-[6px_6px_0px_#3C2364] transition-all"
                 >
                   <AccordionTrigger className="px-6 py-5 text-left hover:no-underline [&[data-state=open]>svg]:rotate-180">
-                    <span className="text-[#004D3F] font-black text-lg md:text-xl pr-4">
+                    <span className="text-[#3C2364] font-black text-lg md:text-xl pr-4">
                       {faq.question}
                     </span>
                   </AccordionTrigger>
                   <AccordionContent className="px-6 pb-5">
-                    <p className="text-[#004D3F]/80 font-medium text-base leading-relaxed">
+                    <p className="text-[#3C2364]/80 font-medium text-base leading-relaxed">
                       {faq.answer}
                     </p>
                   </AccordionContent>
@@ -99,13 +99,13 @@ export default function FAQ() {
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
-          <p className="text-[#004D3F] font-medium text-lg mb-6">
+          <p className="text-[#3C2364] font-medium text-lg mb-6">
             Still have questions? We&apos;re here to help!
           </p>
           <motion.a
             href="mailto:hello@chloe.com"
-            className="inline-flex items-center gap-3 bg-[#004D3F] text-white font-black text-lg uppercase tracking-wide px-10 py-5 rounded-full border-2 border-[#004D3F] shadow-[4px_4px_0px_#82E9A6]"
-            whileHover={{ scale: 1.05, y: -2, boxShadow: "6px 6px 0px #82E9A6" }}
+            className="inline-flex items-center gap-3 bg-[#3C2364] text-white font-black text-lg uppercase tracking-wide px-10 py-5 rounded-full border-2 border-[#3C2364] shadow-[4px_4px_0px_#C8B9E6]"
+            whileHover={{ scale: 1.05, y: -2, boxShadow: "6px 6px 0px #C8B9E6" }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >

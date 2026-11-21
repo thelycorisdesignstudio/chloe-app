@@ -51,7 +51,7 @@ function LocationCard({ dest, idx }: { dest: typeof topDestinations[number]; idx
           ref={ref}
           onMouseMove={onMouseMove}
           onMouseLeave={onMouseLeave}
-          className="group bg-[#F7F5F2] rounded-[30px] border-2 border-[#004D3F] overflow-hidden shadow-[4px_4px_0px_#004D3F] hover:shadow-[6px_6px_0px_#004D3F] transition-shadow cursor-pointer will-change-transform h-full flex flex-col"
+          className="group bg-[#F4F1F8] rounded-[30px] border-2 border-[#3C2364] overflow-hidden shadow-[4px_4px_0px_#3C2364] hover:shadow-[6px_6px_0px_#3C2364] transition-shadow cursor-pointer will-change-transform h-full flex flex-col"
         >
           <div className="relative h-48 overflow-hidden flex-shrink-0">
             <Image
@@ -60,10 +60,10 @@ function LocationCard({ dest, idx }: { dest: typeof topDestinations[number]; idx
               fill
               className="object-cover group-hover:scale-110 transition-transform duration-500"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#004D3F]/80 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#3C2364]/80 to-transparent" />
             <div className="absolute bottom-4 left-5">
               <h4 className="font-black text-white text-2xl uppercase">{dest.name}</h4>
-              <p className="text-[#82E9A6] font-bold text-sm">{dest.activities} activities</p>
+              <p className="text-[#C8B9E6] font-bold text-sm">{dest.activities} activities</p>
             </div>
           </div>
           <div className="p-5 flex-1 flex items-start">
@@ -71,7 +71,7 @@ function LocationCard({ dest, idx }: { dest: typeof topDestinations[number]; idx
               {dest.highlights.map((highlight, hIdx) => (
                 <span
                   key={hIdx}
-                  className="text-[10px] bg-white text-[#004D3F] px-2.5 py-1 rounded-full border border-[#004D3F]/10 font-bold uppercase tracking-wider"
+                  className="text-[10px] bg-white text-[#3C2364] px-2.5 py-1 rounded-full border border-[#3C2364]/10 font-bold uppercase tracking-wider"
                 >
                   {highlight}
                 </span>
@@ -95,10 +95,10 @@ export default function LocationGrid() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-[#004D3F] font-black text-3xl md:text-5xl uppercase mb-4">
+          <h2 className="text-[#3C2364] font-black text-3xl md:text-5xl uppercase mb-4">
             Explore by Emirate
           </h2>
-          <p className="text-[#004D3F]/70 text-lg max-w-2xl mx-auto">
+          <p className="text-[#3C2364]/70 text-lg max-w-2xl mx-auto">
             Discover unique family experiences across the United Arab Emirates
           </p>
         </motion.div>

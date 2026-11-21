@@ -115,7 +115,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#82E9A6" />
+        <meta name="theme-color" content="#C8B9E6" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -126,7 +126,7 @@ export default function RootLayout({
         <ErrorReporter />
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[200] focus:bg-[#004D3F] focus:text-white focus:px-4 focus:py-2 focus:rounded-full"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[200] focus:bg-[#3C2364] focus:text-white focus:px-4 focus:py-2 focus:rounded-full"
         >
           Skip to main content
         </a>

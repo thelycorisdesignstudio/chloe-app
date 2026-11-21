@@ -10,12 +10,12 @@ export default function CallToAction() {
   return (
     <section id="contact" className="flex flex-col w-full overflow-hidden">
       <div
-        className="bg-[#82E9A6] py-16 md:py-24 lg:py-32 px-6 relative"
+        className="bg-[#C8B9E6] py-16 md:py-24 lg:py-32 px-6 relative"
         aria-labelledby="cta-heading"
       >
         <div className="max-w-[1440px] mx-auto flex flex-col items-center justify-center text-center">
           <motion.span
-            className="font-hand text-[#004D3F] text-3xl md:text-4xl mb-6 block"
+            className="font-hand text-[#3C2364] text-3xl md:text-4xl mb-6 block"
             initial={{ y: 20 }}
             whileInView={{ y: 0 }}
             viewport={{ once: true }}
@@ -26,7 +26,7 @@ export default function CallToAction() {
 
           <h2
             id="cta-heading"
-            className="text-[#004D3F] font-black text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight max-w-4xl mb-8 flex flex-wrap justify-center gap-x-[0.25em]"
+            className="text-[#3C2364] font-black text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight max-w-4xl mb-8 flex flex-wrap justify-center gap-x-[0.25em]"
           >
             {ctaWords.map((word, i) => (
               <motion.span
@@ -47,7 +47,7 @@ export default function CallToAction() {
           </h2>
 
           <motion.p
-            className="text-[#004D3F]/80 text-xl max-w-2xl mb-12"
+            className="text-[#3C2364]/80 text-xl max-w-2xl mb-12"
             initial={{ y: 20 }}
             whileInView={{ y: 0 }}
             viewport={{ once: true }}
@@ -66,7 +66,7 @@ export default function CallToAction() {
           >
             <motion.a
               href="/explore"
-              className="group relative inline-flex items-center justify-center bg-[#FFF98F] border-2 border-[#004D3F] rounded-full px-10 py-5 shadow-[4px_4px_0px_#004D3F] focus:outline-none focus:ring-2 focus:ring-[#004D3F] focus:ring-offset-2"
+              className="group relative inline-flex items-center justify-center bg-[#F5F096] border-2 border-[#3C2364] rounded-full px-10 py-5 shadow-[4px_4px_0px_#3C2364] focus:outline-none focus:ring-2 focus:ring-[#3C2364] focus:ring-offset-2"
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -75,20 +75,20 @@ export default function CallToAction() {
                 animate={{ rotate: 360 }}
                 transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
               >
-                <Sparkles className="w-6 h-6 text-[#004D3F] mr-3" />
+                <Sparkles className="w-6 h-6 text-[#3C2364] mr-3" />
               </motion.div>
-              <span className="text-xl font-black text-[#004D3F] uppercase tracking-tight">Start Exploring</span>
+              <span className="text-xl font-black text-[#3C2364] uppercase tracking-tight">Start Exploring</span>
             </motion.a>
 
             <motion.a
               href="/forbusiness"
-              className="group relative inline-flex items-center justify-center bg-white border-2 border-[#004D3F] rounded-full px-10 py-5 shadow-[4px_4px_0px_#004D3F] focus:outline-none focus:ring-2 focus:ring-[#004D3F] focus:ring-offset-2"
+              className="group relative inline-flex items-center justify-center bg-white border-2 border-[#3C2364] rounded-full px-10 py-5 shadow-[4px_4px_0px_#3C2364] focus:outline-none focus:ring-2 focus:ring-[#3C2364] focus:ring-offset-2"
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              <span className="text-xl font-black text-[#004D3F] uppercase tracking-tight">List Your Venue</span>
-              <ArrowRight className="w-5 h-5 text-[#004D3F] ml-2 group-hover:translate-x-1 transition-transform" />
+              <span className="text-xl font-black text-[#3C2364] uppercase tracking-tight">List Your Venue</span>
+              <ArrowRight className="w-5 h-5 text-[#3C2364] ml-2 group-hover:translate-x-1 transition-transform" />
             </motion.a>
           </motion.div>
         </div>

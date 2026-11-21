@@ -42,29 +42,29 @@ const sections = [
 
 export default function TermsPage() {
   return (
-    <main className="relative min-h-screen bg-[#F7F5F2] overflow-x-hidden">
+    <main className="relative min-h-screen bg-[#F4F1F8] overflow-x-hidden">
       <Navigation />
       
       <div className="pt-32 pb-20 px-6">
         <div className="container max-w-[1440px] mx-auto">
           <div className="text-center mb-16">
-            <span className="font-hand text-3xl text-[#004D3F] mb-4 block">the fine print</span>
-            <h1 className="text-[#004D3F] font-black text-5xl md:text-8xl uppercase tracking-tighter mb-8">
+            <span className="font-hand text-3xl text-[#3C2364] mb-4 block">the fine print</span>
+            <h1 className="text-[#3C2364] font-black text-5xl md:text-8xl uppercase tracking-tighter mb-8">
               TERMS OF SERVICE
             </h1>
-            <p className="max-w-3xl mx-auto text-[#004D3F]/80 text-xl md:text-2xl leading-relaxed">
+            <p className="max-w-3xl mx-auto text-[#3C2364]/80 text-xl md:text-2xl leading-relaxed">
               Please read these terms carefully before using Chloe.
             </p>
-            <p className="text-[#004D3F]/60 mt-4">Effective Date: January 2026</p>
+            <p className="text-[#3C2364]/60 mt-4">Effective Date: January 2026</p>
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <div className="bg-[#B3F5FF] rounded-[30px] border-2 border-[#004D3F] p-8 mb-12 shadow-[6px_6px_0px_#004D3F]">
+            <div className="bg-[#AAE6FA] rounded-[30px] border-2 border-[#3C2364] p-8 mb-12 shadow-[6px_6px_0px_#3C2364]">
               <div className="flex items-start gap-4">
-                <AlertTriangle className="w-8 h-8 text-[#004D3F] shrink-0 mt-1" />
+                <AlertTriangle className="w-8 h-8 text-[#3C2364] shrink-0 mt-1" />
                 <div>
-                  <h3 className="text-xl font-black text-[#004D3F] uppercase mb-2">Important Notice</h3>
-                  <p className="text-[#004D3F]/80">
+                  <h3 className="text-xl font-black text-[#3C2364] uppercase mb-2">Important Notice</h3>
+                  <p className="text-[#3C2364]/80">
                     By using Chloe, you acknowledge that visiting any venue or activity listed on our platform is at your own risk. 
                     Parents and guardians are solely responsible for the safety and supervision of their children.
                   </p>
@@ -76,33 +76,33 @@ export default function TermsPage() {
               {sections.map((section, idx) => (
                 <div 
                   key={idx}
-                  className="bg-white rounded-[30px] border-2 border-[#004D3F] p-8 shadow-[4px_4px_0px_#004D3F]"
+                  className="bg-white rounded-[30px] border-2 border-[#3C2364] p-8 shadow-[4px_4px_0px_#3C2364]"
                 >
-                  <h3 className="text-xl font-black text-[#004D3F] uppercase mb-4">{section.title}</h3>
-                  <p className="text-[#004D3F]/80 text-lg leading-relaxed">{section.content}</p>
+                  <h3 className="text-xl font-black text-[#3C2364] uppercase mb-4">{section.title}</h3>
+                  <p className="text-[#3C2364]/80 text-lg leading-relaxed">{section.content}</p>
                 </div>
               ))}
             </div>
 
-            <div className="bg-[#82E9A6] rounded-[40px] border-2 border-[#004D3F] p-10 shadow-[8px_8px_0px_#004D3F]">
+            <div className="bg-[#C8B9E6] rounded-[40px] border-2 border-[#3C2364] p-10 shadow-[8px_8px_0px_#3C2364]">
               <div className="flex items-start gap-6">
-                <Scale className="w-12 h-12 text-[#004D3F] shrink-0" />
+                <Scale className="w-12 h-12 text-[#3C2364] shrink-0" />
                 <div>
-                  <h2 className="text-2xl font-black text-[#004D3F] uppercase mb-4">Agreement Summary</h2>
+                  <h2 className="text-2xl font-black text-[#3C2364] uppercase mb-4">Agreement Summary</h2>
                   <ul className="space-y-3">
-                    <li className="flex items-start gap-3 text-[#004D3F]">
+                    <li className="flex items-start gap-3 text-[#3C2364]">
                       <CheckCircle2 className="w-5 h-5 shrink-0 mt-1" />
                       <span>Use Chloe responsibly and respect other users</span>
                     </li>
-                    <li className="flex items-start gap-3 text-[#004D3F]">
+                    <li className="flex items-start gap-3 text-[#3C2364]">
                       <CheckCircle2 className="w-5 h-5 shrink-0 mt-1" />
                       <span>Always verify venue details before visiting</span>
                     </li>
-                    <li className="flex items-start gap-3 text-[#004D3F]">
+                    <li className="flex items-start gap-3 text-[#3C2364]">
                       <CheckCircle2 className="w-5 h-5 shrink-0 mt-1" />
                       <span>Supervise children at all times during activities</span>
                     </li>
-                    <li className="flex items-start gap-3 text-[#004D3F]">
+                    <li className="flex items-start gap-3 text-[#3C2364]">
                       <CheckCircle2 className="w-5 h-5 shrink-0 mt-1" />
                       <span>Submit honest and respectful reviews</span>
                     </li>
@@ -113,10 +113,10 @@ export default function TermsPage() {
           </div>
 
           <div className="text-center mt-16">
-            <p className="text-[#004D3F]/70 text-lg mb-6">Questions about our terms?</p>
+            <p className="text-[#3C2364]/70 text-lg mb-6">Questions about our terms?</p>
             <a 
               href="mailto:legal@chloe-app.com"
-              className="inline-flex items-center gap-3 bg-[#004D3F] text-white font-black text-lg uppercase px-10 py-5 rounded-full shadow-[4px_4px_0px_#82E9A6] hover:translate-y-[-2px] transition-all"
+              className="inline-flex items-center gap-3 bg-[#3C2364] text-white font-black text-lg uppercase px-10 py-5 rounded-full shadow-[4px_4px_0px_#C8B9E6] hover:translate-y-[-2px] transition-all"
             >
               <Mail className="w-5 h-5" />
               Contact Legal Team

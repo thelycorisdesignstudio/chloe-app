@@ -15,7 +15,7 @@ export default function Home() {
       <Hero />
       <Marquee
         text="FREE ACTIVITIES FOR KIDS"
-        className="bg-[#FFF98F] border-y-2 border-[#004D3F] text-[#004D3F] font-black text-xl md:text-2xl uppercase tracking-wider"
+        className="bg-[#F5F096] border-y-2 border-[#3C2364] text-[#3C2364] font-black text-xl md:text-2xl uppercase tracking-wider"
       />
       <IntroGrid />
       <LocationGrid />

@@ -119,14 +119,14 @@ export default function ParentingGuide() {
   const [activeTip, setActiveTip] = useState(0);
 
   return (
-    <section className="relative w-full py-24 md:py-32 bg-[#B3F5FF] overflow-hidden">
+    <section className="relative w-full py-24 md:py-32 bg-[#AAE6FA] overflow-hidden">
       <div className="container max-w-[1440px] mx-auto px-6">
         <div className="text-center mb-16">
-          <span className="font-hand text-2xl md:text-3xl text-[#004D3F] mb-4 block">real talk for UAE parents</span>
-          <h2 className="text-[#004D3F] font-black text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight mb-6">
+          <span className="font-hand text-2xl md:text-3xl text-[#3C2364] mb-4 block">real talk for UAE parents</span>
+          <h2 className="text-[#3C2364] font-black text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight mb-6">
             Parenting Guide
           </h2>
-          <p className="max-w-2xl mx-auto text-[#004D3F]/80 text-lg md:text-xl">
+          <p className="max-w-2xl mx-auto text-[#3C2364]/80 text-lg md:text-xl">
             Practical tips and local insights to help your family thrive in the UAE. From beating the summer heat to discovering hidden gems across all seven Emirates.
           </p>
         </div>
@@ -139,17 +139,17 @@ export default function ParentingGuide() {
                 <button
                   key={tip.id}
                   onClick={() => setActiveTip(index)}
-                  className={`w-full text-left p-4 rounded-[20px] border-2 border-[#004D3F] transition-all ${
+                  className={`w-full text-left p-4 rounded-[20px] border-2 border-[#3C2364] transition-all ${
                     activeTip === index 
-                      ? 'bg-[#004D3F] text-white shadow-[4px_4px_0px_#FFF98F]' 
-                      : 'bg-white text-[#004D3F] shadow-[3px_3px_0px_#004D3F] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#004D3F]'
+                      ? 'bg-[#3C2364] text-white shadow-[4px_4px_0px_#F5F096]' 
+                      : 'bg-white text-[#3C2364] shadow-[3px_3px_0px_#3C2364] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#3C2364]'
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <Icon className="w-5 h-5 shrink-0" />
                     <div>
                       <p className="font-black text-sm uppercase">{tip.category}</p>
-                      <p className={`font-medium ${activeTip === index ? 'text-white/80' : 'text-[#004D3F]/70'}`}>
+                      <p className={`font-medium ${activeTip === index ? 'text-white/80' : 'text-[#3C2364]/70'}`}>
                         {tip.title}
                       </p>
                     </div>
@@ -160,27 +160,27 @@ export default function ParentingGuide() {
           </div>
 
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-[30px] border-2 border-[#004D3F] shadow-[6px_6px_0px_#004D3F] p-8 md:p-10 h-full">
+            <div className="bg-white rounded-[30px] border-2 border-[#3C2364] shadow-[6px_6px_0px_#3C2364] p-8 md:p-10 h-full">
               <div className="flex items-center gap-4 mb-6">
-                {React.createElement(tips[activeTip].icon, { className: "w-10 h-10 text-[#004D3F]" })}
+                {React.createElement(tips[activeTip].icon, { className: "w-10 h-10 text-[#3C2364]" })}
                 <div>
-                  <p className="text-sm font-bold uppercase text-[#004D3F]/60">{tips[activeTip].category}</p>
-                  <h3 className="text-2xl md:text-3xl font-black text-[#004D3F]">{tips[activeTip].title}</h3>
+                  <p className="text-sm font-bold uppercase text-[#3C2364]/60">{tips[activeTip].category}</p>
+                  <h3 className="text-2xl md:text-3xl font-black text-[#3C2364]">{tips[activeTip].title}</h3>
                 </div>
               </div>
               
-              <p className="text-[#004D3F]/80 text-lg leading-relaxed mb-8">
+              <p className="text-[#3C2364]/80 text-lg leading-relaxed mb-8">
                 {tips[activeTip].content}
               </p>
 
               <div className="space-y-3">
-                <p className="font-black text-[#004D3F] uppercase text-sm flex items-center gap-2">
+                <p className="font-black text-[#3C2364] uppercase text-sm flex items-center gap-2">
                   <Lightbulb className="w-4 h-4" /> Practical Examples
                 </p>
                 <ul className="grid md:grid-cols-2 gap-3">
                   {tips[activeTip].examples.map((example, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-[#004D3F]/80">
-                      <Sparkles className="w-4 h-4 text-[#004D3F] shrink-0 mt-1" />
+                    <li key={idx} className="flex items-start gap-2 text-[#3C2364]/80">
+                      <Sparkles className="w-4 h-4 text-[#3C2364] shrink-0 mt-1" />
                       <span>{example}</span>
                     </li>
                   ))}
@@ -190,32 +190,32 @@ export default function ParentingGuide() {
           </div>
         </div>
 
-        <div className="bg-white rounded-[40px] border-2 border-[#004D3F] shadow-[6px_6px_0px_#004D3F] p-8 md:p-12">
+        <div className="bg-white rounded-[40px] border-2 border-[#3C2364] shadow-[6px_6px_0px_#3C2364] p-8 md:p-12">
           <div className="text-center mb-10">
-            <h3 className="text-2xl md:text-3xl font-black text-[#004D3F] uppercase mb-2">
+            <h3 className="text-2xl md:text-3xl font-black text-[#3C2364] uppercase mb-2">
               Seasonal Activity Planner
             </h3>
-            <p className="text-[#004D3F]/70">Know what to do in each season for maximum family fun</p>
+            <p className="text-[#3C2364]/70">Know what to do in each season for maximum family fun</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {seasonalGuide.map((season, idx) => (
               <div 
                 key={idx}
-                className="bg-[#FFF98F] rounded-[20px] border-2 border-[#004D3F] shadow-[3px_3px_0px_#004D3F] p-6"
+                className="bg-[#F5F096] rounded-[20px] border-2 border-[#3C2364] shadow-[3px_3px_0px_#3C2364] p-6"
               >
                 <div className="text-4xl mb-3">{season.icon}</div>
-                <h4 className="font-black text-[#004D3F] text-lg mb-1">{season.season}</h4>
-                <div className="flex items-center gap-1 text-[#004D3F]/70 text-sm mb-3">
+                <h4 className="font-black text-[#3C2364] text-lg mb-1">{season.season}</h4>
+                <div className="flex items-center gap-1 text-[#3C2364]/70 text-sm mb-3">
                   <Thermometer className="w-4 h-4" />
                   <span>{season.temp}</span>
                 </div>
-                <p className="text-[#004D3F]/80 text-sm mb-4">{season.description}</p>
+                <p className="text-[#3C2364]/80 text-sm mb-4">{season.description}</p>
                 <div className="flex flex-wrap gap-1">
                   {season.activities.map((activity, actIdx) => (
                     <span 
                       key={actIdx}
-                      className="text-xs bg-white/70 text-[#004D3F] px-2 py-1 rounded-full border border-[#004D3F]/30"
+                      className="text-xs bg-white/70 text-[#3C2364] px-2 py-1 rounded-full border border-[#3C2364]/30"
                     >
                       {activity}
                     </span>
@@ -227,22 +227,22 @@ export default function ParentingGuide() {
         </div>
 
         <div className="mt-16 grid md:grid-cols-3 gap-6">
-          <div className="bg-[#FDCFDF] rounded-[20px] border-2 border-[#004D3F] shadow-[4px_4px_0px_#004D3F] p-6 text-center">
-            <Users className="w-10 h-10 text-[#004D3F] mx-auto mb-3" />
-            <h4 className="font-black text-[#004D3F] text-xl mb-2">Join Our Community</h4>
-            <p className="text-[#004D3F]/70 text-sm">Connect with 10,000+ UAE parents sharing tips and recommendations</p>
+          <div className="bg-[#F5C8BE] rounded-[20px] border-2 border-[#3C2364] shadow-[4px_4px_0px_#3C2364] p-6 text-center">
+            <Users className="w-10 h-10 text-[#3C2364] mx-auto mb-3" />
+            <h4 className="font-black text-[#3C2364] text-xl mb-2">Join Our Community</h4>
+            <p className="text-[#3C2364]/70 text-sm">Connect with 10,000+ UAE parents sharing tips and recommendations</p>
           </div>
           
-          <div className="bg-[#82E9A6] rounded-[20px] border-2 border-[#004D3F] shadow-[4px_4px_0px_#004D3F] p-6 text-center">
-            <MapPin className="w-10 h-10 text-[#004D3F] mx-auto mb-3" />
-            <h4 className="font-black text-[#004D3F] text-xl mb-2">5,000+ Venues</h4>
-            <p className="text-[#004D3F]/70 text-sm">Verified activities across all seven Emirates of the UAE</p>
+          <div className="bg-[#C8B9E6] rounded-[20px] border-2 border-[#3C2364] shadow-[4px_4px_0px_#3C2364] p-6 text-center">
+            <MapPin className="w-10 h-10 text-[#3C2364] mx-auto mb-3" />
+            <h4 className="font-black text-[#3C2364] text-xl mb-2">5,000+ Venues</h4>
+            <p className="text-[#3C2364]/70 text-sm">Verified activities across all seven Emirates of the UAE</p>
           </div>
           
-          <div className="bg-[#FFF98F] rounded-[20px] border-2 border-[#004D3F] shadow-[4px_4px_0px_#004D3F] p-6 text-center">
-            <Heart className="w-10 h-10 text-[#004D3F] mx-auto mb-3" />
-            <h4 className="font-black text-[#004D3F] text-xl mb-2">Parent-Tested</h4>
-            <p className="text-[#004D3F]/70 text-sm">Every tip and guide written by real UAE parents for real results</p>
+          <div className="bg-[#F5F096] rounded-[20px] border-2 border-[#3C2364] shadow-[4px_4px_0px_#3C2364] p-6 text-center">
+            <Heart className="w-10 h-10 text-[#3C2364] mx-auto mb-3" />
+            <h4 className="font-black text-[#3C2364] text-xl mb-2">Parent-Tested</h4>
+            <p className="text-[#3C2364]/70 text-sm">Every tip and guide written by real UAE parents for real results</p>
           </div>
         </div>
       </div>

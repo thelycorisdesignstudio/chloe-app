@@ -32,16 +32,16 @@ export default function SignUpPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#F7F5F2] flex items-center justify-center px-6">
+    <main className="min-h-screen bg-[#F4F1F8] flex items-center justify-center px-6">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link href="/" className="text-[#004D3F] font-black text-4xl uppercase">
+          <Link href="/" className="text-[#3C2364] font-black text-4xl uppercase">
             Chloe
           </Link>
-          <p className="text-[#004D3F]/70 mt-2">Create your account</p>
+          <p className="text-[#3C2364]/70 mt-2">Create your account</p>
         </div>
 
-        <div className="bg-white rounded-[40px] border-2 border-[#004D3F] p-8 shadow-[4px_4px_0px_0px_#004D3F]">
+        <div className="bg-white rounded-[40px] border-2 border-[#3C2364] p-8 shadow-[4px_4px_0px_0px_#3C2364]">
           <form onSubmit={handleSubmit} className="space-y-5">
             {error && (
               <div className="bg-red-50 border border-red-200 rounded-xl p-3 text-red-700 text-sm">
@@ -50,7 +50,7 @@ export default function SignUpPage() {
             )}
 
             <div>
-              <label htmlFor="name" className="block text-[#004D3F] font-bold text-sm mb-2">
+              <label htmlFor="name" className="block text-[#3C2364] font-bold text-sm mb-2">
                 Name
               </label>
               <input
@@ -59,13 +59,13 @@ export default function SignUpPage() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="w-full px-4 py-3 rounded-xl border-2 border-[#004D3F]/20 focus:border-[#004D3F] focus:outline-none text-[#004D3F]"
+                className="w-full px-4 py-3 rounded-xl border-2 border-[#3C2364]/20 focus:border-[#3C2364] focus:outline-none text-[#3C2364]"
                 placeholder="Your name"
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-[#004D3F] font-bold text-sm mb-2">
+              <label htmlFor="email" className="block text-[#3C2364] font-bold text-sm mb-2">
                 Email
               </label>
               <input
@@ -74,13 +74,13 @@ export default function SignUpPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-3 rounded-xl border-2 border-[#004D3F]/20 focus:border-[#004D3F] focus:outline-none text-[#004D3F]"
+                className="w-full px-4 py-3 rounded-xl border-2 border-[#3C2364]/20 focus:border-[#3C2364] focus:outline-none text-[#3C2364]"
                 placeholder="you@example.com"
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-[#004D3F] font-bold text-sm mb-2">
+              <label htmlFor="password" className="block text-[#3C2364] font-bold text-sm mb-2">
                 Password
               </label>
               <input
@@ -90,7 +90,7 @@ export default function SignUpPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={8}
-                className="w-full px-4 py-3 rounded-xl border-2 border-[#004D3F]/20 focus:border-[#004D3F] focus:outline-none text-[#004D3F]"
+                className="w-full px-4 py-3 rounded-xl border-2 border-[#3C2364]/20 focus:border-[#3C2364] focus:outline-none text-[#3C2364]"
                 placeholder="Min. 8 characters"
               />
             </div>
@@ -98,16 +98,16 @@ export default function SignUpPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#004D3F] text-white font-bold py-3 rounded-xl hover:bg-[#004D3F]/90 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+              className="w-full bg-[#3C2364] text-white font-bold py-3 rounded-xl hover:bg-[#3C2364]/90 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
             >
               {loading && <Loader2 className="w-4 h-4 animate-spin" />}
               Create Account
             </button>
           </form>
 
-          <p className="text-center text-[#004D3F]/70 mt-6 text-sm">
+          <p className="text-center text-[#3C2364]/70 mt-6 text-sm">
             Already have an account?{' '}
-            <Link href="/login" className="text-[#004D3F] font-bold hover:underline">
+            <Link href="/login" className="text-[#3C2364] font-bold hover:underline">
               Sign In
             </Link>
           </p>

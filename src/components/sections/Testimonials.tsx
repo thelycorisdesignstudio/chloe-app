@@ -58,7 +58,7 @@ export default function Testimonials() {
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <section className="relative w-full py-16 md:py-24 lg:py-32 bg-[#FDCFDF] overflow-hidden">
+    <section className="relative w-full py-16 md:py-24 lg:py-32 bg-[#F5C8BE] overflow-hidden">
       <div className="container max-w-[1440px] mx-auto px-6">
         <motion.div
           className="text-center mb-16"
@@ -67,23 +67,23 @@ export default function Testimonials() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="font-hand text-2xl md:text-3xl text-[#004D3F] mb-4 block">real families, real stories</span>
-          <h2 className="text-[#004D3F] font-black text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight">
+          <span className="font-hand text-2xl md:text-3xl text-[#3C2364] mb-4 block">real families, real stories</span>
+          <h2 className="text-[#3C2364] font-black text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight">
             Parents Love Us
           </h2>
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
-          <div className="relative bg-white rounded-[40px] md:rounded-[60px] border-2 border-[#004D3F] shadow-[8px_8px_0px_#004D3F] p-8 md:p-12">
+          <div className="relative bg-white rounded-[40px] md:rounded-[60px] border-2 border-[#3C2364] shadow-[8px_8px_0px_#3C2364] p-8 md:p-12">
             <div className="absolute top-4 left-6 md:-top-6 md:left-12 z-10">
               <motion.div
-                className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#FFF98F] border-2 border-[#004D3F] flex items-center justify-center shadow-[3px_3px_0px_#004D3F]"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#F5F096] border-2 border-[#3C2364] flex items-center justify-center shadow-[3px_3px_0px_#3C2364]"
                 initial={{ scale: 0.5, rotate: -20 }}
                 whileInView={{ scale: 1, rotate: 0 }}
                 viewport={{ once: true }}
                 transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.3 }}
               >
-                <Quote className="w-5 h-5 md:w-6 md:h-6 text-[#004D3F]" />
+                <Quote className="w-5 h-5 md:w-6 md:h-6 text-[#3C2364]" />
               </motion.div>
             </div>
 
@@ -102,7 +102,7 @@ export default function Testimonials() {
                   animate={{ scale: 1 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
                 >
-                  <div className="w-full h-full rounded-full border-4 border-[#004D3F] overflow-hidden shadow-[4px_4px_0px_#004D3F]">
+                  <div className="w-full h-full rounded-full border-4 border-[#3C2364] overflow-hidden shadow-[4px_4px_0px_#3C2364]">
                     <Image
                       src={currentTestimonial.avatar}
                       alt={currentTestimonial.name}
@@ -121,20 +121,20 @@ export default function Testimonials() {
                         animate={{ scale: 1 }}
                         transition={{ delay: 0.2 + i * 0.05, type: "spring", stiffness: 300 }}
                       >
-                        <Star className="w-5 h-5 fill-[#FFF98F] text-[#004D3F]" />
+                        <Star className="w-5 h-5 fill-[#F5F096] text-[#3C2364]" />
                       </motion.div>
                     ))}
                   </div>
 
-                  <p className="text-[#004D3F] font-medium text-lg md:text-xl leading-relaxed mb-6">
+                  <p className="text-[#3C2364] font-medium text-lg md:text-xl leading-relaxed mb-6">
                     &ldquo;{currentTestimonial.text}&rdquo;
                   </p>
 
                   <div>
-                    <p className="text-[#004D3F] font-black text-xl uppercase">
+                    <p className="text-[#3C2364] font-black text-xl uppercase">
                       {currentTestimonial.name}
                     </p>
-                    <p className="text-[#004D3F]/70 font-medium">
+                    <p className="text-[#3C2364]/70 font-medium">
                       {currentTestimonial.kidAge} • {currentTestimonial.location}
                     </p>
                   </div>
@@ -147,9 +147,9 @@ export default function Testimonials() {
             <button
               onClick={prevTestimonial}
               aria-label="Previous testimonial"
-              className="w-12 h-12 rounded-full bg-white border-2 border-[#004D3F] shadow-[3px_3px_0px_#004D3F] flex items-center justify-center hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#004D3F] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
+              className="w-12 h-12 rounded-full bg-white border-2 border-[#3C2364] shadow-[3px_3px_0px_#3C2364] flex items-center justify-center hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#3C2364] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
             >
-              <ChevronLeft className="w-6 h-6 text-[#004D3F]" />
+              <ChevronLeft className="w-6 h-6 text-[#3C2364]" />
             </button>
 
             <div className="flex gap-2">
@@ -158,8 +158,8 @@ export default function Testimonials() {
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
                   aria-label={`Go to testimonial ${idx + 1}`}
-                  className={`w-3 h-3 rounded-full border-2 border-[#004D3F] transition-all ${
-                    idx === currentIndex ? 'bg-[#004D3F] scale-125' : 'bg-transparent hover:bg-[#004D3F]/30'
+                  className={`w-3 h-3 rounded-full border-2 border-[#3C2364] transition-all ${
+                    idx === currentIndex ? 'bg-[#3C2364] scale-125' : 'bg-transparent hover:bg-[#3C2364]/30'
                   }`}
                 />
               ))}
@@ -168,9 +168,9 @@ export default function Testimonials() {
             <button
               onClick={nextTestimonial}
               aria-label="Next testimonial"
-              className="w-12 h-12 rounded-full bg-white border-2 border-[#004D3F] shadow-[3px_3px_0px_#004D3F] flex items-center justify-center hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#004D3F] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
+              className="w-12 h-12 rounded-full bg-white border-2 border-[#3C2364] shadow-[3px_3px_0px_#3C2364] flex items-center justify-center hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_#3C2364] transition-all active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
             >
-              <ChevronRight className="w-6 h-6 text-[#004D3F]" />
+              <ChevronRight className="w-6 h-6 text-[#3C2364]" />
             </button>
           </div>
         </div>
@@ -183,14 +183,14 @@ export default function Testimonials() {
           ].map((badge, i) => (
             <motion.div
               key={i}
-              className={`flex items-center gap-2 bg-white border-2 border-[#004D3F] rounded-full px-6 py-3 shadow-[3px_3px_0px_#004D3F]`}
+              className={`flex items-center gap-2 bg-white border-2 border-[#3C2364] rounded-full px-6 py-3 shadow-[3px_3px_0px_#3C2364]`}
               initial={{ y: 20 }}
               whileInView={{ y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15, type: "spring", stiffness: 200, damping: 20 }}
             >
-              <badge.icon className={`w-5 h-5 text-[#004D3F] ${badge.fill ? 'fill-[#FFF98F]' : ''}`} />
-              <span className="text-[#004D3F] font-bold">{badge.text}</span>
+              <badge.icon className={`w-5 h-5 text-[#3C2364] ${badge.fill ? 'fill-[#F5F096]' : ''}`} />
+              <span className="text-[#3C2364] font-bold">{badge.text}</span>
             </motion.div>
           ))}
         </div>
