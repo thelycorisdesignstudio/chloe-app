@@ -8,6 +8,30 @@ import {
 } from './schema';
 import type { Activity, Country, Region, Category } from './schema';
 import mongoose from 'mongoose';
+import {
+  staticActivities, staticActivityBySlug, staticFeatured, staticCount, staticCountries,
+  staticRegions, staticCategories, staticStats, staticRecommendations,
+} from './static-data';
+
+// ─── Static fallback decision ────────────────────────────────
+// Use the bundled venue data when the database is not configured, unreachable, or empty.
+// The probe result is cached briefly so we do not hit the database on every request.
+let probe: { useStatic: boolean; at: number } | null = null;
+const PROBE_TTL_MS = 60_000;
+
+async function shouldUseStatic(): Promise<boolean> {
+  if (!process.env.MONGODB_URI) return true;
+  if (probe && Date.now() - probe.at < PROBE_TTL_MS) return probe.useStatic;
+  let result = true;
+  try {
+    await connectDB();
+    result = (await ActivityModel.estimatedDocumentCount().exec()) === 0;
+  } catch (error) {
+    console.error('Database unavailable, serving bundled venue data:', error instanceof Error ? error.message : error);
+  }
+  probe = { useStatic: result, at: Date.now() };
+  return result;
+}
 
 // ─── Helpers ─────────────────────────────────────────────────
 
@@ -56,6 +80,7 @@ export type ActivityFilters = {
 // ─── Activity Queries ────────────────────────────────────────
 
 export async function getActivities(filters?: ActivityFilters): Promise<Activity[]> {
+  if (await shouldUseStatic()) return staticActivities(filters);
   await connectDB();
 
   const query: Record<string, unknown> = { isActive: true };
@@ -111,6 +136,7 @@ export async function getActivities(filters?: ActivityFilters): Promise<Activity
 }
 
 export async function getActivityBySlug(slug: string): Promise<Activity | undefined> {
+  if (await shouldUseStatic()) return staticActivityBySlug(slug);
   await connectDB();
 
   const doc = await ActivityModel
@@ -122,6 +148,7 @@ export async function getActivityBySlug(slug: string): Promise<Activity | undefi
 }
 
 export async function getFeaturedActivities(limit = 6): Promise<Activity[]> {
+  if (await shouldUseStatic()) return staticFeatured(limit);
   await connectDB();
 
   const docs = await ActivityModel
@@ -135,6 +162,7 @@ export async function getFeaturedActivities(limit = 6): Promise<Activity[]> {
 }
 
 export async function getActivityCount(filters?: ActivityFilters): Promise<number> {
+  if (await shouldUseStatic()) return staticCount(filters);
   await connectDB();
 
   const query: Record<string, unknown> = { isActive: true };
@@ -174,6 +202,7 @@ export async function getActivityCount(filters?: ActivityFilters): Promise<numbe
 // ─── Reference Data Queries ──────────────────────────────────
 
 export async function getCountries(): Promise<Country[]> {
+  if (await shouldUseStatic()) return staticCountries();
   await connectDB();
 
   const docs = await CountryModel
@@ -186,6 +215,7 @@ export async function getCountries(): Promise<Country[]> {
 }
 
 export async function getRegions(countryCode?: string): Promise<Region[]> {
+  if (await shouldUseStatic()) return staticRegions(countryCode);
   await connectDB();
 
   const query: Record<string, unknown> = { isActive: true };
@@ -201,6 +231,7 @@ export async function getRegions(countryCode?: string): Promise<Region[]> {
 }
 
 export async function getCategories(): Promise<Category[]> {
+  if (await shouldUseStatic()) return staticCategories();
   await connectDB();
 
   const docs = await CategoryModel
@@ -215,6 +246,7 @@ export async function getCategories(): Promise<Category[]> {
 // ─── Stats ───────────────────────────────────────────────────
 
 export async function getStats() {
+  if (await shouldUseStatic()) return staticStats();
   await connectDB();
 
   const [venueCount, avgResult] = await Promise.all([
@@ -235,6 +267,7 @@ export async function getStats() {
 // ─── Recommendations ─────────────────────────────────────────
 
 export async function getRecommendations(activityId: string, limit = 6): Promise<Activity[]> {
+  if (await shouldUseStatic()) return staticRecommendations(activityId, limit);
   await connectDB();
 
   const objectId = toObjectId(activityId);
@@ -325,6 +358,8 @@ export async function trackEvent(
   activityId?: string,
   metadata?: Record<string, unknown>,
 ): Promise<void> {
+  // Analytics need a database; without one this is a harmless no-op.
+  if (!process.env.MONGODB_URI) return;
   await connectDB();
 
   await AnalyticsEventModel.create({
