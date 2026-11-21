@@ -8,7 +8,7 @@ import { FileText, CheckCircle2, AlertTriangle, Scale, Mail } from 'lucide-react
 const sections = [
   {
     title: "1. Acceptance of Terms",
-    content: "By accessing or using Chloe, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our platform. These terms apply to all users, including parents, venue partners, and visitors."
+    content: "Chloe is operated by Lycoris Labs Inc. By accessing or using Chloe, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our platform. These terms apply to all users, including parents, venue partners, and visitors."
   },
   {
     title: "2. Use of Service",

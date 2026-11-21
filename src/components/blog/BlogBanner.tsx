@@ -44,23 +44,23 @@ export default function BlogBanner({ slug, title, category, size = "card" }: Pro
       <svg className="absolute inset-0 h-full w-full" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         {layout === 0 && (
           <>
-            <circle cx="340" cy="60" r="70" fill={p.a} stroke="#3C2364" strokeWidth="2" />
-            <path d="M250 250V170a50 50 0 0 1 100 0v80Z" fill={p.b} stroke="#3C2364" strokeWidth="2" />
-            <circle cx="40" cy="230" r="34" fill={p.a} stroke="#3C2364" strokeWidth="2" />
+            <circle cx="345" cy="62" r="58" fill={p.a} stroke="#3C2364" strokeWidth="2" />
+            <path d="M285 250V178a48 48 0 0 1 96 0v72Z" fill={p.b} stroke="#3C2364" strokeWidth="2" />
+            <circle cx="262" cy="222" r="26" fill={p.a} stroke="#3C2364" strokeWidth="2" />
           </>
         )}
         {layout === 1 && (
           <>
-            <path d="M0 250V150a90 90 0 0 1 180 0v100Z" fill={p.a} stroke="#3C2364" strokeWidth="2" />
-            <circle cx="330" cy="70" r="44" fill={p.b} stroke="#3C2364" strokeWidth="2" />
-            <rect x="300" y="170" width="80" height="80" rx="40" fill={p.a} stroke="#3C2364" strokeWidth="2" />
+            <path d="M255 250V165a68 68 0 0 1 136 0v85Z" fill={p.a} stroke="#3C2364" strokeWidth="2" />
+            <circle cx="325" cy="52" r="36" fill={p.b} stroke="#3C2364" strokeWidth="2" />
+            <circle cx="268" cy="96" r="14" fill={p.a} stroke="#3C2364" strokeWidth="2" />
           </>
         )}
         {layout === 2 && (
           <>
-            <circle cx="60" cy="40" r="50" fill={p.b} stroke="#3C2364" strokeWidth="2" />
-            <path d="M200 250l60-110 60 110Z" fill={p.a} stroke="#3C2364" strokeWidth="2" strokeLinejoin="round" />
-            <circle cx="360" cy="190" r="48" fill={p.b} stroke="#3C2364" strokeWidth="2" />
+            <circle cx="352" cy="56" r="44" fill={p.b} stroke="#3C2364" strokeWidth="2" />
+            <path d="M262 250l56-100 56 100Z" fill={p.a} stroke="#3C2364" strokeWidth="2" strokeLinejoin="round" />
+            <circle cx="276" cy="120" r="16" fill={p.b} stroke="#3C2364" strokeWidth="2" />
           </>
         )}
       </svg>
@@ -75,7 +75,7 @@ export default function BlogBanner({ slug, title, category, size = "card" }: Pro
           <LogoMark className={hero ? "h-10 w-auto" : "h-8 w-auto"} />
         </div>
         <p
-          className={`font-display font-extrabold uppercase leading-[0.95] max-w-[78%] ${
+          className={`font-display font-extrabold uppercase leading-[0.95] max-w-[58%] ${
             hero ? "text-2xl md:text-5xl" : "text-lg md:text-xl line-clamp-3"
           }`}
         >

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import ErrorReporter from "@/components/ErrorReporter";
 import GlobalAnimations from "@/components/animations/GlobalAnimations";
+import CookieBanner from "@/components/CookieBanner";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -9,37 +10,33 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Chloe | UAE's #1 Platform for Family Activities & Kid-Friendly Venues",
-    description: "Discover 5,000+ verified kid-friendly activities across all 7 UAE Emirates. Playgrounds, beaches, museums, indoor play areas - all reviewed by local parents. Filter by age (0-12), location, and activity type. Free to use!",
+  title: "Chloe | Kid-Friendly Activities & Family Venues in the UAE",
+    description: "Discover 160+ kid-friendly venues across the UAE. Playgrounds, beaches, museums, indoor play areas - all reviewed by local parents. Filter by age (0-12), location, and activity type. Free to use!",
     keywords: ["UAE kids activities", "Dubai family activities", "Abu Dhabi things to do with kids", "UAE playgrounds", "kid-friendly UAE", "family activities Dubai", "children activities UAE", "indoor play Dubai", "UAE beaches for kids", "family day out UAE"],
-    authors: [
-      { name: "Schroeder Technologies" },
-      { name: "Gregorious Creative Studios" },
-      { name: "Lycoris Design Studios" }
-    ],
-    creator: "Schroeder Technologies",
-    publisher: "Chloe",
+    authors: [{ name: "Lycoris Labs Inc." }],
+    creator: "Lycoris Labs Inc.",
+    publisher: "Lycoris Labs Inc.",
     metadataBase: new URL("https://chloe-app.com"),
     openGraph: {
       type: "website",
       locale: "en_AE",
       url: "https://chloe-app.com",
       siteName: "Chloe",
-      title: "Chloe | Find 5,000+ Kid-Friendly Activities Across UAE",
+      title: "Chloe | Find Kid-Friendly Activities Across the UAE",
       description: "The UAE's most trusted platform for discovering family activities. Playgrounds, beaches, museums, indoor play - all verified by local parents. Filter by your child's age and location.",
       images: [
         {
           url: "/og-image.png",
           width: 1200,
           height: 630,
-          alt: "Chloe - UAE's #1 Family Activity Platform",
+          alt: "Chloe - Family Activity Guide for the UAE",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Chloe | UAE's #1 Platform for Family Activities",
-      description: "Discover 5,000+ verified kid-friendly activities across all 7 UAE Emirates.",
+      title: "Chloe | Kid-Friendly Activities & Family Venues in the UAE",
+      description: "Discover 160+ kid-friendly venues across the UAE.",
       images: ["/og-image.png"],
     },
   robots: {
@@ -60,38 +57,22 @@ const jsonLd = {
   "@type": "WebApplication",
   "name": "Chloe",
   "applicationCategory": "LifestyleApplication",
-  "description": "UAE's #1 platform for discovering kid-friendly activities. 5,000+ venues across all 7 Emirates - playgrounds, beaches, museums, indoor play areas - all verified by local parents.",
+  "description": "Discover kid-friendly activities. 160+ family venues across the UAE - playgrounds, beaches, museums, indoor play areas - all verified by local parents.",
   "operatingSystem": "Web",
   "offers": {
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "AED"
   },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "ratingCount": "10000",
-    "bestRating": "5"
-  },
   "author": {
     "@type": "Organization",
-    "name": "Schroeder Technologies",
+    "name": "Lycoris Labs Inc.",
     "url": "https://chloe-app.com"
   },
-  "creator": [
-    {
-      "@type": "Organization",
-      "name": "Schroeder Technologies"
-    },
-    {
-      "@type": "Organization", 
-      "name": "Gregorious Creative Studios"
-    },
-    {
-      "@type": "Organization",
-      "name": "Lycoris Design Studios"
-    }
-  ],
+  "creator": {
+    "@type": "Organization",
+    "name": "Lycoris Labs Inc."
+  },
   "areaServed": {
     "@type": "Country",
     "name": "United Arab Emirates"
@@ -121,6 +102,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <GlobalAnimations />
+        <CookieBanner />
         <ErrorReporter />
         <a
           href="#main-content"

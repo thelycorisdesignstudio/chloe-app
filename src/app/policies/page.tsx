@@ -7,30 +7,91 @@ import { Shield, Eye, Lock, Users, FileText, Mail } from 'lucide-react';
 
 const policies = [
   {
-    title: "Data Collection",
-    icon: FileText,
-    content: "We collect only the minimum data necessary to provide you with personalized activity recommendations. This includes your location (with permission), saved favorites, and search preferences."
+    title: "Who We Are",
+    icon: Users,
+    content: [
+      "Chloe (chloe-app.com) is operated by Lycoris Labs Inc. (\"Lycoris Labs\", \"we\", \"us\"). We are the controller of the personal data described in this policy.",
+      "You can reach our privacy team at privacy@chloe-app.com.",
+    ],
   },
   {
-    title: "Data Usage",
+    title: "What We Collect",
+    icon: FileText,
+    content: [
+      "Account details: your name, email address and a securely hashed password when you create an account.",
+      "Your activity on Chloe: venues you save as favourites, searches and filters you use, and which venues and guides you open. This helps us show better recommendations and understand which guides are useful.",
+      "Business enquiries: the details a venue owner submits through our partner form, including contact details and any images they upload.",
+      "Payments: if you buy a partner plan, payment is handled by Stripe. We receive confirmation of the purchase but never see or store your full card number.",
+      "Technical data: basic device and browser information and IP address, used to keep the service secure and working.",
+      "We do not ask for information about your children, and you do not need to share it to use Chloe.",
+    ],
+  },
+  {
+    title: "How We Use Your Data",
     icon: Eye,
-    content: "Your data is used exclusively to improve your experience on Chloe. We analyze usage patterns to recommend better activities and venues for your family."
+    content: [
+      "To run Chloe: sign you in, remember your favourites and show activities that suit your family.",
+      "To improve Chloe: understand which venues, filters and guides parents find useful.",
+      "To keep Chloe safe: detect abuse, prevent automated scraping and protect accounts.",
+      "To respond to you: answer questions and process business enquiries and purchases.",
+      "We rely on your consent for optional analytics, our legitimate interest in running and securing the service, and the need to perform our contract with you when you hold an account or buy a plan.",
+    ],
+  },
+  {
+    title: "Cookies and Local Storage",
+    icon: Shield,
+    content: [
+      "Essential storage keeps you signed in and remembers choices such as your cookie preference and saved favourites. The service does not work properly without it.",
+      "Optional analytics help us understand how the site is used. You can choose \"Essential only\" in the privacy popup, and you can clear site data in your browser at any time.",
+    ],
+  },
+  {
+    title: "Who We Share Data With",
+    icon: Users,
+    content: [
+      "We never sell your personal data.",
+      "We use trusted service providers to run Chloe: hosting and file storage, our database, and Stripe for payments. They may only use your data to provide their service to us.",
+      "We may share anonymised, aggregated statistics with venue partners (for example, how many families viewed a listing). These never identify you.",
+      "We may disclose data where the law requires it or to protect our users and service.",
+    ],
   },
   {
     title: "Data Security",
     icon: Lock,
-    content: "All data is encrypted in transit and at rest. We use industry-standard security measures and comply with UAE data protection regulations."
-  },
-  {
-    title: "Third Parties",
-    icon: Users,
-    content: "We never sell your personal data to third parties. We may share anonymized, aggregated data with venue partners to help them improve their services."
+    content: [
+      "Data is encrypted in transit using HTTPS. Passwords are stored hashed, never in plain text.",
+      "Access to our systems is limited to people who need it, and we protect our data services against automated bulk collection with rate limiting and bot controls.",
+      "No online service can be perfectly secure. If a breach affecting your data occurs, we will notify you and the relevant authorities as the law requires.",
+    ],
   },
   {
     title: "Children's Privacy",
     icon: Shield,
-    content: "We take extra care with any information related to children. We do not collect personal information directly from children under 13 without parental consent."
-  }
+    content: [
+      "Chloe is designed for parents and carers. Accounts are for adults aged 18 and over. We do not knowingly collect personal information from children. If you believe a child has given us personal data, contact us and we will delete it.",
+    ],
+  },
+  {
+    title: "How Long We Keep Data",
+    icon: FileText,
+    content: [
+      "We keep account data while your account is active and delete or anonymise it within a reasonable period after you close it, unless the law requires us to keep certain records (for example, payment records).",
+    ],
+  },
+  {
+    title: "International Transfers",
+    icon: Eye,
+    content: [
+      "Our providers may process data outside the UAE. Where that happens we take steps to make sure your data stays protected to a standard consistent with this policy.",
+    ],
+  },
+  {
+    title: "Changes to This Policy",
+    icon: FileText,
+    content: [
+      "If we make material changes we will update the date below and, where appropriate, tell you on the site or by email.",
+    ],
+  },
 ];
 
 export default function PoliciesPage() {
@@ -46,9 +107,9 @@ export default function PoliciesPage() {
               PRIVACY POLICY
             </h1>
             <p className="max-w-3xl mx-auto text-[#3C2364]/80 text-xl md:text-2xl leading-relaxed">
-              Your privacy matters to us. Here&apos;s how we protect your family&apos;s data.
+              Your privacy matters to us. Here&apos;s what Lycoris Labs Inc. collects through Chloe, why, and the choices you have.
             </p>
-            <p className="text-[#3C2364]/60 mt-4">Last updated: January 2026</p>
+            <p className="text-[#3C2364]/60 mt-4">Last updated: November 2026</p>
           </div>
 
           <div className="max-w-4xl mx-auto space-y-8 mb-16">
@@ -65,7 +126,11 @@ export default function PoliciesPage() {
                     </div>
                     <div>
                       <h3 className="text-2xl font-black text-[#3C2364] uppercase mb-3">{policy.title}</h3>
-                      <p className="text-[#3C2364]/80 text-lg leading-relaxed">{policy.content}</p>
+                      <div className="space-y-3">
+                        {policy.content.map((para, i) => (
+                          <p key={i} className="text-[#3C2364]/80 text-lg leading-relaxed">{para}</p>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
