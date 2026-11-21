@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Navigation from '@/components/sections/Navigation';
 import { signIn } from '@/lib/auth-client';
 import { Loader2 } from 'lucide-react';
 
@@ -31,7 +32,8 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#F4F1F8] flex items-center justify-center px-6">
+    <main className="min-h-screen bg-[#F4F1F8] flex items-center justify-center px-6 pt-28 pb-12">
+      <Navigation />
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <Link href="/" className="text-[#3C2364] font-black text-4xl uppercase">
