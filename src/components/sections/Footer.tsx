@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Mail, Instagram, Facebook, Twitter } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { staggerContainer, fadeUp, popRotate } from '@/lib/animations/variants';
+import Logo, { LogoMark } from '@/components/Logo';
 
 const Footer = () => {
   return (
@@ -25,7 +26,7 @@ const Footer = () => {
           viewport={{ once: true, margin: "-50px" }}
         >
           <motion.div className="md:col-span-2" variants={fadeUp}>
-            <h3 className="text-[#3C2364] font-black text-3xl uppercase mb-4">Chloe</h3>
+            <Link href="/" aria-label="Chloe home" className="inline-block mb-5"><Logo className="scale-125 origin-left" /></Link>
               <p className="text-[#3C2364]/70 text-lg leading-relaxed mb-6 max-w-md">
                 The UAE&apos;s most trusted platform for discovering kid-friendly activities.
                 Venues across all 7 Emirates, verified by real parents.
@@ -57,6 +58,8 @@ const Footer = () => {
             <h4 className="text-[#3C2364] font-black text-lg uppercase mb-6">Explore</h4>
             <nav className="flex flex-col gap-3">
               <Link href="/explore" className="text-[#3C2364]/70 hover:text-[#3C2364] font-medium transition-colors">Browse Activities</Link>
+              <Link href="/venues" className="text-[#3C2364]/70 hover:text-[#3C2364] font-medium transition-colors">All Venues</Link>
+              <Link href="/blog" className="text-[#3C2364]/70 hover:text-[#3C2364] font-medium transition-colors">Blog &amp; Guides</Link>
               <Link href="/#faqs" className="text-[#3C2364]/70 hover:text-[#3C2364] font-medium transition-colors">FAQs</Link>
             </nav>
           </motion.div>
@@ -129,6 +132,33 @@ const Footer = () => {
               </div>
             </div>
           </div>
+
+        {/* Giant wordmark */}
+        <div className="mt-14 md:mt-20 overflow-hidden select-none" aria-hidden="true">
+          <motion.div
+            className="flex items-end justify-center gap-[2vw]"
+            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-40px" }}
+          >
+            {"chloe".split("").map((ch, i) => (
+              <motion.span
+                key={i}
+                className="font-display font-extrabold text-[26vw] md:text-[21vw] leading-[0.82] tracking-tight text-[#3C2364]"
+                variants={{ hidden: { y: "105%", opacity: 0 }, visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 90, damping: 16 } } }}
+              >
+                {ch}
+              </motion.span>
+            ))}
+            <motion.span
+              className="mb-[2vw] ml-[1vw]"
+              variants={{ hidden: { scale: 0, rotate: -30 }, visible: { scale: 1, rotate: 0, transition: { type: "spring", stiffness: 160, damping: 11, delay: 0.5 } } }}
+            >
+              <LogoMark className="h-[11vw] md:h-[9vw] w-auto" />
+            </motion.span>
+          </motion.div>
+        </div>
       </div>
     </footer>
   );

@@ -576,7 +576,13 @@ function ActivityCard({
       <div className="p-4">
         <div className="flex items-start justify-between gap-2 mb-1">
           <h3 className="text-base font-black text-[#3C2364] leading-tight group-hover:text-[#3C2364]/80 line-clamp-1">
-            {activity.name}
+            <Link
+              href={`/venues/${activity.slug}`}
+              onClick={(e) => e.stopPropagation()}
+              className="hover:underline"
+            >
+              {activity.name}
+            </Link>
           </h3>
           <div className="flex items-center gap-0.5 bg-[#F5F096] px-1.5 py-0.5 rounded-full shrink-0">
             <Star className="w-3 h-3 fill-[#3C2364] text-[#3C2364]" />

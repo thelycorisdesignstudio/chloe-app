@@ -15,6 +15,50 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'framerusercontent.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org',
+      },
+      {
+        protocol: 'https',
+        hostname: 'olioli.ae',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn-ilefodp.nitrocdn.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.thegreenplanetdubai.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdnentcms.emaar.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.aventuraparks.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'static.myconnect.ae',
+      },
+      {
+        protocol: 'https',
+        hostname: 'thenationalaquarium.ae',
+      },
+      {
+        protocol: 'https',
+        hostname: 'sharjahsafari.ae',
+      },
+      {
+        protocol: 'https',
+        hostname: 'dreamlanduae.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'janat-dilmun.s3.ap-south-1.amazonaws.com',
+      },
     ],
   },
   typescript: {

@@ -10,6 +10,7 @@ import { Menu, X } from "lucide-react";
 const links = [
   { href: "/explore", label: "Explore" },
   { href: "/#locations", label: "Locations" },
+  { href: "/blog", label: "Blog" },
   { href: "/forbusiness", label: "For Business" },
 ];
 
@@ -43,7 +44,7 @@ const Navigation = () => {
           {/* Desktop links */}
           <ul className="hidden md:flex items-center gap-1">
             {links.map((l) => {
-              const active = pathname === l.href;
+              const active = pathname === l.href || (l.href === "/blog" && pathname.startsWith("/blog"));
               return (
                 <li key={l.href}>
                   <Link
