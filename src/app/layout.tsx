@@ -3,10 +3,11 @@ import "./globals.css";
 import ErrorReporter from "@/components/ErrorReporter";
 import GlobalAnimations from "@/components/animations/GlobalAnimations";
 import CookieBanner from "@/components/CookieBanner";
-import { Lexend, Caveat } from "next/font/google";
+import localFont from "next/font/local";
 
-const lexend = Lexend({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"], variable: "--font-lexend", display: "swap" });
-const caveat = Caveat({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-caveat", display: "swap" });
+// Fonts are bundled with the app (no network access needed at build or run time).
+const lexend = localFont({ src: "./fonts/lexend.woff2", weight: "100 900", style: "normal", variable: "--font-lexend", display: "swap" });
+const caveat = localFont({ src: "./fonts/caveat.woff2", weight: "400 700", style: "normal", variable: "--font-caveat", display: "swap" });
 
 export const viewport: Viewport = {
   width: "device-width",
