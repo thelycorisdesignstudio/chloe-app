@@ -7,7 +7,7 @@ const aiTraining = ["GPTBot", "CCBot", "Google-Extended", "anthropic-ai", "Claud
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: "*", allow: "/", disallow: ["/api/", "/login", "/signup"] },
+      { userAgent: "*", allow: "/", disallow: ["/api/"] },
       ...aiTraining.map((userAgent) => ({ userAgent, disallow: "/" })),
     ],
     sitemap: "https://chloe-app.com/sitemap.xml",

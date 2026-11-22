@@ -18,7 +18,6 @@ const policies = [
     title: "What We Collect",
     icon: FileText,
     content: [
-      "Account details: your name, email address and a securely hashed password when you create an account.",
       "Your activity on Chloe: venues you save as favourites, searches and filters you use, and which venues and guides you open. This helps us show better recommendations and understand which guides are useful.",
       "Business enquiries: the details a venue owner submits through our partner form, including contact details and any images they upload.",
       "Payments: if you buy a partner plan, payment is handled by Stripe. We receive confirmation of the purchase but never see or store your full card number.",
@@ -30,18 +29,18 @@ const policies = [
     title: "How We Use Your Data",
     icon: Eye,
     content: [
-      "To run Chloe: sign you in, remember your favourites and show activities that suit your family.",
+      "To run Chloe: remember your favourites on your device and show activities that suit your family.",
       "To improve Chloe: understand which venues, filters and guides parents find useful.",
-      "To keep Chloe safe: detect abuse, prevent automated scraping and protect accounts.",
+      "To keep Chloe safe: detect abuse, prevent automated scraping and protect the service.",
       "To respond to you: answer questions and process business enquiries and purchases.",
-      "We rely on your consent for optional analytics, our legitimate interest in running and securing the service, and the need to perform our contract with you when you hold an account or buy a plan.",
+      "We rely on your consent for optional analytics, our legitimate interest in running and securing the service, and the need to perform our contract with you when you buy a partner plan.",
     ],
   },
   {
     title: "Cookies and Local Storage",
     icon: Shield,
     content: [
-      "Essential storage keeps you signed in and remembers choices such as your cookie preference and saved favourites. The service does not work properly without it.",
+      "Essential storage remembers choices such as your cookie preference and your saved favourites, which stay on your device. The service does not work properly without it.",
       "Optional analytics help us understand how the site is used. You can choose \"Essential only\" in the privacy popup, and you can clear site data in your browser at any time.",
     ],
   },
@@ -68,14 +67,14 @@ const policies = [
     title: "Children's Privacy",
     icon: Shield,
     content: [
-      "Chloe is designed for parents and carers. Accounts are for adults aged 18 and over. We do not knowingly collect personal information from children. If you believe a child has given us personal data, contact us and we will delete it.",
+      "Chloe is designed for parents and carers. You do not need an account to use Chloe. We do not knowingly collect personal information from children. If you believe a child has given us personal data, contact us and we will delete it.",
     ],
   },
   {
     title: "How Long We Keep Data",
     icon: FileText,
     content: [
-      "We keep account data while your account is active and delete or anonymise it within a reasonable period after you close it, unless the law requires us to keep certain records (for example, payment records).",
+      "Chloe has no user accounts. Business enquiries and payment records are kept only as long as needed to respond and to meet legal obligations. Favourites are stored on your own device and can be cleared at any time in your browser.",
     ],
   },
   {
@@ -151,7 +150,7 @@ export default function PoliciesPage() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="w-2 h-2 rounded-full bg-[#3C2364] mt-3 shrink-0" />
-                <span><strong>Deletion:</strong> You can request deletion of your account and all associated data.</span>
+                <span><strong>Deletion:</strong> You can request deletion of any enquiry or other personal data we hold about you.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="w-2 h-2 rounded-full bg-[#3C2364] mt-3 shrink-0" />

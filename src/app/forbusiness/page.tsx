@@ -15,8 +15,8 @@ import { staggerContainer, fadeUp, scaleBounce } from '@/lib/animations/variants
 
 const benefits = [
   {
-    title: "Reach UAE Families",
-    description: "Get your venue in front of thousands of active parents searching for their next family outing across all 7 Emirates.",
+    title: "Reach GCC Families",
+    description: "Get your venue in front of thousands of active parents searching for their next family outing across the GCC.",
     icon: Users,
     color: "#AAE6FA"
   },
@@ -278,7 +278,7 @@ export default function ForBusinessPage() {
                 </li>
                 <li className="flex items-center gap-3 text-[#3C2364]">
                   <CheckCircle2 className="w-6 h-6 text-[#C8B9E6]" />
-                  <span className="font-medium">Coverage across all 7 Emirates</span>
+                  <span className="font-medium">Coverage across the GCC</span>
                 </li>
                 <li className="flex items-center gap-3 text-[#3C2364]">
                   <CheckCircle2 className="w-6 h-6 text-[#C8B9E6]" />

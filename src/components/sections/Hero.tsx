@@ -3,7 +3,7 @@
 import React, { useRef } from 'react';
 import Floating from "@/components/illustrations/Floating";
 import { Sun, Balloons, Kite } from "@/components/illustrations";
-import { MapPin, Filter, Star, LogIn } from 'lucide-react';
+import { MapPin, Filter, Star } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 const headingWords = "Your pocket guide to surviving parenthood, one activity at a time.".split(" ");
 
@@ -77,8 +77,8 @@ const Hero = () => {
           animate={{ y: 0 }}
           transition={{ duration: 0.7, delay: 1 }}
         >
-          Discover <strong>free activities</strong> for kids across all 7 Emirates.
-          Playgrounds, beaches, museums, indoor play areas &mdash; all verified by UAE parents.
+          Discover <strong>free and paid activities</strong> for kids across the UAE, Saudi Arabia, Qatar, Kuwait, Bahrain and Oman.
+          Playgrounds, beaches, museums, indoor play areas and more.
         </motion.p>
 
         <motion.div
@@ -106,17 +106,6 @@ const Hero = () => {
           >
             <span className="text-sm md:text-base font-black text-[#3C2364] uppercase tracking-wide">Explore Activities</span>
           </motion.a>
-
-          <motion.a
-            href="/login"
-            className="group flex h-[44px] md:h-[52px] items-center justify-center gap-2 rounded-[999px] border-2 border-[#3C2364] bg-off-white px-4 md:px-6 shadow-[3px_3px_0px_#3C2364] focus:outline-none focus:ring-2 focus:ring-[#3C2364] focus:ring-offset-2"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          >
-            <LogIn className="w-4 h-4 text-[#3C2364]" />
-            <span className="text-sm md:text-base font-black text-[#3C2364] uppercase tracking-wide">Login</span>
-          </motion.a>
         </motion.div>
 
         <motion.div
@@ -126,9 +115,9 @@ const Hero = () => {
           transition={{ duration: 0.7, delay: 1.4 }}
         >
           {[
-            { icon: MapPin, text: "All 7 Emirates", fill: false },
+            { icon: MapPin, text: "6 GCC Countries", fill: false },
             { icon: Filter, text: "Age 0-12 Years", fill: false },
-            { icon: Star, text: "4.9 Rating", fill: true },
+            { icon: Star, text: "Free & paid options", fill: true },
           ].map((item, i) => (
             <motion.div
               key={i}

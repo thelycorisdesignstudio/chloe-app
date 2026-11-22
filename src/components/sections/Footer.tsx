@@ -29,8 +29,8 @@ const Footer = () => {
           <motion.div className="md:col-span-2" variants={fadeUp}>
             <Link href="/" aria-label="Chloe home" className="inline-block mb-5"><Logo className="scale-125 origin-left" /></Link>
               <p className="text-[#3C2364]/70 text-lg leading-relaxed mb-6 max-w-md">
-                The UAE&apos;s most trusted platform for discovering kid-friendly activities.
-                Venues across all 7 Emirates, verified by real parents.
+                Kid-friendly activities and family venues across the GCC,
+                researched for parents in the UAE, Saudi Arabia, Qatar, Kuwait, Bahrain and Oman.
               </p>
             <div className="flex gap-4">
               {[

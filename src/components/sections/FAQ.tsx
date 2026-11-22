@@ -25,15 +25,15 @@ const faqs = [
   },
   {
     question: "Is my family's data safe?",
-    answer: "Absolutely. We take privacy seriously and comply with UAE data protection regulations. We only collect the minimum data needed to provide you with personalized recommendations. Your data is encrypted, never sold to third parties, and you can delete your account at any time."
+    answer: "We keep data collection to a minimum. Chloe has no user accounts, your favourites stay on your own device, and we never sell personal data. You can read exactly what we collect in our privacy policy."
   },
   {
     question: "Can I suggest a venue that's not listed?",
-    answer: "Yes! We love hearing from parents across all seven Emirates. You can submit new venues through our platform, and our team will verify and add them. This helps us grow our database and helps other families discover great spots from Dubai to Fujairah."
+    answer: "Yes! We love hearing from parents across the GCC. You can submit new venues through our platform, and our team will verify and add them. This helps us grow our database and helps other families discover great spots from Dubai to Fujairah."
   },
   {
-    question: "Which Emirates does Chloe cover?",
-    answer: "Chloe covers all seven Emirates of the UAE - Dubai, Abu Dhabi, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah, and Fujairah. We have the most activities listed in Dubai and Abu Dhabi, but we're rapidly expanding coverage in all areas. You can filter by location to find activities near you."
+    question: "Which countries does Chloe cover?",
+    answer: "Chloe covers the whole GCC: the UAE (all seven Emirates), Saudi Arabia, Qatar, Kuwait, Bahrain and Oman, with some venues in Jordan and Egypt too. Some cities have more venues than others and coverage keeps growing. Use the country and region filters on the Explore page to see what is near you."
   },
   {
     question: "What types of activities can I find?",

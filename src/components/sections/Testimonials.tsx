@@ -177,9 +177,9 @@ export default function Testimonials() {
 
         <div className="mt-16 flex flex-wrap justify-center gap-6">
           {[
-            { icon: Users, text: "Trusted by UAE families" },
-            { icon: Star, text: "4.9 Average Rating", fill: true },
-            { icon: MapPin, text: "All 7 Emirates" },
+            { icon: Users, text: "Made for GCC families" },
+            { icon: Star, text: "Free to use", fill: true },
+            { icon: MapPin, text: "6 GCC Countries" },
           ].map((badge, i) => (
             <motion.div
               key={i}

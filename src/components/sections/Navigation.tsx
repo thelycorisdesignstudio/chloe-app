@@ -11,7 +11,6 @@ const links = [
   { href: "/explore", label: "Explore" },
   { href: "/#locations", label: "Locations" },
   { href: "/blog", label: "Blog" },
-  { href: "/forbusiness", label: "For Business" },
 ];
 
 const Navigation = () => {
@@ -66,16 +65,10 @@ const Navigation = () => {
           {/* Actions */}
           <div className="flex items-center gap-2">
             <Link
-              href="/login"
-              className="hidden sm:block rounded-full border-2 border-teal px-4 py-2 font-display font-extrabold text-[12px] tracking-widest uppercase leading-none text-teal hover:bg-[#C8B9E6]/60 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3C73C8]"
+              href="/forbusiness"
+              className="rounded-full border-2 border-teal bg-teal px-4 py-2 font-display font-extrabold text-[11px] sm:text-[12px] tracking-widest uppercase leading-none text-white hover:bg-[#3C73C8] hover:border-[#3C73C8] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3C73C8] focus-visible:ring-offset-2"
             >
-              Login
-            </Link>
-            <Link
-              href="/signup"
-              className="rounded-full border-2 border-teal bg-teal px-4 py-2 font-display font-extrabold text-[12px] tracking-widest uppercase leading-none text-white hover:bg-[#3C73C8] hover:border-[#3C73C8] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3C73C8] focus-visible:ring-offset-2"
-            >
-              Sign up
+              List your venue
             </Link>
             <button
               type="button"
@@ -100,7 +93,7 @@ const Navigation = () => {
               transition={{ duration: 0.18 }}
             >
               <ul className="flex flex-col gap-1">
-                {[...links, { href: "/login", label: "Login" }].map((l) => (
+                {links.map((l) => (
                   <li key={l.href}>
                     <Link
                       href={l.href}

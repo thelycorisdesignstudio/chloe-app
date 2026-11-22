@@ -1,6 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Login and signup were removed; send old links to the home page.
+  async redirects() {
+    return [
+      { source: '/login', destination: '/', permanent: false },
+      { source: '/signup', destination: '/', permanent: false },
+    ];
+  },
   images: {
     remotePatterns: [
       {

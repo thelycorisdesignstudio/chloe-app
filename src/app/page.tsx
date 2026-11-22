@@ -9,8 +9,10 @@ import CallToAction from "@/components/sections/CallToAction";
 import BlogPreview from "@/components/sections/BlogPreview";
 import Reveal from "@/components/animations/Reveal";
 import Footer from "@/components/sections/Footer";
+import { getCountryCards } from "@/lib/data/country-cards";
 
 export default function Home() {
+  const countryCards = getCountryCards();
   return (
     <main className="relative min-h-screen overflow-x-hidden">
       <Navigation />
@@ -23,7 +25,7 @@ export default function Home() {
         <IntroGrid />
       </Reveal>
       <Reveal>
-        <LocationGrid />
+        <LocationGrid destinations={countryCards} />
       </Reveal>
       <Reveal>
         <Testimonials />

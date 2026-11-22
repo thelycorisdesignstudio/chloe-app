@@ -79,9 +79,10 @@ function ExplorePageContent() {
   const searchParams = useSearchParams();
   const categoryFromUrl = searchParams.get('category');
   const searchFromUrl = searchParams.get('search');
+  const countryFromUrl = searchParams.get('country');
   
   const [searchQuery, setSearchQuery] = useState(searchFromUrl || '');
-  const [selectedCountry, setSelectedCountry] = useState('UAE');
+  const [selectedCountry, setSelectedCountry] = useState(countryFromUrl && /^[A-Z]{3}$/.test(countryFromUrl) ? countryFromUrl : 'UAE');
   const [selectedRegion, setSelectedRegion] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(categoryFromUrl || '');
   const [selectedAgeGroup, setSelectedAgeGroup] = useState(ageGroups[0]);

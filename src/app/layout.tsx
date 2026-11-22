@@ -15,9 +15,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Chloe | Kid-Friendly Activities & Family Venues in the UAE",
-    description: "Discover 160+ kid-friendly venues across the UAE. Playgrounds, beaches, museums, indoor play areas - all reviewed by local parents. Filter by age (0-12), location, and activity type. Free to use!",
-    keywords: ["UAE kids activities", "Dubai family activities", "Abu Dhabi things to do with kids", "UAE playgrounds", "kid-friendly UAE", "family activities Dubai", "children activities UAE", "indoor play Dubai", "UAE beaches for kids", "family day out UAE"],
+  title: "Chloe | Kid-Friendly Activities & Family Venues in the UAE and GCC",
+    description: "Discover kid-friendly venues across the UAE, Saudi Arabia, Qatar, Kuwait, Bahrain and Oman. Playgrounds, beaches, museums, indoor play areas and more. Filter by age (0-12), location, and activity type. Free to use!",
+    keywords: ["UAE kids activities", "Saudi Arabia family activities", "Qatar things to do with kids", "GCC family activities", "Dubai family activities", "Abu Dhabi things to do with kids", "UAE playgrounds", "kid-friendly UAE", "family activities Dubai", "children activities UAE", "indoor play Dubai", "UAE beaches for kids", "family day out UAE"],
     authors: [{ name: "Lycoris Labs Inc." }],
     creator: "Lycoris Labs Inc.",
     publisher: "Lycoris Labs Inc.",
@@ -27,20 +27,20 @@ export const metadata: Metadata = {
       locale: "en_AE",
       url: "https://chloe-app.com",
       siteName: "Chloe",
-      title: "Chloe | Find Kid-Friendly Activities Across the UAE",
-      description: "The UAE's most trusted platform for discovering family activities. Playgrounds, beaches, museums, indoor play - all verified by local parents. Filter by your child's age and location.",
+      title: "Chloe | Find Kid-Friendly Activities Across the GCC",
+      description: "Discover family activities across the UAE, Saudi Arabia, Qatar, Kuwait, Bahrain and Oman. Playgrounds, beaches, museums, indoor play. Filter by your child's age and location.",
       images: [
         {
           url: "/brand/og.png",
           width: 1200,
           height: 630,
-          alt: "Chloe - Family Activity Guide for the UAE",
+          alt: "Chloe - Family Activity Guide for the GCC",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Chloe | Kid-Friendly Activities & Family Venues in the UAE",
+      title: "Chloe | Kid-Friendly Activities & Family Venues in the UAE and GCC",
       description: "Discover 160+ kid-friendly venues across the UAE.",
       images: ["/brand/og.png"],
     },
@@ -62,7 +62,7 @@ const jsonLd = {
   "@type": "WebApplication",
   "name": "Chloe",
   "applicationCategory": "LifestyleApplication",
-  "description": "Discover kid-friendly activities. 160+ family venues across the UAE - playgrounds, beaches, museums, indoor play areas - all verified by local parents.",
+  "description": "Discover kid-friendly activities and family venues across the UAE, Saudi Arabia, Qatar, Kuwait, Bahrain and Oman: playgrounds, beaches, museums and indoor play areas.",
   "operatingSystem": "Web",
   "offers": {
     "@type": "Offer",

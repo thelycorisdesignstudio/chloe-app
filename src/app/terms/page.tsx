@@ -12,30 +12,26 @@ const sections = [
   },
   {
     title: "2. Use of Service",
-    content: "Chloe provides information about kid-friendly activities and venues across the UAE. While we strive to ensure accuracy, we recommend verifying details directly with venues before visiting. Users must be 18 years or older to create an account."
+    content: "Chloe provides information about kid-friendly activities and venues across the UAE and the wider GCC. While we strive to ensure accuracy, we recommend verifying details directly with venues before visiting."
   },
   {
-    title: "3. User Accounts",
-    content: "You are responsible for maintaining the confidentiality of your account credentials. You agree to notify us immediately of any unauthorized access. We reserve the right to suspend or terminate accounts that violate our terms."
-  },
-  {
-    title: "4. Content & Reviews",
+    title: "3. Content & Reviews",
     content: "Users may submit reviews and ratings. You agree that your content will be truthful, not defamatory, and respectful. We reserve the right to remove content that violates our community guidelines or UAE law."
   },
   {
-    title: "5. Venue Information",
+    title: "4. Venue Information",
     content: "Activity information, prices, and opening hours are provided by venues and may change. Chloe is not responsible for inaccuracies. Always confirm details before planning your visit, especially for paid activities."
   },
   {
-    title: "6. Intellectual Property",
+    title: "5. Intellectual Property",
     content: "All content on Chloe, including logos, designs, and text, is protected by intellectual property laws. You may not reproduce, distribute, or create derivative works without our written permission."
   },
   {
-    title: "7. Limitation of Liability",
+    title: "6. Limitation of Liability",
     content: "Chloe provides information 'as is' without warranties. We are not liable for any injuries, losses, or damages arising from the use of venues listed on our platform. Parents are responsible for supervising their children."
   },
   {
-    title: "8. Governing Law",
+    title: "7. Governing Law",
     content: "These terms are governed by the laws of the United Arab Emirates. Any disputes will be resolved in the courts of Dubai, UAE."
   }
 ];
