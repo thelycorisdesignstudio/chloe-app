@@ -1,6 +1,7 @@
 import React from "react";
 import { LogoMark } from "@/components/Logo";
 import { Scene, categoryScene, Sparkle, Cloud } from "@/components/illustrations";
+import { bannerSpecs } from "@/lib/data/blog/banners";
 
 const palettes = [
   { bg: "#C8B9E6", fg: "#3C2364", a: "#F5F096", b: "#AAE6FA" },
@@ -27,7 +28,8 @@ interface Props {
 /** Generated editorial banner: palette + shape layout chosen from the slug. */
 export default function BlogBanner({ slug, title, category, size = "card" }: Props) {
   const h = hash(slug);
-  const p = palettes[h % palettes.length];
+  const spec = bannerSpecs[slug];
+  const p = palettes[spec ? spec.palette % palettes.length : h % palettes.length];
   const layout = (h >> 3) % 3;
   const hero = size === "hero";
   const ink = p.fg;
@@ -43,7 +45,7 @@ export default function BlogBanner({ slug, title, category, size = "card" }: Pro
     >
       {/* category illustration, kept to the right so the title stays on a clean background */}
       <Scene
-        name={categoryScene(category)}
+        name={spec?.scene ?? categoryScene(category)}
         className={`absolute bottom-0 right-[2%] w-auto ${hero ? "h-[86%]" : "h-[74%]"}`}
       />
       {layout !== 1 && <Sparkle className={`absolute w-6 h-6 md:w-8 md:h-8 ${layout === 0 ? "right-[36%] top-[16%]" : "right-[40%] bottom-[18%]"}`} />}
@@ -54,7 +56,7 @@ export default function BlogBanner({ slug, title, category, size = "card" }: Pro
           <span
             className="rounded-full border-2 border-[#3C2364] bg-[#F4F1F8] px-3 py-1 font-display text-[10px] md:text-xs font-extrabold uppercase tracking-widest text-[#3C2364]"
           >
-            {category}
+            {category === "Sharjah & Northern Emirates" ? "Sharjah & North" : category}
           </span>
           <LogoMark className={hero ? "h-10 w-auto" : "h-8 w-auto"} />
         </div>

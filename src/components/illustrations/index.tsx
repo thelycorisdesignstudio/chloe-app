@@ -208,10 +208,331 @@ export const Cloud = (p: P) => (
   </Svg>
 );
 
-export type SceneName = "sun" | "balloons" | "kite" | "playground" | "skyline" | "mosque" | "mountains" | "dhow" | "stroller";
+/* ───────────── Topic scenes: one per blog post ───────────── */
+
+export const Beach = (p: P) => (
+  <Svg {...p}>
+    <circle cx="190" cy="52" r="26" fill={C.yellow} />
+    <path d="M110 70 L 110 206" strokeWidth="6" />
+    <path d="M44 106 C 52 52, 168 52, 176 106 Z" fill={C.peach} />
+    <path d="M76 106 C 80 66, 98 54, 110 54 M144 106 C 140 66, 122 54, 110 54" />
+    <path d="M44 106 q 11 12 22 0 q 11 12 22 0 q 11 12 22 0 q 11 12 22 0 q 11 12 22 0 q 11 12 22 0" strokeWidth="4" fill={C.peach} />
+    <path d="M10 208 C 40 194, 70 222, 100 208 S 160 194, 190 208 S 222 216, 232 208 L 232 232 L 10 232 Z" fill={C.sky} />
+    <path d="M168 192 L 196 192 L 190 214 L 174 214 Z" fill={C.yellow} />
+    <path d="M168 192 C 172 180, 192 180, 196 192" />
+  </Svg>
+);
+
+export const WaterSlide = (p: P) => (
+  <Svg {...p}>
+    <rect x="30" y="40" width="46" height="170" rx="8" fill={C.lav} />
+    <path d="M30 60 h46 M30 84 h46 M30 108 h46 M30 132 h46 M30 156 h46 M30 180 h46" strokeWidth="3.5" />
+    <path d="M76 56 C 150 40, 200 70, 160 104 C 124 134, 176 150, 196 176" stroke={C.blue} strokeWidth="26" />
+    <path d="M76 56 C 150 40, 200 70, 160 104 C 124 134, 176 150, 196 176" stroke={C.sky} strokeWidth="16" />
+    <path d="M10 206 L 230 206" />
+    <path d="M120 216 q 10 -10 20 0 q 10 -10 20 0 q 10 -10 20 0 q 10 -10 20 0" stroke={C.blue} />
+    <circle cx="200" cy="30" r="18" fill={C.yellow} />
+  </Svg>
+);
+
+export const Swing = (p: P) => (
+  <Svg {...p}>
+    <path d="M30 214 L 120 40 L 210 214" />
+    <path d="M120 40 L 120 40" />
+    <path d="M62 150 L 178 150" strokeWidth="4" />
+    <path d="M96 40 L 144 40" strokeWidth="8" />
+    <path d="M100 42 L 92 172 M 140 42 L 148 172" strokeWidth="3.5" />
+    <rect x="82" y="170" width="76" height="12" rx="6" fill={C.peach} />
+    <circle cx="120" cy="128" r="14" fill={C.yellow} />
+    <Face x={120} y={129} s={0.65} />
+    <path d="M120 142 L 120 170" />
+    <path d="M10 214 L 230 214" />
+    <circle cx="204" cy="70" r="20" fill={C.sky} stroke={INK} />
+  </Svg>
+);
+
+export const Blocks = (p: P) => (
+  <Svg {...p}>
+    <rect x="36" y="150" width="64" height="64" rx="8" fill={C.sky} />
+    <circle cx="68" cy="182" r="14" fill={C.yellow} />
+    <rect x="104" y="150" width="64" height="64" rx="8" fill={C.peach} />
+    <path d="M118 198 L 136 164 L 154 198 Z" fill={C.lav} />
+    <rect x="70" y="86" width="64" height="64" rx="8" fill={C.lav} />
+    <rect x="88" y="104" width="28" height="28" rx="4" fill={C.yellow} />
+    <circle cx="190" cy="168" r="30" fill={C.yellow} />
+    <circle cx="170" cy="144" r="11" fill={C.yellow} />
+    <circle cx="210" cy="144" r="11" fill={C.yellow} />
+    <Face x={190} y={166} s={0.9} />
+    <path d="M170 214 L 210 214" />
+  </Svg>
+);
+
+export const Umbrella = (p: P) => (
+  <Svg {...p}>
+    <path d="M60 60 C 66 24, 154 24, 160 60 C 140 48, 126 60, 110 60 C 94 60, 80 48, 60 60 Z" fill={C.cream} stroke="none" />
+    <path d="M30 120 C 40 50, 180 50, 190 120 C 170 104, 150 120, 130 104 C 120 118, 100 118, 90 104 C 70 120, 50 104, 30 120 Z" fill={C.lav} />
+    <path d="M110 76 L 110 176 C 110 196, 84 196, 84 176" strokeWidth="6" />
+    <path d="M70 108 C 76 82, 96 70, 110 70 M150 108 C 144 82, 124 70, 110 70" />
+    <path d="M26 190 l -4 14 M 50 176 l -4 14 M 170 186 l -4 14 M 194 172 l -4 14 M 206 206 l -4 14" stroke={C.blue} />
+    <path d="M40 222 q 14 -10 28 0 q 14 10 28 0 M 130 222 q 14 -10 28 0 q 14 10 28 0" stroke={C.blue} strokeWidth="4" />
+    <path d="M150 20 C 170 20, 176 36, 164 40 C 168 54, 140 56, 136 42 C 124 40, 126 22, 150 20 Z" fill={C.white} />
+  </Svg>
+);
+
+export const Popcorn = (p: P) => (
+  <Svg {...p}>
+    {[[78, 78, 20], [112, 58, 22], [150, 74, 20], [96, 104, 18], [136, 100, 20], [174, 100, 16], [58, 104, 16]].map(([x, y, r], i) => (
+      <circle key={i} cx={x} cy={y} r={r} fill={i % 2 ? C.cream : C.yellow} />
+    ))}
+    <path d="M52 112 L 64 214 L 176 214 L 188 112 Z" fill={C.cream} />
+    <path d="M88 112 L 92 214 M 120 112 L 120 214 M 152 112 L 148 214" stroke={C.peach} strokeWidth="14" />
+    <path d="M52 112 L 64 214 L 176 214 L 188 112 Z" fill="none" />
+    <rect x="186" y="150" width="42" height="64" rx="6" fill={C.sky} transform="rotate(8 207 182)" />
+    <circle cx="207" cy="170" r="8" fill={C.yellow} transform="rotate(8 207 182)" />
+  </Svg>
+);
+
+const flower = (key: string, x: number, y: number, petal: string, r = 16) => (
+  <g key={key}>
+    {[...Array(6)].map((_, i) => {
+      const a = (i * Math.PI) / 3;
+      return <circle key={i} cx={x + Math.cos(a) * r} cy={y + Math.sin(a) * r} r={r * 0.8} fill={petal} />;
+    })}
+    <circle cx={x} cy={y} r={r * 0.7} fill={C.yellow} />
+  </g>
+);
+
+export const Flowers = (p: P) => (
+  <Svg {...p}>
+    <path d="M70 214 C 70 170, 64 140, 70 110 M 120 214 C 122 160, 130 120, 124 78 M 176 214 C 174 176, 182 150, 178 124" />
+    <path d="M70 180 C 48 170, 44 150, 52 140 C 64 148, 72 164, 70 180 Z" fill={C.sky} />
+    <path d="M176 188 C 198 182, 206 164, 198 152 C 184 158, 176 172, 176 188 Z" fill={C.sky} />
+    {flower("a", 70, 104, C.peach)}
+    {flower("b", 124, 70, C.lav, 20)}
+    {flower("c", 178, 118, C.sky)}
+    <path d="M10 214 L 230 214" />
+  </Svg>
+);
+
+export const AbuDhabiSkyline = (p: P) => (
+  <Svg {...p}>
+    <path d="M10 214 L 230 214" />
+    <path d="M52 214 L 78 52 L 104 70 L 82 214 Z" fill={C.lav} />
+    <path d="M110 214 L 136 70 L 162 52 L 140 214 Z" fill={C.peach} />
+    <path d="M62 150 L 92 154 M 66 120 L 94 126 M 70 90 L 96 98 M 122 150 L 150 146 M 126 120 L 152 114 M 130 90 L 156 82" strokeWidth="3.5" />
+    <path d="M168 214 L 168 160 C 168 134, 214 134, 214 160 L 214 214 Z" fill={C.sky} />
+    <path d="M191 134 L 191 120" />
+    <circle cx="30" cy="48" r="20" fill={C.yellow} />
+  </Svg>
+);
+
+export const Coaster = (p: P) => (
+  <Svg {...p}>
+    <path d="M10 214 L 230 214" />
+    <circle cx="124" cy="104" r="62" stroke={C.blue} strokeWidth="14" fill="none" />
+    <circle cx="124" cy="104" r="62" strokeWidth="4" stroke={C.sky} fill="none" />
+    <path d="M10 160 C 40 160, 60 120, 76 150 M 172 150 C 200 120, 214 160, 230 160" stroke={C.blue} strokeWidth="10" />
+    <path d="M40 160 L 40 214 M 76 150 L 76 214 M 124 166 L 124 214 M 172 150 L 172 214 M 206 160 L 206 214" strokeWidth="4" />
+    <rect x="94" y="30" width="46" height="26" rx="10" fill={C.yellow} transform="rotate(-8 117 43)" />
+    <circle cx="108" cy="38" r="9" fill={C.peach} transform="rotate(-8 117 43)" />
+    <circle cx="128" cy="36" r="9" fill={C.lav} transform="rotate(-8 117 43)" />
+  </Svg>
+);
+
+export const Fountain = (p: P) => (
+  <Svg {...p}>
+    <ellipse cx="120" cy="196" rx="96" ry="22" fill={C.sky} />
+    <path d="M120 196 L 120 110" strokeWidth="6" />
+    <path d="M120 112 C 120 60, 74 50, 66 98 M120 112 C 120 60, 166 50, 174 98 M120 112 C 120 40, 120 40, 120 28" stroke={C.blue} strokeWidth="5" />
+    <path d="M120 112 C 108 76, 90 74, 84 96 M120 112 C 132 76, 150 74, 156 96" stroke={C.white} strokeWidth="4" />
+    <ellipse cx="120" cy="112" rx="26" ry="8" fill={C.lav} />
+    <path d="M70 196 q 12 -8 24 0 q 12 8 24 0 q 12 -8 24 0 q 12 8 24 0" strokeWidth="4" />
+    <circle cx="200" cy="48" r="20" fill={C.yellow} />
+    <path d="M10 218 L 230 218" />
+  </Svg>
+);
+
+const palmTree = (key: string, x: number, h: number, s = 1) => (
+  <g key={key} transform={`translate(${x} 214) scale(${s})`}>
+    <path d={`M0 0 C 6 -${h * 0.4}, -6 -${h * 0.7}, 4 -${h}`} strokeWidth="9" />
+    <path d={`M4 -${h} C -30 -${h + 10}, -46 -${h - 6}, -52 -${h - 22} C -32 -${h - 4}, -14 -${h - 6}, 4 -${h} Z`} fill={C.sky} />
+    <path d={`M4 -${h} C 38 -${h + 12}, 58 -${h - 4}, 64 -${h - 20} C 42 -${h - 4}, 22 -${h - 8}, 4 -${h} Z`} fill={C.lav} />
+    <path d={`M4 -${h} C -2 -${h + 34}, -24 -${h + 40}, -34 -${h + 30} C -22 -${h + 24}, -8 -${h + 16}, 4 -${h} Z`} fill={C.sky} />
+    <path d={`M4 -${h} C 10 -${h + 34}, 34 -${h + 38}, 42 -${h + 28} C 28 -${h + 22}, 14 -${h + 14}, 4 -${h} Z`} fill={C.lav} />
+    <circle cx="2" cy={-h + 8} r="6" fill={C.peach} />
+  </g>
+);
+
+export const Palm = (p: P) => (
+  <Svg {...p}>
+    <path d="M0 214 C 50 190, 100 220, 150 200 S 220 196, 240 206 L 240 240 L 0 240 Z" fill={C.yellow} stroke="none" />
+    <path d="M0 214 C 50 190, 100 220, 150 200 S 220 196, 240 206" />
+    {palmTree("a", 86, 120)}
+    {palmTree("b", 170, 86, 0.9)}
+    <circle cx="42" cy="46" r="20" fill={C.yellow} />
+  </Svg>
+);
+
+export const Zipline = (p: P) => (
+  <Svg {...p}>
+    <path d="M8 214 L 66 86 L 96 140 L 116 110 L 170 214 Z" fill={C.lav} />
+    <path d="M66 86 L 56 108 L 66 104 L 76 112 Z" fill={C.cream} />
+    <path d="M20 46 L 224 150" strokeWidth="4" />
+    <path d="M20 40 L 20 70 M 224 144 L 224 176" strokeWidth="6" />
+    <path d="M128 90 L 128 108" />
+    <path d="M128 108 L 118 130 M 128 108 L 138 130" />
+    <circle cx="128" cy="144" r="13" fill={C.yellow} />
+    <Face x={128} y={145} s={0.6} />
+    <path d="M128 157 L 124 184 M 128 157 L 134 184 M 112 140 L 128 128 L 144 140" />
+    <circle cx="206" cy="40" r="20" fill={C.yellow} />
+    <path d="M8 214 L 232 214" />
+  </Svg>
+);
+
+export const Shell = (p: P) => (
+  <Svg {...p}>
+    <path d="M40 150 C 40 70, 200 70, 200 150 C 180 168, 150 172, 120 172 C 90 172, 60 168, 40 150 Z" fill={C.peach} />
+    <path d="M120 172 L 64 100 M 120 172 L 92 82 M 120 172 L 120 76 M 120 172 L 148 82 M 120 172 L 176 100" strokeWidth="4" />
+    <path d="M96 172 L 144 172 L 150 192 L 90 192 Z" fill={C.lav} />
+    <path d="M200 206 L 208 178 L 224 196 L 232 170 L 238 202 L 220 218 Z" fill={C.yellow} transform="translate(-24 -4) scale(0.9)" />
+    <path d="M30 208 C 24 190, 26 182, 40 180 L 50 210 Z" fill={C.sky} />
+    <path d="M10 218 L 230 218" />
+    <path d="M14 232 q 14 -8 28 0 q 14 8 28 0 q 14 -8 28 0 q 14 8 28 0 q 14 -8 28 0 q 14 8 28 0" stroke={C.blue} strokeWidth="4" />
+  </Svg>
+);
+
+export const Lantern = (p: P) => (
+  <Svg {...p}>
+    <path d="M70 30 a 38 38 0 1 0 48 52 a 30 30 0 1 1 -48 -52 Z" fill={C.yellow} />
+    <path d="M168 48 L 172 60 L 184 62 L 174 70 L 178 82 L 168 74 L 158 82 L 162 70 L 152 62 L 164 60 Z" fill={C.yellow} />
+    <path d="M150 100 L 150 118" />
+    <path d="M128 118 L 172 118 L 164 130 L 136 130 Z" fill={C.peach} />
+    <path d="M136 130 C 112 150, 112 184, 136 204 L 164 204 C 188 184, 188 150, 164 130 Z" fill={C.lav} />
+    <path d="M150 140 C 136 156, 136 178, 150 194 C 164 178, 164 156, 150 140 Z" fill={C.yellow} />
+    <path d="M132 204 L 168 204 L 162 216 L 138 216 Z" fill={C.peach} />
+    <circle cx="46" cy="158" r="6" fill={C.yellow} />
+    <circle cx="206" cy="150" r="5" fill={C.yellow} />
+    <path d="M20 222 L 220 222" />
+  </Svg>
+);
+
+export const Tent = (p: P) => (
+  <Svg {...p}>
+    <circle cx="190" cy="48" r="22" fill={C.yellow} />
+    <path d="M20 214 L 100 60 L 180 214 Z" fill={C.peach} />
+    <path d="M100 60 L 100 214" />
+    <path d="M100 214 L 74 214 L 100 120 L 126 214 Z" fill={C.lav} />
+    <path d="M100 60 L 100 44" />
+    <path d="M100 44 L 118 50 L 100 58 Z" fill={C.yellow} />
+    <path d="M168 214 C 156 196, 172 188, 170 174 C 184 184, 196 196, 188 214 Z" fill={C.yellow} />
+    <path d="M160 218 L 200 208 M 160 208 L 200 218" strokeWidth="6" />
+    <path d="M10 222 L 230 222" />
+    <path d="M40 40 l 5 8 l 9 1 l -7 6 l 2 9 l -9 -5 l -9 5 l 2 -9 l -7 -6 l 9 -1 Z" fill={C.yellow} strokeWidth="3" />
+  </Svg>
+);
+
+export const Telescope = (p: P) => (
+  <Svg {...p}>
+    <path d="M120 140 L 70 214 M 120 140 L 120 214 M 120 140 L 170 214" />
+    <rect x="52" y="76" width="130" height="38" rx="14" fill={C.sky} transform="rotate(-28 117 95)" />
+    <rect x="150" y="38" width="46" height="28" rx="8" fill={C.lav} transform="rotate(-28 173 52)" />
+    <path d="M80 100 l 30 -14" strokeWidth="3.5" />
+    <circle cx="48" cy="52" r="24" fill={C.yellow} />
+    <ellipse cx="48" cy="52" rx="40" ry="9" fill="none" transform="rotate(-20 48 52)" />
+    <path d="M210 150 l 5 8 l 9 1 l -7 6 l 2 9 l -9 -5 l -9 5 l 2 -9 l -7 -6 l 9 -1 Z" fill={C.yellow} strokeWidth="3" />
+    <path d="M30 120 l 4 6 l 7 1 l -5 5 l 1 7 l -7 -4 l -7 4 l 1 -7 l -5 -5 l 7 -1 Z" fill={C.yellow} strokeWidth="3" />
+    <path d="M10 214 L 230 214" />
+  </Svg>
+);
+
+export const Backpack = (p: P) => (
+  <Svg {...p}>
+    <path d="M84 70 C 84 40, 156 40, 156 70" strokeWidth="7" />
+    <rect x="60" y="64" width="120" height="146" rx="40" fill={C.peach} />
+    <rect x="80" y="138" width="80" height="54" rx="16" fill={C.lav} />
+    <path d="M80 160 L 160 160" strokeWidth="3.5" />
+    <circle cx="120" cy="146" r="5" fill={C.yellow} />
+    <path d="M90 100 C 90 88, 150 88, 150 100" strokeWidth="4" />
+    <rect x="186" y="150" width="30" height="60" rx="12" fill={C.sky} />
+    <rect x="192" y="138" width="18" height="14" rx="4" fill={C.yellow} />
+    <path d="M10 214 L 230 214" />
+    <circle cx="44" cy="52" r="20" fill={C.yellow} />
+  </Svg>
+);
+
+export const Pearl = (p: P) => (
+  <Svg {...p}>
+    <path d="M30 150 C 30 80, 120 60, 120 150 Z" fill={C.lav} />
+    <path d="M210 150 C 210 80, 120 60, 120 150 Z" fill={C.peach} />
+    <path d="M50 120 C 56 100, 76 90, 90 92 M 190 120 C 184 100, 164 90, 150 92" strokeWidth="3.5" />
+    <path d="M30 150 C 40 196, 200 196, 210 150 Z" fill={C.cream} />
+    <circle cx="120" cy="140" r="30" fill={C.white} />
+    <path d="M104 128 C 108 120, 116 116, 124 118" stroke={C.sky} strokeWidth="5" />
+    <path d="M10 222 q 14 -10 28 0 q 14 10 28 0 q 14 -10 28 0 q 14 10 28 0 q 14 -10 28 0 q 14 10 28 0 q 14 -10 28 0 q 14 10 28 0" stroke={C.blue} strokeWidth="4" />
+    <path d="M196 40 l 5 8 l 9 1 l -7 6 l 2 9 l -9 -5 l -9 5 l 2 -9 l -7 -6 l 9 -1 Z" fill={C.yellow} strokeWidth="3" />
+  </Svg>
+);
+
+export const Tower = (p: P) => (
+  <Svg {...p}>
+    <path d="M10 214 L 230 214" />
+    <path d="M78 214 L 84 44 C 104 30, 136 30, 156 44 L 162 214 Z" fill={C.lav} />
+    <path d="M96 100 C 96 74, 144 74, 144 100 L 144 150 L 96 150 Z" fill={C.cream} />
+    <path d="M96 100 L 144 100" />
+    <path d="M90 190 L 150 190 M 90 170 L 150 170" strokeWidth="3.5" />
+    <path d="M40 214 L 40 150 L 74 150 L 74 214 Z" fill={C.sky} />
+    <path d="M168 214 L 168 130 L 204 130 L 204 214 Z" fill={C.peach} />
+    <path d="M50 164 h14 M 50 184 h14 M 178 148 h16 M 178 170 h16 M 178 192 h16" strokeWidth="3.5" />
+    <circle cx="206" cy="48" r="18" fill={C.yellow} />
+  </Svg>
+);
+
+export const KuwaitTowers = (p: P) => (
+  <Svg {...p}>
+    <path d="M10 214 L 230 214" />
+    <path d="M92 214 L 100 90 L 108 90 L 116 214 Z" fill={C.sky} />
+    <path d="M100 90 L 104 22" strokeWidth="4" />
+    <circle cx="104" cy="104" r="22" fill={C.blue} />
+    <path d="M86 98 C 96 92, 112 92, 122 98" stroke={C.sky} strokeWidth="3.5" />
+    <ellipse cx="104" cy="156" rx="12" ry="9" fill={C.lav} />
+    <path d="M150 214 L 156 120 L 162 120 L 168 214 Z" fill={C.sky} />
+    <circle cx="159" cy="132" r="14" fill={C.blue} />
+    <path d="M159 120 L 162 78" strokeWidth="4" />
+    <rect x="186" y="150" width="14" height="64" rx="3" fill={C.peach} />
+    <circle cx="40" cy="48" r="20" fill={C.yellow} />
+    <path d="M10 226 q 14 -8 28 0 q 14 8 28 0 q 14 -8 28 0 q 14 8 28 0 q 14 -8 28 0 q 14 8 28 0 q 14 -8 28 0" stroke={C.blue} strokeWidth="4" />
+  </Svg>
+);
+
+export const Fort = (p: P) => (
+  <Svg {...p}>
+    <path d="M10 214 L 230 214" />
+    <rect x="62" y="110" width="116" height="104" rx="4" fill={C.peach} />
+    <path d="M62 110 v-16 h14 v10 h12 v-10 h14 v10 h12 v-10 h14 v10 h12 v-10 h14 v16" fill={C.peach} />
+    <rect x="30" y="70" width="44" height="144" rx="4" fill={C.lav} />
+    <path d="M30 70 v-14 h10 v8 h8 v-8 h8 v8 h8 v-8 h10 v14" fill={C.lav} />
+    <rect x="166" y="70" width="44" height="144" rx="4" fill={C.lav} />
+    <path d="M166 70 v-14 h10 v8 h8 v-8 h8 v8 h8 v-8 h10 v14" fill={C.lav} />
+    <path d="M102 214 L 102 168 C 102 140, 138 140, 138 168 L 138 214" fill={C.yellow} />
+    <rect x="46" y="100" width="12" height="22" rx="6" fill={C.cream} />
+    <rect x="182" y="100" width="12" height="22" rx="6" fill={C.cream} />
+    <path d="M120 94 L 120 54" />
+    <path d="M120 54 L 150 64 L 120 76 Z" fill={C.yellow} />
+  </Svg>
+);
+
+export type SceneName =
+  | "sun" | "balloons" | "kite" | "playground" | "skyline" | "mosque" | "mountains" | "dhow" | "stroller"
+  | "beach" | "waterslide" | "swing" | "blocks" | "umbrella" | "popcorn" | "flowers" | "abudhabi" | "coaster"
+  | "fountain" | "palm" | "zipline" | "shell" | "lantern" | "tent" | "telescope" | "backpack" | "pearl"
+  | "tower" | "kuwait" | "fort";
 const SCENES: Record<SceneName, (p: P) => React.ReactElement> = {
   sun: Sun, balloons: Balloons, kite: Kite, playground: Playground, skyline: SkylineDubai,
   mosque: Mosque, mountains: Mountains, dhow: Dhow, stroller: Stroller,
+  beach: Beach, waterslide: WaterSlide, swing: Swing, blocks: Blocks, umbrella: Umbrella, popcorn: Popcorn,
+  flowers: Flowers, abudhabi: AbuDhabiSkyline, coaster: Coaster, fountain: Fountain, palm: Palm,
+  zipline: Zipline, shell: Shell, lantern: Lantern, tent: Tent, telescope: Telescope, backpack: Backpack,
+  pearl: Pearl, tower: Tower, kuwait: KuwaitTowers, fort: Fort,
 };
 export const Scene = ({ name, ...p }: P & { name: SceneName }) => {
   const Comp = SCENES[name];
